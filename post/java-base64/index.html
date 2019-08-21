@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Java-Base64 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Java-Base64</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#java实现">Java实现</a>
+<ul>
+<li><a href="#basic编码">Basic编码</a></li>
+<li><a href="#url编码">URL编码</a></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-02-07T13:09:29Z class="post-date">Wed, Feb 7, 2018</time>
+  <p>某钱包分享链接泄漏手机号码了，<a href="https://www.v2ex.com/t/429099#reply48">链接</a></p>
+
+<p>安全问题很重要啊</p>
+
+<h2 id="简介">简介</h2>
+
+<p>BASE64 编码是一种常用的字符编码，在很多地方都会用到。但base64不是安全领域下的加密解密算法。能起到<strong>安全作用的效果很差</strong>，而且很容易破解。</p>
+
+<p>他核心作用应该是传输数据的正确性，有些网关或系统只能使用ASCII字符。Base64就是用来将非ASCII字符的数据转换成ASCII字符的一种方法，而且base64特别适合在http，mime协议下快速传输数据。</p>
+
+<hr />
+
+<h2 id="java实现">Java实现</h2>
+
+<p>在Java 8在java.util包下面实现了BASE64编解码API，java.util.Base64</p>
+
+<h3 id="basic编码">Basic编码</h3>
+
+<p>是标准的BASE64编码，用于处理常规的需求</p>
+
+<p>输出的内容不添加换行符，而且输出的内容由字母加数字组成</p>
+
+<pre><code class="language-java">// 编码
+String asB64 = Base64.getEncoder().encodeToString(&quot;some string&quot;.getBytes(&quot;utf-8&quot;));
+System.out.println(asB64); 
+// 输出为: c29tZSBzdHJpbmc=
+
+// 解码
+byte[] asBytes = Base64.getDecoder().decode(&quot;c29tZSBzdHJpbmc=&quot;);
+System.out.println(new String(asBytes, &quot;utf-8&quot;)); 
+// 输出为: some string
+</code></pre>
+
+<h3 id="url编码">URL编码</h3>
+
+<p>如果是使用基本的编码器，那么输出可能会包含反斜线“/”字符，但是如果使用URL编码器，那么输出的内容对URL来说是安全的。</p>
+
+<pre><code class="language-java">String urlEncoded = Base64.getUrlEncoder().encodeToString(&quot;subjects?abcd&quot;.getBytes(&quot;utf-8&quot;));
+System.out.println(&quot;Using URL Alphabet: &quot; + urlEncoded);
+// 输出为:Using URL Alphabet: c3ViamVjdHM_YWJjZA==
+</code></pre>
+
+<p>编码标准： <a href="http://www.ietf.org/rfc/rfc4648.txt">RFC 4648</a>  page7</p>
+
+<blockquote>
+<pre><code>&gt;Josefsson                   Standards Track                     [Page 7]
+&gt;
+&gt;RFC 4648                    Base-N Encodings                October 2006
+&gt;
+&gt;
+&gt;         Table 2: The &quot;URL and Filename safe&quot; Base 64 Alphabet
+&gt;
+&gt;     Value Encoding  Value Encoding  Value Encoding  Value Encoding
+&gt;         0 A            17 R            34 i            51 z
+&gt;         1 B            18 S            35 j            52 0
+&gt;         2 C            19 T            36 k            53 1
+&gt;         3 D            20 U            37 l            54 2
+&gt;         4 E            21 V            38 m            55 3
+&gt;         5 F            22 W            39 n            56 4
+&gt;         6 G            23 X            40 o            57 5
+&gt;         7 H            24 Y            41 p            58 6
+&gt;         8 I            25 Z            42 q            59 7
+&gt;         9 J            26 a            43 r            60 8
+&gt;        10 K            27 b            44 s            61 9
+&gt;        11 L            28 c            45 t            62 - (minus)
+&gt;        12 M            29 d            46 u            63 _
+&gt;        13 N            30 e            47 v           (underline)
+&gt;        14 O            31 f            48 w
+&gt;        15 P            32 g            49 x
+&gt;        16 Q            33 h            50 y         (pad) =
+&gt;
+&gt;5.  Base 64 Encoding with URL and Filename Safe Alphabet
+&gt;
+&gt;   The Base 64 encoding with an URL and filename safe alphabet has been
+&gt;   used in [12].
+&gt;
+&gt;   An alternative alphabet has been suggested that would use &quot;~&quot; as the
+&gt;   63rd character.  Since the &quot;~&quot; character has special meaning in some
+&gt;   file system environments, the encoding described in this section is
+&gt;   recommended instead.  The remaining unreserved URI character is &quot;.&quot;,
+&gt;   but some file system environments do not permit multiple &quot;.&quot; in a
+&gt;   filename, thus making the &quot;.&quot; character unattractive as well.
+&gt;
+&gt;   The pad character &quot;=&quot; is typically percent-encoded when used in an
+&gt;   URI [9], but if the data length is known implicitly, this can be
+&gt;   avoided by skipping the padding; see section 3.2.
+&gt;
+&gt;   This encoding may be referred to as &quot;base64url&quot;.  This encoding
+&gt;   should not be regarded as the same as the &quot;base64&quot; encoding and
+&gt;   should not be referred to as only &quot;base64&quot;.  Unless clarified
+&gt;   otherwise, &quot;base64&quot; refers to the base 64 in the previous section.
+&gt;
+&gt;   This encoding is technically identical to the previous one, except
+&gt;   for the 62:nd and 63:rd alphabet character, as indicated in Table 2.
+&gt;```
+
+
+
+标准的Base64并不适合直接放在URL里传输，因为URL编码器会把标准Base64中的“/”和“+”字符变为形如“%XX”的形式，而这些“%”号在存入数据库时还需要再进行转换，因为ANSISQL中已将“%”号用作通配符。
+
+为解决此问题，可采用一种用于URL的改进Base64编码，**它在末尾填充“=”号，并将标准Base64中的“+”和“/”分别改成了“-”和“_”，**这样就免去了在URL编解码和数据库存储时所要作的转换，避免了编码信息长度在此过程中的增加，并统一了数据库、表单等处对象标识符的格式。
+
+### MIME编码
+
+使用基本的字母数字产生BASE64输出，而且对MIME格式友好：每一行输出不超过76个字符，而且每行以“\r\n”符结束。
+
+</code></pre>
+
+<p>java
+StringBuilder sb = new StringBuilder();
+for (int t = 0; t &lt; 10; ++t) {
+  sb.append(UUID.randomUUID().toString());
+}
+byte[] toEncode = sb.toString().getBytes(&ldquo;utf-8&rdquo;);
+String mimeEncoded = Base64.getMimeEncoder().encodeToString(toEncode);
+System.out.println(mimeEncoded);
+```</p>
+
+<p>延伸点：<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E7%94%A8%E9%80%94%E4%BA%92%E8%81%AF%E7%B6%B2%E9%83%B5%E4%BB%B6%E6%93%B4%E5%B1%95">MIME编码</a></p>
+</blockquote>
+
+<h2 id="参考">参考</h2>
+
+<p><a href="https://my.oschina.net/benhaile/blog/267738">Java 8新特性探究（十一）Base64详解</a></p>
+
+<p><a href="http://www.imooc.com/article/9761">Base64编码原理解析与Java实现</a></p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

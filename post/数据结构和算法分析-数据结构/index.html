@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>数据结构和算法分析-数据结构 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>数据结构和算法分析-数据结构</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#摘要">摘要</a></li>
+<li><a href="#表-栈-队列">表、栈、队列</a></li>
+<li><a href="#树">树</a>
+<ul>
+<li><a href="#二叉树">二叉树</a>
+<ul>
+<li><a href="#二叉查找树">二叉查找树</a>
+<ul>
+<li><a href="#bbst平衡二叉搜索树">BBST平衡二叉搜索树</a>
+<ul>
+<li><a href="#avl树">AVL树</a></li>
+<li><a href="#红黑树">红黑树</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#b树">B树</a></li>
+<li><a href="#伸展树">伸展树</a></li>
+<li><a href="#堆">堆</a>
+<ul>
+<li><a href="#二叉堆">二叉堆</a></li>
+<li><a href="#d-堆">d-堆</a></li>
+<li><a href="#左堆">左堆</a></li>
+<li><a href="#斜堆">斜堆</a></li>
+<li><a href="#二项队列">二项队列</a></li>
+</ul></li>
+<li><a href="#遍历">遍历</a></li>
+</ul></li>
+<li><a href="#hash">Hash</a>
+<ul>
+<li><a href="#冲突">冲突</a>
+<ul>
+<li><a href="#分离链接法">分离链接法</a></li>
+<li><a href="#开放地址法">开放地址法</a></li>
+</ul></li>
+<li><a href="#再hash">再Hash</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-01-26T23:20:22Z class="post-date">Fri, Jan 26, 2018</time>
+  <h2 id="摘要">摘要</h2>
+
+<p>表、栈、队列、树、Hash等数据结构</p>
+
+<h2 id="表-栈-队列">表、栈、队列</h2>
+
+<h2 id="树">树</h2>
+
+<h3 id="二叉树">二叉树</h3>
+
+<p>二叉树每一个节点都不能有多于2个儿子</p>
+
+<p>二叉树的一个性质是一棵平均二叉树的深度要比节点个数N小的多，其平均深度为O（根号N），而对于特殊类型的二叉查找树，其深度的平均值时O(log N)</p>
+
+<h4 id="二叉查找树">二叉查找树</h4>
+
+<p>定义：对于书中的每个节点X 它的左叶子树的值都小于X中的项，而右侧的项都比X中的项大</p>
+
+<p>单调性：BST的中序遍历，必然单调非降（充要条件）</p>
+
+<p>完全二叉树：高度严格最小 ：logN</p>
+
+<p>最困难的操作是remove，删除有几种可能：</p>
+
+<ol>
+<li><p>如果节点是树叶，那么它可以被直接删除</p></li>
+
+<li><p>如果节点有一个儿子，则该节点可以在其父类节点做出调整，跳过直接的链绕过该节点</p></li>
+
+<li><p>复杂情况是处理具有两个儿子的节点，一般的删除策略是用其右子树的最小的数据代替该节点的数据并递归的删除那个节点</p></li>
+</ol>
+
+<p>懒惰删除 ： 当一个元素要被删除时，它任然留在树中，只是被标记为删除（耗时小，其次下次如果插入相同数据时，可以避免重新分配一个新单元）</p>
+
+<p>平均情况分析</p>
+
+<p>我们期望所有操作花费时间都是O（log N）、</p>
+
+<p>多有操作允许时间都是O（d）,d为访问节点的深度</p>
+
+<p><strong>一棵树的所有节点的深度被称为内部路径长</strong></p>
+
+<p>正常删除算法使得 左树的深度要比右树的深度深（删除时将右子树最小的节点代替该节点）</p>
+
+<p>理想平衡：n个节点，高度为logn；概率极低，成本高</p>
+
+<p><strong>等价的BST</strong>：上下可变，左右不能乱</p>
+
+<p>等价的BST中序遍历相同，拓扑排序不同</p>
+
+<hr />
+
+<h5 id="bbst平衡二叉搜索树">BBST平衡二叉搜索树</h5>
+
+<h6 id="avl树">AVL树</h6>
+
+<p>定义：</p>
+
+<p>平衡因子：左右子树高度差</p>
+
+<p>平衡因子不大于+／-1；</p>
+
+<p>叶子的平衡因子为-1；</p>
+
+<p>时间：</p>
+
+<p>插入 O（1）</p>
+
+<p>结构：</p>
+
+<p>AVL树的高度略大于log N，除去可能的删除了懒惰删除外，所有操作都可以以时间O(log N)执行</p>
+
+<p>假如插入一个树破坏平衡：</p>
+
+<p>不平衡可能有4种情况</p>
+
+<ol>
+<li><p>对X的左子树的左儿子进行一次插入</p></li>
+
+<li><p>对X 的左子树的右儿子进行一次插入</p></li>
+
+<li><p>对X的右子树的左儿子进行一次插入</p></li>
+
+<li><p>对X 的右子树的右儿子进行一次插入</p></li>
+</ol>
+
+<p>1 和 4  2 和 3 关于 X 对称</p>
+
+<p>第1种情况和第4种情况，该情况通过对树进行一次单旋转而完成跳转</p>
+
+<p>对于第2种和第3中情况来说 需要对树进行双旋转完成</p>
+
+<p>4.4.1 单旋转**</p>
+
+<p>将左子树上调作为父子树，将父子树调为右子树。左子树的右节点调整到右子树的左节点</p>
+
+<p>4.4.2 双旋转**</p>
+
+<p>将左子树的右节点上调至父子树，左子树的右节点上调至父子树的左子树调至左子树的左节点的右子树 将左子树的右节的右子树调至右子树的左节点</p>
+
+<hr />
+
+<h6 id="红黑树">红黑树</h6>
+
+<p>定义：</p>
+
+<p>根：黑色</p>
+
+<p>外部节点：黑</p>
+
+<p>其余节点：若红，其父节点和子节点必然为黑</p>
+
+<p>黑节点的数量一样</p>
+
+<p>等效于4阶B树</p>
+
+<hr />
+
+<h3 id="b树">B树</h3>
+
+<hr />
+
+<h3 id="伸展树">伸展树</h3>
+
+<p>定义：</p>
+
+<p>当一个节点别访问后，它就要经过一系列AVL树的旋转被推倒根上。适合于重复访问的元素使用</p>
+
+<p>当访问路劲长而且导致超出正常查询时间的时候，这些旋转将对未来有利，当访问耗时很少的时候，这些旋转就不那么有益</p>
+
+<p>时间：</p>
+
+<p>它保证从空树开始连续M此对树的操作最多花费 O(Mlog N)时间，虽然不排除单次操作花费O(N)时间</p>
+
+<hr />
+
+<h3 id="堆">堆</h3>
+
+<h4 id="二叉堆">二叉堆</h4>
+
+<ol>
+<li>定义：被完全填满的二叉树。</li>
+<li>结构：</li>
+</ol>
+
+<p>堆的父节点一定 &lt;= 子节点。</p>
+
+<p>完全填二叉树，有可能的例外是在底层，底层上的元素从左到右填入</p>
+
+<p>一棵树高为h的完全二叉树有2h 到2h+1 -1 个节点 这也意味着完全二叉树的高是log N 显然它是O（log N）</p>
+
+<p>对于数组上任意的 i 上的元素，其左儿子在位置2i上，右儿子在做儿子后的单元（2i + 1）上  它的父亲则在（i/2）上</p>
+
+<p>这种方法的最大问题在于 最大的堆的大小需要事先估计，但一般都不成问题</p>
+
+<p>一个堆的结构将由一个（Comparable对象的）数组和一个代表当前堆的大小的整数组成</p>
+
+<ol>
+<li>时间：</li>
+</ol>
+
+<p>生成二叉堆  O（N）</p>
+
+<p>deleteMin    O（log N）</p>
+
+<ol>
+<li>实现：</li>
+</ol>
+
+<p><strong>insert</strong> 采用的策略叫做上滤，在下一个可用的位置创建一个空穴，然后比较父类是否比他小，大则上滤</p>
+
+<p><strong>deeteMin</strong>  采用的策略叫做下滤 删除根元素，并填充空穴，然后将最堆中最后一个元素放入空穴中，将空穴和子元素比较</p>
+
+<p>我们必须保证节点只有一个儿子的前提下程序正确执行</p>
+
+<hr />
+
+<h4 id="d-堆">d-堆</h4>
+
+<p><strong>定义：</strong>d-堆是二叉堆的简单推广，它就像一个二叉堆，只是所有节点都有d个儿子（因此二叉堆 又是 2堆）</p>
+
+<p><strong>时间：</strong>d-堆要比二叉堆浅的多，它将insert操作时间的运行时间改进为O(logd N) 然而，对于大的d deleteMin操作费时的多。以为d个儿子中必须找出一个最小者（d-1此比较）于是将用时提高到O（d logd N）</p>
+
+<p><strong>优缺点：</strong>当优先队列太大而不能装入主存时，d-堆也是很有用的</p>
+
+<p>除了不能实现find外，堆实现的最明显的缺点是  将两个堆合并和一个堆是一个困难的操作 ，这种操作叫做合并。</p>
+
+<p>存在许多实现堆的方法使得一次merge操纵的运算时间是O(log N)</p>
+
+<h4 id="左堆">左堆</h4>
+
+<p>像二叉堆那样也具有结构性和有序性 左式堆和二叉堆都是二叉树，唯一区别是左式堆不是理想平衡的，实际上趋向非常不平衡</p>
+
+<p><strong>性质</strong></p>
+
+<p>我们把任一节点X的零路径长定义为从X 到一个不具有两个节点的最短路径长，</p>
+
+<p>左式堆性质是  对于堆中的每一个节点，左儿子的零路径长 大于等于 右儿子的零路径长（它显然偏重于使树的想左增加深度）</p>
+
+<p>在右路径上右R个节点，那么左式树必然有 2R- 1个节点</p>
+
+<p><strong>操作</strong></p>
+
+<p>对左式堆的基本操作时合并，注意插入只是合并的特殊情景。因为我们可以把插入看成是单节点 的堆与一个大堆的merge</p>
+
+<p>处理验证数据 左引用和右引用所用的空间外，每一个节点还要有一个指示零路径的项</p>
+
+<p>根值大的堆与根值小的堆的右子堆合并，若出现不零路径满足情况，将左子堆和右子堆交换</p>
+
+<hr />
+
+<h4 id="斜堆">斜堆</h4>
+
+<p>斜堆是左手式堆的自调形式，实现起来极其简单，斜堆和左手式堆类似于伸张树和AVL树间的关系，</p>
+
+<p>斜堆具有二叉堆的性质，但是不存在堆树的结构限制。</p>
+
+<p>不同于左式堆，关于任意节点的零路劲信息不在保留，斜堆的有路劲子啊任何时刻都可以任意长</p>
+
+<p>时间： 最坏运行时间是O(N) 总的最坏运行时间是O（M log N）</p>
+
+<hr />
+
+<h4 id="二项队列">二项队列</h4>
+
+<p>结构：</p>
+
+<p>是堆序树的集合，每一个高度上至多存在一棵二项树。</p>
+
+<p>如果是连续的树，后面一棵树就是前面一棵树复制一份再连接两个树的根。</p>
+
+<p>高度为K的二项树恰好有2k个节点</p>
+
+<p>时间：</p>
+
+<p>总共存在O（log N）棵二项树</p>
+
+<p>每次操纵的最坏情景运行时间为O（log N），</p>
+
+<p>插入平均花费常数时间，最坏花费O（N）</p>
+
+<p>findMin的时间为 O（log N）</p>
+
+<p>merge最多花费O(log N)</p>
+
+<p>实现：</p>
+
+<p>二项树的每一个节点将包含数据，第一儿子以及右兄弟。</p>
+
+<p>二项树中各个儿子以降秩次序排列</p>
+
+<p>deleteMin 二项队列H删除含有最小根的B得到H’，B删除最小根等到一个二项队列H’’，合并H’和H’&rsquo;。</p>
+
+<p>combine 两棵二项树中，小树的儿子➡赋值给➡大树右兄弟，大树➡赋值给➡小树的儿子。返回小树。</p>
+
+<p>merge</p>
+
+<hr />
+
+<h3 id="遍历">遍历</h3>
+
+<p>先序遍历 ：在先序遍历中，对节点的处理工作是在它的诸多儿子节点被处理之前进行的运行时间为O(N)</p>
+
+<p>后序遍历 ：在后序遍历中，一个节点处的工作是在它的诸儿子节点被计算后进行的</p>
+
+<hr />
+
+<h2 id="hash">Hash</h2>
+
+<p>散列一般保证表的大小是素数</p>
+
+<blockquote>
+<p>如果是2的r次幂，则hash取余均为二进制的后r个，前面的数字失效</p>
+
+<p>普遍情况来说，如果N取模M，N和M有公约数k，则本来N=rM+A，（r和A随意），现在N/k=rM/k+A/k。</p>
+
+<p>对于余数A/k来说，取值是1～M-1，但是其实每个数字是以k为倍数增加的，余数有数字为被映射到。</p>
+
+<p>方便起见，取素数为模，避免公约数。</p>
+</blockquote>
+
+<hr />
+
+<h3 id="冲突">冲突</h3>
+
+<h4 id="分离链接法">分离链接法</h4>
+
+<h4 id="开放地址法">开放地址法</h4>
+
+<hr />
+
+<h3 id="再hash">再Hash</h3>
+
+<p><strong>建立另外一个大约两倍大的表（使用一个相关的新散列函数），扫描整个原始散列表，计算每个元素的新散列值并将其插入到新表中；</strong></p>
+
+<p>显然这是一种非常昂贵的操作， 其运行时间为 O(N)，因为有N 个元素要再散列而表的大小约为2N， 不过由于不是经常发生，所以实际效果根本不是那么差</p>
+
+<p>什么时候使用：</p>
+
+<p>对于使用平方探测的开放定址散列法，如果表的元素填的太满， 那么操作的运行时间将开始消耗过长，且 insert 操作可能失败， 这可能发生在有 太多的移动和插入混合的场合；把程序员从表大小的担心中解放出来， 这一点很重要， 因为在复杂的程序中散列表不能够做得任意地大；</p>
+
+<p>实现：</p>
+
+<p>再散列可以用平方探测以多种方法实现：</p>
+
+<p>1）一种做法是：只要表满到一半就再散列；</p>
+
+<p>2）另一个极端方法是：只有当插入失败时才再散列；</p>
+
+<p>3）第3种方法即途中策略：当表到达某一个装填因子时进行再散列。由于随着装填因子的增加，表的性能有所下降， 因此，以好的截止手段实现的第三种策略， 可能是最好的策略；</p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

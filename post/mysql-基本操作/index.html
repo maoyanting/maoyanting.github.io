@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MySQL-基本操作 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>MySQL-基本操作</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#数据库dcl">数据库DCL</a>
+<ul>
+<li><a href="#1-连接与断开mysql服务器"><strong>1、连接与断开MySQL服务器：</strong></a></li>
+<li><a href="#2-执行sql语句"><strong>2、执行SQL语句：</strong></a></li>
+<li><a href="#3-创建数据库">3、创建数据库：</a></li>
+<li><a href="#4-关于字符校对collate">4、关于字符校对collate</a></li>
+<li><a href="#5-删除-数据库">5、删除<strong>数据库：</strong></a></li>
+<li><a href="#6-选择数据库">6、选择数据库：</a></li>
+<li><a href="#7-查看运行端口">7、查看运行端口：</a></li>
+<li><a href="#8-执行sql脚本">8、执行sql脚本:</a></li>
+<li><a href="#9-查看mysql版本">9、查看mysql版本</a></li>
+</ul></li>
+<li><a href="#表ddl">表DDL</a>
+<ul>
+<li><a href="#1-查看表">1、查看表：</a></li>
+<li><a href="#2-删除表">2、删除表：</a></li>
+<li><a href="#3-重命名表">3、重命名表：</a></li>
+<li><a href="#4-修改表">4、修改表：</a></li>
+</ul></li>
+<li><a href="#记录dml">记录DML</a>
+<ul>
+<li><a href="#1-插入记录">1、插入记录：</a></li>
+<li><a href="#2-修改记录">2、修改记录：</a></li>
+<li><a href="#3-删除记录">3、删除记录：</a></li>
+<li><a href="#4-查询记录">4、查询记录：</a></li>
+<li><a href="#5-表连接p43">5、表连接p43</a></li>
+<li><a href="#6-子查询">6、子查询：</a></li>
+<li><a href="#7-记录联合">7、记录联合：</a></li>
+</ul></li>
+<li><a href="#踩坑的地方">踩坑的地方</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-01-10T21:48:43Z class="post-date">Wed, Jan 10, 2018</time>
+  <p>本文整理自《深入浅出MySQL数据库开发、优化与管理维护（第2版）》</p>
+
+<p>第一部分 基础篇</p>
+
+<h2 id="数据库dcl">数据库DCL</h2>
+
+<h3 id="1-连接与断开mysql服务器"><strong>1、连接与断开MySQL服务器：</strong></h3>
+
+<pre><code class="language-mysql">#启动mysql
+mysql.server start
+#回车后输入密码
+mysql –uroot –p
+#断开连接
+quit或者exit
+</code></pre>
+
+<h3 id="2-执行sql语句"><strong>2、执行SQL语句：</strong></h3>
+
+<p>语句以“；”结束。不区分大小写。
+在一行中可以输入多条SQL语句，各语句以“；”号隔开。
+各条语句得到各自的结果集。
+在任何时候输入“\c”并回车，则取消当前输入，重新回到mysql&gt;提示符。
+某些情况下，按回车后，SQL语句并不执行，出现的也不是“-&gt;”提示符，如：[’&gt;]、[”&gt;]、[`&gt;]、[/*]，则表示引号或注释没有结束。即使通过\c取消，也要先结束引号。</p>
+
+<h3 id="3-创建数据库">3、创建数据库：</h3>
+
+<pre><code class="language-mysql">#CHARACTER SET：字符集。
+#COLLATE：整理或校对。如不指定则采用默认。
+CREATE DATABASE db_test default character set gb2312 collate gb2312_chinese_ci;
+</code></pre>
+
+<h3 id="4-关于字符校对collate">4、关于字符校对collate</h3>
+
+<p>指比较字符串时采用的一套规则。还可以设置服务器校对和表校对。
+一般情况下不需要设置字符校对，因为对应于每一种字符集MySQL有默认的校对规则，例如gb2312字符集默认校对规则为gb2312_chinese_ci。当不设置校对时采用默认。</p>
+
+<h3 id="5-删除-数据库">5、删除<strong>数据库：</strong></h3>
+
+<pre><code class="language-mysql">DROP DATABASE database_name;
+</code></pre>
+
+<h3 id="6-选择数据库">6、选择数据库：</h3>
+
+<pre><code class="language-mysql">#在创建数据表之前，首先要选择数据库。
+#其它查询、修改、删除等操作也一样。
+use db_name;
+
+#查看当前数据库下所有表：
+show tables;
+</code></pre>
+
+<h3 id="7-查看运行端口">7、查看运行端口：</h3>
+
+<pre><code class="language-mysql">show global variables like 'port';
+</code></pre>
+
+<h3 id="8-执行sql脚本">8、执行sql脚本:</h3>
+
+<pre><code class="language-mysql">source 文件位置
+</code></pre>
+
+<h3 id="9-查看mysql版本">9、查看mysql版本</h3>
+
+<pre><code class="language-mysql">#注意大写
+mysql -V
+</code></pre>
+
+<hr />
+
+<h2 id="表ddl">表DDL</h2>
+
+<h3 id="1-查看表">1、查看表：</h3>
+
+<pre><code class="language-mysql">show columns from user_info from db_test;
+show columns from db_test.user_info;
+
+#如果当前使用数据库为表所在的数据库，则可以省略db_test。
+describe user_info;
+
+#用法同上，还可以只得到某一个列的信息：
+describe user_info name;
+</code></pre>
+
+<h3 id="2-删除表">2、删除表：</h3>
+
+<p>一次删除多个表：</p>
+
+<pre><code class="language-mysql">DROP TABLE user_info1，user_info2;
+</code></pre>
+
+<h3 id="3-重命名表">3、重命名表：</h3>
+
+<p>可以同时对多个表重命名，之间以逗号“，”隔开。</p>
+
+<pre><code class="language-mysql">RENAME TABLE user_info TO users_infomation, sale_info TO sales_infomation;
+</code></pre>
+
+<h3 id="4-修改表">4、修改表：</h3>
+
+<table>
+<thead>
+<tr>
+<th>ALTER TABLE</th>
+<th>table_name</th>
+<th>MODIFY</th>
+<th>[COLUMN] col_name</th>
+<th>column_definition</th>
+<th>[FIRST/AFTER]col_name</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>ADD</td>
+<td>[COLUMN] col_name</td>
+<td>column_definition</td>
+<td>[FIRST/AFTER]col_name</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td>DROP</td>
+<td>[COLUMN] col_name</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td>CHANGE</td>
+<td>[COLUMN] col_name</td>
+<td>NEW col_name  column_definition</td>
+<td>[FIRST/AFTER]col_name</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td>RENAME</td>
+<td>[TO]</td>
+<td>NEW table_name</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>modify和change区别：
+change需要写两次col_name，但是可以用来修改列名。</p>
+
+<p>在列reg_date中添加索引：</p>
+
+<pre><code class="language-mysql">ALTER TABLE user_information ADD INDEX (reg_date);
+</code></pre>
+
+<p>一次添加多个列(字段):</p>
+
+<pre><code class="language-mysql">ALTER TABLE table_name ADD func varchar(50), ADD gene varchar(50), ADD genedetail varchar(50);
+</code></pre>
+
+<hr />
+
+<h2 id="记录dml">记录DML</h2>
+
+<h3 id="1-插入记录">1、插入记录：</h3>
+
+<pre><code class="language-mysql">INSERT INTO table_name(…...) values (…..);
+
+INSERT INTO user_info (name, gender, age, email) values(‘XiaoHei’, ‘男’，28，‘xhei@sohu.com’);
+
+#可以一次同时插入多行记录，用“，”隔开。
+INSERT INTO user_info(name,gender,age,email) values(‘ChenYi’, ‘女’，25，‘chenyi@shou.com’), (‘XiaoHei’, ‘男’，28，‘xhei@sohu.com’);
+</code></pre>
+
+<p>CONCAT为MySQL系统函数，将多个字符串连接起来。</p>
+
+<h3 id="2-修改记录">2、修改记录：</h3>
+
+<pre><code class="language-mysql">UPDATE table_name SET field1=values1,field2=values2,…. [ WHERE condition]
+
+UPDATE table1_name t1, table2_name t2, table3_name t3  SET  t1.field1=values1,t2.field2=values2,…. [ WHERE condition]
+</code></pre>
+
+<h3 id="3-删除记录">3、删除记录：</h3>
+
+<pre><code class="language-mysql">DELETE FROM table_name [ WHERE condition];
+
+DELETE   t1,t2  FROM  table1_name t1, table2_name t2 [ WHERE condition];
+</code></pre>
+
+<p>各关键字含义用UPDATE，不指定where子句时删除所有行。</p>
+
+<h3 id="4-查询记录">4、查询记录：</h3>
+
+<pre><code class="language-mysql">#全选 SQL实际运行的时候会把*转换成列名，一般建议不使用*
+SELECT * FROM  table_name  [ WHERE condition]; 
+
+#选择部分字段
+SELECT  field1_name,field2_name,…. FROM table_name  [ WHERE condition]; 
+
+#去重 选择某字段的不重复的记录
+SELECT  DISTINCT  field_name  FROM table_name  ； 
+
+#排序 desc表示降序，默认为升序。
+SELECT [ ORDER BY field1_name [DESC/ASC],  field2_name [DESC/ASC],  field3_name [DESC/ASC],….  ]    
+
+
+#offset_start表示记录起始偏移量，
+#row_count表示显示的行数。如果只写一个表示 row_count（其他数据库不通用）
+#limit 和order by常配合使用来进行记录的分页显示。limit用在rollup后面。
+SELECT [ LIMIT offset_start, row_count ]  
+
+#GROUP BY 要进行分类聚合的字段
+#WITH ROOLUP 是否对分类聚合后的结果进行再汇总，和ORDER BY是互斥的。
+#HAVING 表示对分类后的结果再进行条件的过滤
+#Function_name  ：sum，count（*），max，min
+SELECT  field1_name,field2_name,…. Function_name FROM  table_name
+[ WHERE condition][GROUP BY  field1_name,field2_name,…. [WITH ROOLUP] ][HAVING where_condition]
+</code></pre>
+
+<h3 id="5-表连接p43">5、表连接p43</h3>
+
+<p>左连接：包含所有左边表中的记录甚至是右边表中没有和它匹配的记录
+左连接：包含所有右边表中的记录甚至是左边表中没有和它匹配的记录</p>
+
+<pre><code class="language-mysql">SELECT col1_name,col2_name… FROM table1_name RIGHT/LEFT JOIN table2_name ON condition
+</code></pre>
+
+<h3 id="6-子查询">6、子查询：</h3>
+
+<pre><code class="language-mysql">WHERE col_name in (select …..)
+</code></pre>
+
+<p>如果子查询记录数唯一，可以用=代替in</p>
+
+<h3 id="7-记录联合">7、记录联合：</h3>
+
+<p>UNION ALL 把结果直接合并在一起，
+而UNION 是在此基础上进行一次DISTINCT去除重复记录后的结果。</p>
+
+<hr />
+
+<h2 id="踩坑的地方">踩坑的地方</h2>
+
+<p>1、sql语句中千万不要有sql的保留词，不然会无法识别
+报错：<code>The error occurred while setting parameters</code></p>
+
+<p>2、MySQL和excel互相导入</p>
+
+<p>excel到MySQL：excel文件另存为CSV utf-8（逗号分隔），MySQL直接import就行</p>
+
+<p>MySQL到excel：MySQL 导出csv格式，excel选择导入。</p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

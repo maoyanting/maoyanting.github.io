@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>小黑屋-Java-JavaSE组件 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>小黑屋-Java-JavaSE组件</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#java-language">Java Language</a></li>
+<li><a href="#tools-tool-apis">Tools &amp; Tool APIs</a></li>
+<li><a href="#deployment">Deployment</a></li>
+<li><a href="#user-interface-toolkits">User Interface Toolkits</a></li>
+<li><a href="#integration-libraries">Integration Libraries</a></li>
+<li><a href="#other-base-libraries">Other Base Libraries</a></li>
+<li><a href="#lang-and-util-base-libraries">lang and util Base Libraries</a></li>
+<li><a href="#java-virtual-machine">Java Virtual Machine</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-02-07T10:05:21Z class="post-date">Wed, Feb 7, 2018</time>
+  
+
+<p><img src="https://pic3.zhimg.com/80/v2-8220cc3f1bdcc5a3568f89b904d12180_hd.jpg" alt="[Java SE组成](https://zhuanlan.zhihu.com/p/33474703)" /></p>
+
+<h2 id="java-language">Java Language</h2>
+
+<h2 id="tools-tool-apis">Tools &amp; Tool APIs</h2>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>javac</td>
+<td>把.java文件编译为.class文件（每个类一个.class文件）</td>
+</tr>
+
+<tr>
+<td>javadoc</td>
+<td>生成Java说明文档，api文档</td>
+</tr>
+
+<tr>
+<td>jar</td>
+<td>软件包文件格式，归档文件</td>
+</tr>
+
+<tr>
+<td><a href="http://www.importnew.com/18398.html">javap</a></td>
+<td>JDK自带的反汇编器，可以查看java编译器为我们生成的字节码。</td>
+</tr>
+
+<tr>
+<td><a href="https://www.ibm.com/developerworks/cn/java/j-lo-jpda1/">JPDA</a>(Java Platform Debugger Architecture)</td>
+<td>Java平台调试器架构</td>
+</tr>
+
+<tr>
+<td>JConsole</td>
+<td>内置 Java 性能分析器?</td>
+</tr>
+
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/VisualVM">Java VisualVM</a></td>
+<td>集成了多个JDK 命令行工具的可视化工具</td>
+</tr>
+
+<tr>
+<td><a href="https://zh.wikipedia.org/zh-hans/Apache_Derby">Java DB</a></td>
+<td>开放源码数据库管理系统</td>
+</tr>
+
+<tr>
+<td>Security</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Int&rsquo;l</td>
+<td></td>
+</tr>
+
+<tr>
+<td>RMI</td>
+<td></td>
+</tr>
+
+<tr>
+<td>IDL</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Deploy</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Monitoring</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Troubleshoot</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Scripting</td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="https://www.ibm.com/developerworks/cn/java/j-lo-jpda2/">JVM TI</a></td>
+<td>Java 虚拟机所提供的 native 编程接口</td>
+</tr>
+
+<tr>
+<td>Web Services</td>
+<td></td>
+</tr>
+
+<tr>
+<td>java</td>
+<td>java.exe用于执行编译好的.class文件</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="deployment">Deployment</h2>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Applet / Java Plug-in</td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/javaws/index.html">Java Web Start</a></td>
+<td>从Web浏览器中单击即可启动全功能的应用程序。</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="user-interface-toolkits">User Interface Toolkits</h2>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>AWT (Abstract Window Toolkit)</td>
+<td>为Java程序提供图形使用者界面（GUI）的标准API</td>
+</tr>
+
+<tr>
+<td>Swing</td>
+<td>为Java设计的GUI工具包</td>
+</tr>
+
+<tr>
+<td>Java 2D</td>
+<td>使用Java编程语言绘制二维图形的API</td>
+</tr>
+
+<tr>
+<td>Accessibility</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Drag and Drop</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Input Methods</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Image I/O</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Print Service</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Sound</td>
+<td></td>
+</tr>
+
+<tr>
+<td>JavaFX</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="integration-libraries">Integration Libraries</h2>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>IDL</td>
+<td></td>
+</tr>
+
+<tr>
+<td>JDBC ( Java Database Connectivity)</td>
+<td>通用数据访问</td>
+</tr>
+
+<tr>
+<td>JNDI</td>
+<td><em>Java</em> 命名与目录接口</td>
+</tr>
+
+<tr>
+<td><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/rmi/index.html">RMI</a>，<a href="http://blog.csdn.net/suifeng3051/article/details/48469523">解析</a></td>
+<td>远程方法调用</td>
+</tr>
+
+<tr>
+<td><a href="https://www.ibm.com/support/knowledgecenter/zh/SSYKE2_8.0.0/com.ibm.java.win.80.doc/rmi-iiop/overview.html">RMI-IIOP</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Scripting</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="other-base-libraries">Other Base Libraries</h2>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Beans</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Int&rsquo;l Support</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Input/Output</td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jmx/index.html">JMX</a></td>
+<td>用于管理和监视资源（如应用程序，设备，服务和Java虚拟机）的标准API</td>
+</tr>
+
+<tr>
+<td>JNI</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Math</td>
+<td>数学功能</td>
+</tr>
+
+<tr>
+<td>Networking</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Override Mechanism</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Security</td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/serialization/index.html">Serialization</a></td>
+<td>对象序列化</td>
+</tr>
+
+<tr>
+<td>Extension Mechanism</td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/xml/index.html">XML JAXP</a></td>
+<td>使用独立于特定XML处理器实现的API来解析，转换，验证和查询XML文档</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="lang-and-util-base-libraries">lang and util Base Libraries</h2>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/lang/index.html">lang and util</a></td>
+<td>提供几乎所有应用程序都使用的基本功能</td>
+</tr>
+
+<tr>
+<td>Collections</td>
+<td>集合</td>
+</tr>
+
+<tr>
+<td>Concurrency Utilities</td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jar/index.html">JAR</a></td>
+<td>一个独立于平台的文件格式，可以将许多文件合并为一个文件</td>
+</tr>
+
+<tr>
+<td>Logging</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Management</td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="https://www.ibm.com/developerworks/cn/java/j-prefapi/index.html">Preferences API</a></td>
+<td>存储用户特定的设置或者首选项</td>
+</tr>
+
+<tr>
+<td>Ref Objects</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Reflection</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Regular Expressions</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Versioning</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Zip</td>
+<td>提供读写标准ZIP和GZIP文件格式的类。</td>
+</tr>
+
+<tr>
+<td>Instrumentation</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="java-virtual-machine">Java Virtual Machine</h2>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/vm/index.html">Java Hotspot Client and Server VM</a></td>
+<td>JVM的两种实现</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

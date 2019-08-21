@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Spring-全局异常拦截 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Spring-全局异常拦截</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#controlleradvice">@ControllerAdvice</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-10-16T15:49:06Z class="post-date">Tue, Oct 16, 2018</time>
+  <p>Spring MVC那一篇里提到了异常拦截来做参数校验返回，那里是对特定的 <code>controller</code> 做异常捕捉，但是我们也可以选择全局拦截处理</p>
+
+<h2 id="快速开始">快速开始</h2>
+
+<pre><code class="language-java">@ResponseBody
+@ControllerAdvice
+public class ExceptionAdvice {
+    private static Logger logger = LoggerFactory.getLogger(ExceptionAdvice.class);
+
+    /***
+    * 参数绑定异常
+    * @date 2018/10/16
+    * @param exception HttpMessageNotReadableException
+    */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public Result&lt;Long&gt; messageNotReadable(HttpMessageNotReadableException exception){
+        InvalidFormatException formatException = (InvalidFormatException)exception.getCause();
+        List&lt;JsonMappingException.Reference&gt; e = formatException.getPath();
+        String fieldName = &quot;&quot;;
+        for (JsonMappingException.Reference reference :e){
+            String fieldName = reference.getFieldName();
+        }
+        logger.error(&quot;参数不匹配&quot;+exception);
+        return Result.createFailResult(fieldName+&quot;参数类型不匹配&quot;);
+    }
+
+    /***
+    * 全局异常，如果没有匹配到上述准确的异常，都会到这里来处理
+    * @date 2018/10/16
+    * @param e 没有匹配到的全局异常
+    */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(Exception.class)
+    public Result&lt;String&gt; all(Exception e){
+        //这里的log使用了“，”，这样能把异常的堆栈信息全部打印出来，更容易定位bug
+        logger.error(&quot;异常：&quot;,e);
+        return Result.createFailResult(&quot;工程抢救中……请稍后再试&quot;);
+    }
+}
+</code></pre>
+
+<h2 id="controlleradvice">@ControllerAdvice</h2>
+
+<p><code>@ControllerAdvice</code> 默认监控所有的 <code>@RequestMapping</code> 方法，也可以对指定过滤的条件：</p>
+
+<pre><code class="language-java">// 监控所有的被@RestController注解的Controllers类 
+@ControllerAdvice(annotations = RestController.class)
+
+// 监控特定的包下的Controllers类
+@ControllerAdvice(&quot;org.example.controllers&quot;)
+
+// 监控指定类的Controllers类
+@ControllerAdvice(assignableTypes = {ControllerInterface.class, AbstractController.class})
+
+</code></pre>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

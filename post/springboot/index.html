@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Spring Boot(未完) &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Spring Boot(未完)</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#springapplication启动">SpringApplication启动</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2019-02-25T22:12:50&#43;0800 class="post-date">Mon, Feb 25, 2019</time>
+  <p>这年头新项目不用 <code>Spring Boot</code> 的大概想法比较异于常人😅</p>
+
+<p>代码基于 <code>Spring Boot 2.0</code></p>
+
+<h3 id="springapplication启动">SpringApplication启动</h3>
+
+<p>一般一个module Spring Boot 都会生成一个启动类，类似于下面</p>
+
+<pre><code class="language-java">@SpringBootApplication
+@MapperScan(&quot;com.yuantu.billmanager.mapper&quot;)
+public class WebApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(WebApplication.class, args);
+    }
+}
+</code></pre>
+
+<p>我们首先进入 <code>SpringApplication.run</code> 这里调用了另一个  <code>SpringApplication.run</code></p>
+
+<pre><code class="language-java">public static ConfigurableApplicationContext run(Class&lt;?&gt; primarySource,String... args) {
+    return run(new Class&lt;?&gt;[] { primarySource }, args);
+}
+</code></pre>
+
+<p>继续下一个方法，这个 <code>run</code> 方法里面是可以放入多个 <code>primarySource</code> 的，具体使用情况我们以后再看</p>
+
+<p>这里调用了 <code>SpringApplication</code>  的构造函数，然后又运行 <code>run</code> 方法（妈耶你怎么还没执行😰）</p>
+
+<pre><code class="language-java">public static ConfigurableApplicationContext run(Class&lt;?&gt;[] primarySources,
+			String[] args) {
+    return new SpringApplication(primarySources).run(args);
+}
+</code></pre>
+
+<p>我们先来看构造函数，再往下，我们看看之前 <code>Spring</code> 让人崩溃且记不住的配置到底怎么处理了。</p>
+
+<pre><code class="language-java">public SpringApplication(Class&lt;?&gt;... primarySources) {
+    this(null, primarySources);
+}
+
+@SuppressWarnings({ &quot;unchecked&quot;, &quot;rawtypes&quot; })
+public SpringApplication(ResourceLoader resourceLoader, Class&lt;?&gt;... primarySources) {
+    this.resourceLoader = resourceLoader;
+    //校验
+    Assert.notNull(primarySources, &quot;PrimarySources must not be null&quot;);
+    //保存primarySources
+    this.primarySources = new LinkedHashSet&lt;&gt;(Arrays.asList(primarySources));
+    //判断是否是web应用
+    this.webApplicationType = deduceWebApplicationType();
+    setInitializers((Collection) getSpringFactoriesInstances(
+				ApplicationContextInitializer.class));
+    //寻找Listener
+    setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
+    //找到含有main函数的类
+    this.mainApplicationClass = deduceMainApplicationClass();
+}
+</code></pre>
+
+<p>构造完毕以后，我们终于要执行 <code>run</code> 方法了</p>
+
+<pre><code class="language-java">public ConfigurableApplicationContext run(String... args) {
+    //Spring提供的计时器
+    StopWatch stopWatch = new StopWatch();
+    stopWatch.start();
+    ConfigurableApplicationContext context = null;
+    Collection&lt;SpringBootExceptionReporter&gt; exceptionReporters = new ArrayList&lt;&gt;();
+    //配置Headless，告诉程序我没有显示器等硬件
+    configureHeadlessProperty();
+    //获取Listeners
+    SpringApplicationRunListeners listeners = getRunListeners(args);
+    listeners.starting();
+    try {
+        ApplicationArguments applicationArguments = new DefaultApplicationArguments(
+            args);
+        //准备环境
+        ConfigurableEnvironment environment = prepareEnvironment(listeners,
+            applicationArguments);
+        //配置ignore，默认为true，不扫描BeanInfo类
+        configureIgnoreBeanInfo(environment);
+        //绘制Banner，这里可以自己生成一个Banner.txt文件来代替
+        Banner printedBanner = printBanner(environment);
+        //生成上下文容器
+        context = createApplicationContext();
+        exceptionReporters = getSpringFactoriesInstances(
+            SpringBootExceptionReporter.class,
+            new Class[] { ConfigurableApplicationContext.class }, context);
+        prepareContext(context, environment, listeners, applicationArguments,
+	            printedBanner);
+        //刷新容器
+        refreshContext(context);
+        //里面是空的……空的……大概可以用来实现一些特殊需求
+        afterRefresh(context, applicationArguments);
+        //停止计时器
+        stopWatch.stop();
+        if (this.logStartupInfo) {
+            new StartupInfoLogger(this.mainApplicationClass)
+                .logStarted(getApplicationLog(), stopWatch);
+        }
+        listeners.started(context);
+        //这里查找实现了ApplicationRunner和CommandLineRunner的类，可以再这两个类里面加希望Spring初始化以后执行的内容，SpringMVC的话一般使用Listener来实现。
+        callRunners(context, applicationArguments);
+        }catch (Throwable ex) {
+            handleRunFailure(context, listeners, exceptionReporters, ex);
+            throw new IllegalStateException(ex);
+        }
+        listeners.running(context);
+        return context;
+    }
+</code></pre>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

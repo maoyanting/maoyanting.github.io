@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Servlet on 修仙下属委员会</title>
+    <link>https://maoyanting.github.io/tags/servlet/</link>
+    <description>Recent content in Servlet on 修仙下属委员会</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Dec 2017 18:05:24 +0000</lastBuildDate>
+    
+	<atom:link href="https://maoyanting.github.io/tags/servlet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JavaWeb-Servlet</title>
+      <link>https://maoyanting.github.io/post/javaweb-servlet/</link>
+      <pubDate>Fri, 15 Dec 2017 18:05:24 +0000</pubDate>
+      
+      <guid>https://maoyanting.github.io/post/javaweb-servlet/</guid>
+      <description>&lt;p&gt;这个只是学习笔记，我是个刚学半年编程的半吊子，里面的内容可能会出错，所以也不建议转载
+我会尽力保证里面的正确性，如果有错请指出，万分感谢&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

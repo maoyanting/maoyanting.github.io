@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>面试 on 修仙下属委员会</title>
+    <link>https://maoyanting.github.io/tags/%E9%9D%A2%E8%AF%95/</link>
+    <description>Recent content in 面试 on 修仙下属委员会</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Oct 2018 21:47:46 +0000</lastBuildDate>
+    
+	<atom:link href="https://maoyanting.github.io/tags/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java-Java基础</title>
+      <link>https://maoyanting.github.io/post/java-java%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Mon, 08 Oct 2018 21:47:46 +0000</pubDate>
+      
+      <guid>https://maoyanting.github.io/post/java-java%E5%9F%BA%E7%A1%80/</guid>
+      <description>&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
+
+&lt;p&gt;本文是对一些java基础知识的整理，把之前印象笔记里面的全部慢慢搬到这个blog来&lt;/p&gt;
+
+&lt;p&gt;为了方便就按照《thinking in Java》的目录来编辑。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;这里面的内容均为面试题相关，可能的考点等&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这本书里面有些翻译不是很好，建议和英文版对照。&lt;/p&gt;
+
+&lt;p&gt;提醒：文章较长，因为很早写的，罗列的知识点较多，在慢慢把知识点摘取出去以链接形式存在。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JavaWeb面试-设计模式</title>
+      <link>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Fri, 26 Jan 2018 15:12:19 +0000</pubDate>
+      
+      <guid>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description>&lt;p&gt;设计模式简单整理&lt;/p&gt;
+
+&lt;p&gt;设计模式是种思路，概念什么的只是为了应付面试。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JavaWeb面试-概览</title>
+      <link>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E6%A6%82%E8%A7%88/</link>
+      <pubDate>Tue, 16 Jan 2018 18:03:50 +0000</pubDate>
+      
+      <guid>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E6%A6%82%E8%A7%88/</guid>
+      <description>&lt;p&gt;Java Web 面试知识点大致整理&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

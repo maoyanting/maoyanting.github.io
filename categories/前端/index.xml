@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>前端 on 修仙下属委员会</title>
+    <link>https://maoyanting.github.io/categories/%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content in 前端 on 修仙下属委员会</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Dec 2017 18:02:50 +0000</lastBuildDate>
+    
+	<atom:link href="https://maoyanting.github.io/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SSM &#43; dva 之前端踩的坑</title>
+      <link>https://maoyanting.github.io/post/ssm-&#43;-dva-%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B8%A9%E7%9A%84%E5%9D%91/</link>
+      <pubDate>Wed, 13 Dec 2017 18:02:50 +0000</pubDate>
+      
+      <guid>https://maoyanting.github.io/post/ssm-&#43;-dva-%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B8%A9%E7%9A%84%E5%9D%91/</guid>
+      <description>技术栈 后端：SSM + Tomcat 前端：dva + roadhog + antd + React
+提示：dva的坑很多，react的体系很大（学习成本很高）不过github上Q&amp;amp;A很多也比较全面 然后其实这个适合做后台页面，所以才封装得那么像java吧
+前后端衔接部分： 网上找了很多都没有我能用的，我自己最后弄了个比较蠢的方法
+首先往.roadhogrc里面添加
+&amp;quot;publicPath&amp;quot;: &amp;quot;./&amp;quot;, &amp;quot;outputPath&amp;quot;: &amp;quot;你的webapp的路径&amp;quot;,12  publicPath 修改是为了保证到时候build出来的文件的静态目录不出错
+其实这里很奇怪，为什么webpack自己本身不去弄好这个
+前端的代码写好以后，直接npm build到webapp的目录下 这步操作先会让webapp里面所有的文件清空 我自己比较蠢的方法就是把web.xml文件复制出来，每次build后再复制进去
+更新：后来觉得这样做实在是太傻逼兼太麻烦了 在.roadhog里面加上了这个代理
+ &amp;quot;proxy&amp;quot;: { &amp;quot;/api&amp;quot;: { &amp;quot;target&amp;quot;: &amp;quot;http://localhost:8080/exampleone/&amp;quot;, &amp;quot;changeOrigin&amp;quot;: true, &amp;quot;headers&amp;quot;:{ &amp;quot;host&amp;quot;:&amp;quot;localhost:8080/exampleone/&amp;quot; }, &amp;quot;pathRewrite&amp;quot;: { &amp;quot;^/api&amp;quot; : &amp;quot;&amp;quot; } } },12345678910  这里面的内容可以参考：https://www.jianshu.com/p/3bdff821f859 service里面和后端的交互：
+export async function login(data) { return request(&#39;/api/login&#39;, { /* 之前这里是/exampleone/login。我是build后使用这个方式*/ method: &#39;POST&#39;, headers: { &#39;Content-Type&#39;: &#39;application/json&#39; }, body: JSON.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MySQL-索引 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>MySQL-索引</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#什么是索引">什么是索引</a>
+<ul>
+<li><a href="#索引分类">索引分类</a></li>
+<li><a href="#索引储存在哪里">索引储存在哪里</a></li>
+</ul></li>
+<li><a href="#怎么使用索引">怎么使用索引</a>
+<ul>
+<li><a href="#创建索引">创建索引</a></li>
+<li><a href="#删除索引">删除索引</a></li>
+<li><a href="#查看索引">查看索引</a></li>
+</ul></li>
+<li><a href="#怎么更好地使用索引">怎么更好地使用索引</a></li>
+<li><a href="#btree和hash索引">BTREE和HASH索引</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-05-30T21:24:41Z class="post-date">Wed, May 30, 2018</time>
+  <h3 id="什么是索引">什么是索引</h3>
+
+<p><strong>索引用于快速找出在某个列中有一特定值的行</strong></p>
+
+<hr />
+
+<h4 id="索引分类">索引分类</h4>
+
+<p>1、B-Tree索引   2、HASH索引</p>
+
+<p>1、前缀索引 2、全文本索引</p>
+
+<p>1、聚集索引   2、非聚集索引</p>
+
+<p>MyISAM和InnoDB默认创建的都是<strong>BTREE索引</strong>，MEMORY默认为<strong>HASH索引</strong>，BTREE索引可选</p>
+
+<p>对每个表至少支持16个索引，总索引长度至少为256字节</p>
+
+<blockquote>
+<p>延伸阅读：<a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html">MySQL索引背后的数据结构及算法原理</a></p>
+</blockquote>
+
+<hr />
+
+<h4 id="索引储存在哪里">索引储存在哪里</h4>
+
+<p>一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往<strong>以索引文件的形式存储的磁盘上</strong>。</p>
+
+<p>这样的话，索引查找过程中就要产生磁盘I/O消耗，相对于内存存取，I/O存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是在查找过程中磁盘I/O操作次数的渐进复杂度。换句话说，索引的结构组织要尽量减少查找过程中磁盘I/O的存取次数。</p>
+
+<hr />
+
+<h3 id="怎么使用索引">怎么使用索引</h3>
+
+<h4 id="创建索引">创建索引</h4>
+
+<p>e.g：为表创建10个字节的前缀索引</p>
+
+<pre><code class="language-mysql">CREATE INDEX index_name ON tbl_name (tbl_name(10));
+</code></pre>
+
+<h4 id="删除索引">删除索引</h4>
+
+<pre><code class="language-mysql">DROP INDEX index_name ON tbl_name;
+</code></pre>
+
+<h4 id="查看索引">查看索引</h4>
+
+<pre><code class="language-mysql">SHOW INDEX FROM sch_result_channel;
+</code></pre>
+
+<p><a href="https://www.cnblogs.com/duanxz/p/5106615.html">SHOW INDEX语法的实际应用</a></p>
+
+<hr />
+
+<h3 id="怎么更好地使用索引">怎么更好地使用索引</h3>
+
+<ol>
+<li>尽量<strong>选择区分度高的列作为索引</strong></li>
+</ol>
+
+<p>区分度的公式是<code>count(distinct  col)/count(*)</code>，表示字段不重复的比例，比例越大我们扫描的记录数越少，*唯一键的区分度是1*，像性别这种只有两种区别的就不要来浪费空间当索引了。</p>
+
+<pre><code class="language-mysql">   select count(distinct  channel)/count(*) from sch_result_channel;
+</code></pre>
+
+<ol>
+<li><strong>使用短索引</strong>。</li>
+</ol>
+
+<p>较小的索引涉及的磁盘 IO 较少，较短的值*比较起来更快*。更为重要 的是，对于较短的键值，索引高速缓存中的块能*容纳更多*的键值。</p>
+
+<p>短索引的具体长度可以根据区分度来选择</p>
+
+<pre><code class="language-mysql">   select count(distinct  LEFT(id,4)/count(*) from peppa_order;
+</code></pre>
+
+<blockquote>
+<p>tips:有些字段是后缀差别较大，比如邮箱，但是原生MySQL不支持，可以把字符串反转后储存</p>
+</blockquote>
+
+<ol>
+<li><strong>最左前缀</strong>。</li>
+</ol>
+
+<p>单列索引可以看成联合索引元素数为1的特例。</p>
+
+<p>联合索引情况下，mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a = 1 and b = 2 and c &gt; 3 and d = 4   如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。</p>
+
+<p>where后面的顺序是无所谓， MySQL优化器会自动排序寻找适合的索引。</p>
+
+<p>就和查字典一样，你只能从个第一个字母开最左前缀始找，然后第二个字母，第三个……而不能找完第一个直接去找第三个。</p>
+
+<p><strong>范围查找(&gt;、&lt;、between、like)的索引后面的查询是利用不了索引的，精确查找（“=”或“IN”） 的顺序没关系</strong></p>
+
+<p>关于联合索引的顺序，也可以计算索引的区分度来决定，区分度高的排在前面（视具体情况而定）</p>
+
+<ol>
+<li><strong>不要过度索引</strong>。</li>
+</ol>
+
+<p>1、每个额外的索引都要占用额外的磁盘空间，并降低写操作的性能。</p>
+
+<p>2、在修改表的内容时，索引必须进行更新，有时可能需要重构。</p>
+
+<p>3、如果有一个索引很少利用或从不使用，那么会不必要地减缓表的修改速度。</p>
+
+<p>4、索引太 多，也可能会使 MySQL 选择不到所要使用的最好索引。</p>
+
+<ol>
+<li><p>对于 InnoDB 存储引擎的表，记录默认会按照一定的顺序保存，如果有明确定义的主键，则按照主键顺序保存。如果没有主键，但是有唯一索引，那么就是按照唯一索引的顺序 保存。如果既没有主键又没有唯一索引，那么表中会自动生成一个内部列，按照这个列的顺 序保存。按照主键或者内部列进行的访问是最快的，所以 InnoDB 表尽量自己指定主键，当 表中同时有几个列都是唯一的，都可以作为主键的时候，要选择最常作为访问条件的列作为 主键，提高查询的效率。另外，还需要注意，InnoDB 表的普通索引都会保存主键的键值， 所以主键要尽可能选择较短的数据类型，可以有效地减少索引的磁盘占用，提高索引的缓存 效果。</p></li>
+
+<li><p><strong>索引列不能参与计算</strong>，保持列“干净”，比如from_unixtime(create_time) =  ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’);</p></li>
+
+<li><p>尽量的<strong>扩展索引</strong>，不要新建索引。比如表中已经有a的索引，现在要加(a,b)的索引，那么只需要修改原来的索引即可</p></li>
+
+<li><p><strong>覆盖索引</strong>，如果一个索引包含所有需要查询的字段的值，称之为覆盖索引</p></li>
+</ol>
+
+<h3 id="btree和hash索引">BTREE和HASH索引</h3>
+
+<p>hash索引</p>
+
+<ul>
+<li><p>只用于使用=或&lt;=&gt;操作符的等式比较，不能使用范围查询和like的模糊查询</p></li>
+
+<li><p>优化器不能使用 HASH 索引来加速 ORDER BY 操作。</p></li>
+
+<li><p>MySQL 不能确定在两个值之间大约有多少行。如果将一个 MyISAM 表改为 HASH 索</p></li>
+</ul>
+
+<p>引的 MEMORY 表，会影响一些查询的执行效率。</p>
+
+<ul>
+<li>只能使用整个关键字来搜索一行。</li>
+</ul>
+
+<p>而对于 BTREE 索引，当使用&gt;、&lt;、&gt;=、&lt;=、BETWEEN、!=或者&lt;&gt;，或者 LIKE &lsquo;pattern&rsquo;(其</p>
+
+<p>中&rsquo;pattern&rsquo;不以通配符开始)操作符时，都可以使用相关列上的索引。</p>
+
+<p>​</p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

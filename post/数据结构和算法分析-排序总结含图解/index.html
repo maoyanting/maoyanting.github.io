@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>数据结构和算法分析-排序总结（含图解） &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>数据结构和算法分析-排序总结（含图解）</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#概述">概述</a>
+<ul>
+<li><a href="#稳定性">稳定性</a></li>
+<li><a href="#时间">时间</a></li>
+</ul></li>
+<li><a href="#冒泡排序">冒泡排序</a>
+<ul>
+<li><a href="#图解">图解</a></li>
+</ul></li>
+<li><a href="#插入排序">插入排序</a>
+<ul>
+<li><a href="#图解-1">图解</a></li>
+<li><a href="#结构">结构：</a></li>
+<li><a href="#时间-1">时间：</a></li>
+<li><a href="#实现">实现：</a></li>
+</ul></li>
+<li><a href="#希尔排序">希尔排序</a>
+<ul>
+<li><a href="#图解-2">图解：</a></li>
+<li><a href="#结构-1">结构：</a></li>
+<li><a href="#时间-2">时间：</a></li>
+<li><a href="#实现-1">实现：</a></li>
+</ul></li>
+<li><a href="#堆排序">堆排序</a>
+<ul>
+<li><a href="#图解-3">图解</a></li>
+<li><a href="#结构-2">结构：</a></li>
+<li><a href="#时间-3">时间：</a></li>
+<li><a href="#实现-2">实现：</a></li>
+</ul></li>
+<li><a href="#归并排序">归并排序</a>
+<ul>
+<li><a href="#图解-4">图解：</a></li>
+<li><a href="#结构-3">结构：</a></li>
+<li><a href="#时间-4">时间：</a></li>
+<li><a href="#实现-3">实现：</a></li>
+</ul></li>
+<li><a href="#快速排序">快速排序</a>
+<ul>
+<li><a href="#图解-5">图解</a></li>
+<li><a href="#结构-4">结构：</a></li>
+<li><a href="#时间-5">时间：</a></li>
+<li><a href="#实现-4">实现：</a></li>
+<li><a href="#7-7-3-小数组">7.7.3 小数组</a></li>
+</ul></li>
+<li><a href="#排序算法的一般下届">排序算法的一般下届</a></li>
+<li><a href="#选择问题的决策树下届">选择问题的决策树下届</a></li>
+<li><a href="#线性时间的排序-桶排序和基数排序">线性时间的排序 桶排序和基数排序</a></li>
+<li><a href="#外部排序">外部排序</a>
+<ul>
+<li><a href="#7-12-3-简单算法">7.12.3 简单算法</a></li>
+</ul></li>
+<li><a href="#小结">小结</a></li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-01-16T18:02:50Z class="post-date">Tue, Jan 16, 2018</time>
+  <h2 id="概述">概述</h2>
+
+<p><img src="https://github.com/maoyanting/readme_pic/blob/master/blog_sorting.png?raw=true" alt="ddd" /></p>
+
+<h3 id="稳定性">稳定性</h3>
+
+<p>排序算法稳定，是指能保证排序前2个相等的数在序列的前后位置顺序和排序后他们两个的前后位置顺序相同。即：a=b,排序前a在b之前，排序后a还应该在b之前。</p>
+
+<p>稳定性：冒泡，插入，归并</p>
+
+<h3 id="时间">时间</h3>
+
+<table>
+<thead>
+<tr>
+<th>排序方法</th>
+<th>平均情况</th>
+<th>最好情况</th>
+<th>最坏情况</th>
+<th>辅助空间</th>
+<th>稳定性</th>
+<th>操作</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>冒泡排序</td>
+<td>O(n^2)</td>
+<td>O(n)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>稳定</td>
+<td>俩俩比较，大的放后面*N，直到没有移动的需要（数组后面会慢慢形成有序区）</td>
+</tr>
+
+<tr>
+<td>选择排序</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+<td>找到无序区最小（大），放到有序区末尾。</td>
+</tr>
+
+<tr>
+<td>插入排序</td>
+<td>O(n^2)</td>
+<td>O(n)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>稳定</td>
+<td>从无序区取数，排到有序区，重复</td>
+</tr>
+
+<tr>
+<td>希尔排序</td>
+<td>O(n*log(n))~O(n^2)</td>
+<td>O(n^1.3)</td>
+<td>O(n^1.5)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+<td>分成k组，分别插入排序，k减小，重复</td>
+</tr>
+
+<tr>
+<td>堆排序</td>
+<td>O(n*log(n))</td>
+<td>O(n*log(n))</td>
+<td>O(n*log(n))</td>
+<td>O(1)</td>
+<td>不稳定</td>
+<td>二叉堆，deleteMin*N</td>
+</tr>
+
+<tr>
+<td>归并排序</td>
+<td>O(n*log(n))</td>
+<td>O(n*log(n))</td>
+<td>O(n*log(n))</td>
+<td>O(n)</td>
+<td>稳定</td>
+<td>均分N组，组合排好序的组*N</td>
+</tr>
+
+<tr>
+<td>快速排序</td>
+<td>O(n*log(n))</td>
+<td>O(n*log(n))</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+<td>两侧开始往中间，（左边遇到大雨基准的，右边遇到小于基准时，交换）*N</td>
+</tr>
+</tbody>
+</table>
+
+<p>总结时间：</p>
+
+<p>O(n^2):冒泡、选择、插入</p>
+
+<p>O(n log n)：堆、快速、归并</p>
+
+<p>O(n log^2 n)：希尔、归并</p>
+
+<hr />
+
+<h2 id="冒泡排序">冒泡排序</h2>
+
+<h3 id="图解">图解</h3>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Bubble_sort_animation.gif" alt="冒泡排序" /></p>
+
+<p>冒泡排序算法的运作如下：（从后往前）</p>
+
+<ol>
+<li>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</li>
+<li>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。</li>
+<li>针对所有的元素重复以上的步骤，除了最后一个。</li>
+<li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</li>
+</ol>
+
+<h2 id="插入排序">插入排序</h2>
+
+<h3 id="图解-1">图解</h3>
+
+<p><img src="https://media.liuyanzhao.com/wp-content/uploads/2017/06/0.gif" alt="插入排序" /></p>
+
+<h3 id="结构">结构：</h3>
+
+<p>插入排序由N—1趟排序组成，对于P=1到N - 1,插入排序保证了从位置0到 p-1的位置已处于排序状态</p>
+
+<p>第P趟我们将位置P上的元素向左移动，知道它在前P+1个元素中找到正确的位置</p>
+
+<h3 id="时间-1">时间：</h3>
+
+<p>O（N2）；由于嵌套循环的每一次都要执行N此迭代，因此插入排序为O（N2），每次以反序的输入可以达到该界，如果数据已经排序那么运行时间为0（N）</p>
+
+<h3 id="实现">实现：</h3>
+
+<p>从第一个值开始遍历，存储当前遍历到的p上的值，向前遍历，每次把遍历到的值往后放一个位置，直到这个值&gt;p。</p>
+
+<h2 id="希尔排序">希尔排序</h2>
+
+<p>插入排序的一种</p>
+
+<p>它通过比较相距一定间隔的元素来工作，各趟比较所用的距离随着算法的进行而减小，直到比较相邻两项为止。</p>
+
+<p>由于这个原因，希尔排序有时也叫作<strong>缩减增量排序</strong></p>
+
+<h3 id="图解-2">图解：</h3>
+
+<p><img src="https://media.liuyanzhao.com/wp-content/uploads/2017/06/1.gif" alt="希尔排序" /></p>
+
+<h3 id="结构-1">结构：</h3>
+
+<p>在使用增量hk排序后，对于每一个i我们都有a[i] &lt;= a[i+k]此时所有想个K的元素都被排序了，此时称为文件的hk排序</p>
+
+<p>不断把hk缩小，最终达到排序成功</p>
+
+<p>也可以看作是把序列每次分成多组分别排序,a[i]／a[i+k]／a[i+2k]／a[i+3k]等等分为一组排序</p>
+
+<h3 id="时间-2">时间：</h3>
+
+<p>最坏情景运算时间为O（N2）</p>
+
+<p>使用Hibbard增量的希尔排序最坏时间复杂度为O（N3/2）</p>
+
+<p>Hibbard 增量 形如 1，3，7, &hellip;.,2K-1</p>
+
+<h3 id="实现-1">实现：</h3>
+
+<p>和插入排序一致，外面再嵌套一个for循环，不断减少hk。</p>
+
+<h2 id="堆排序">堆排序</h2>
+
+<h3 id="图解-3">图解</h3>
+
+<p><img src="http://bubkoo.qiniudn.com/Sorting_heapsort_anim.gif" alt="堆排序" /></p>
+
+<h3 id="结构-2">结构：</h3>
+
+<p>建立N个元素的二叉堆的，执行N次deleteMin操作，按照规则最小的元素先离开堆，堆缩小1，把最小的元素放在被删除的堆最后的单元</p>
+
+<h3 id="时间-3">时间：</h3>
+
+<p>最坏运行时间O（N log N）</p>
+
+<h3 id="实现-2">实现：</h3>
+
+<p>优先队列可以使用O（N log N）的时间排序，基本思想的算法叫做堆排序，他给出我们至今所见到的最佳的大O运行时间</p>
+
+<p>1.建立N个元素的二叉堆的，这个阶段花费O（N）时间，最多用到2N次比较</p>
+
+<p>2.然后我们执行N此deleteMin操作，按照规则最小的元素先离开队列，通过把这些元素记录在第二个数组 这阶段花费O（log N） 最多用到2N logN -O(N)次比较、</p>
+
+<p>因此总运行时间为O（N log N） 最多用到2N logN -O(N)次比较、</p>
+
+<p>该算法需要多增加一倍的空间</p>
+
+<h2 id="归并排序">归并排序</h2>
+
+<h3 id="图解-4">图解：</h3>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" alt="归并排序1" /></p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Merge_sort_animation2.gif" alt="归并排序2" /></p>
+
+<h3 id="结构-3">结构：</h3>
+
+<p>该算法的基本操作时合并两个已排序的表，因为两个表是已排序的，所以将输出放到第三个表中。</p>
+
+<h3 id="时间-4">时间：</h3>
+
+<p>O(Nlog N)最坏时间，使用的比较次数是最优的</p>
+
+<h3 id="实现-3">实现：</h3>
+
+<p>则该算法可以通过对输入数据一趟排序来完成。基本的合并算法是去两个输入数组A和B，一个输入数组C，以及3个计数器</p>
+
+<h2 id="快速排序">快速排序</h2>
+
+<h3 id="图解-5">图解</h3>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/6/6a/Sorting_quicksort_anim.gif" alt="快速排序" /></p>
+
+<h3 id="结构-4">结构：</h3>
+
+<p>如果表中含有大量的重复项，以及相对较少的不同项，其表现还是不错的</p>
+
+<p>应该避免建立第二组（包含等于项的）</p>
+
+<h3 id="时间-5">时间：</h3>
+
+<p>时间复杂度：O（n*lgn）</p>
+
+<p>最坏：O（n^2）</p>
+
+<p>空间复杂度：O（n*lgn）</p>
+
+<p>不稳定。</p>
+
+<p>通常是用于排序的最佳选择。因为，基于比较的排序，最快也只能达到O（nlgn）。</p>
+
+<h3 id="实现-4">实现：</h3>
+
+<p>枢纽元取出放在数组最右边，两个指针分别从数组最左边和最右边第二个开始相近移动</p>
+
+<p>左边数字大于枢纽元，右边数字小于枢纽元时停止，两个指针均停止时，交换数字</p>
+
+<p>直到指针交错，交换左指针和枢纽元</p>
+
+<h3 id="7-7-3-小数组">7.7.3 小数组</h3>
+
+<p>对于很小的数组，快速排序不如插入排序（N &lt; 20）</p>
+
+<p>7.7.6选择问题的线性期望时间算法</p>
+
+<p>快速选择：</p>
+
+<p>1、令|Si|为Si中元素的个数</p>
+
+<p>2、选取一个枢纽元v属于S</p>
+
+<p>3、将集合S-{v}分割成S1和S2，就像我们在快速排序中所作的那样</p>
+
+<p>4、如果k&lt;=|S1|，那么第k个最小元素必然在S1中。在这种情况下，返回quickselect（S1,k）。如果k=1+|S1|，那么枢纽元素就是第k个最小元素，即找到，直接返回它。否则，这第k个最小元素就在S2中，即S2中的第（k-|S1|-1）个最小元素，我们递归调用并返回quickselect（S2，k-|S1|-1）</p>
+
+<h2 id="排序算法的一般下届">排序算法的一般下届</h2>
+
+<p>虽然我们得到了一些O（Nlog N）的排序算法，但是，尚不清楚我们是否还能做更好。我们证明，任何只用到比较排序算法的最坏情况都需要Ω（N log N）此比较，因此归并排序和堆排序在一个常数因子范围内都是最优秀的。这也意味着快速排序在相差一个常数因子的时候时最优秀的</p>
+
+<p>只用到比较的任何排序算法在最坏情况下都需要（log(N!)）此比较</p>
+
+<p>决策树</p>
+
+<p>证明下界的抽象概念，每个节点表示在元素之间一组可能的排序。</p>
+
+<h2 id="选择问题的决策树下届">选择问题的决策树下届</h2>
+
+<p>任意基于比较排序算法都必须用到大约N log N此比较，</p>
+
+<p>跳过一部分</p>
+
+<h2 id="线性时间的排序-桶排序和基数排序">线性时间的排序 桶排序和基数排序</h2>
+
+<p>桶排序 ： 使用大小为M（元素小于M）的称为count的数组，初始化全部为0于是count有了M个单元（或称为桶），初始化为空，当读入Ai时count增加一，在所有内容都别输入后，扫描数组。该算法的用时O（M+N）,如果M为O(N),那么总用时就是O（N）</p>
+
+<p>适用于一些小整数的情况</p>
+
+<p>基数排序： 一般的 对某常数考虑值域从0 ~ bp 的数字，显然不能使用桶排序，窍门是使用多次桶排序。</p>
+
+<p>自然的算法是对最高位的数字用桶排序，再对此高位排序。。。。</p>
+
+<p>但是此时桶的数量会过多，因为比较完毕高位，每个高位的低位也需要相同数量的桶。</p>
+
+<p>更简单的是从最低位开始：</p>
+
+<p>1、先根据低位数字比较放入1桶中</p>
+
+<p>2、比较次低位，先拿小的桶中的数字放入2桶中，此时每个桶中有相对顺序存在</p>
+
+<p>3、比较高一位，先拿小的桶中的数字放入3桶中，此时每个桶中有相对顺序存在&hellip;&hellip;..全部比较完毕，桶中的顺序也排好了。</p>
+
+<p>计数基数排序：</p>
+
+<h2 id="外部排序">外部排序</h2>
+
+<p>迄今为止我们考察的算法都是输入数据装入内存，然而存在一些应用，他们输入的数据量太大了，装不进内存。本节将谈论这些外部排序算法，他们是设计来处理很大的数据的</p>
+
+<p>如果数据在硬盘上，由于磁盘转动和移动磁头所需要的时间，会使效率损失</p>
+
+<h3 id="7-12-3-简单算法">7.12.3 简单算法</h3>
+
+<p>基本的外部排序算法使用归并排序中的合并算法</p>
+
+<p>外部排序指的是大文件的排序，即待排序的记录存储在<a href="http://baike.baidu.com/view/67773.htm">外存储器</a>上，待排序的文件无法一次装入内存，需要在内存和外部存储器之间进行多次数据交换，以达到排序整个文件的目的</p>
+
+<h2 id="小结">小结</h2>
+
+<p>对于大部分一般的内部排序的运用都是 插入排序，希尔排序，归并排序就是快速排序，这主要是底层环境来决定的。</p>
+
+<p>插入排序使用于非常少量是输入</p>
+
+<p>对于中等附魔的输入 希尔排序是一个不错的选择，它可以用少了代码就能给出优异的表现</p>
+
+<p>归并排序在最坏情况下变现O（logN），但需要额外的空间然而，它用到的比较次数几乎是最优的</p>
+
+<h2 id="参考资料">参考资料</h2>
+
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F">维基百科</a></p>
+
+<p><a href="https://itimetraveler.github.io/2017/07/18/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8Ejava%E5%AE%9E%E7%8E%B0/">八大排序算法总结与java实现</a></p>
+</blockquote>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

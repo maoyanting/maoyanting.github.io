@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Spring-sleuth &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Spring-sleuth</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#为什么日志没有打印出来id">为什么日志没有打印出来id</a></li>
+<li><a href="#获取当前的traceid">获取当前的traceId</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-10-22T22:49:08Z class="post-date">Mon, Oct 22, 2018</time>
+  <p>有时候，定位bug真的是个很麻烦的事情呢</p>
+
+<p>我们可以简单借用一下Spring Cloud Sleuth</p>
+
+<h2 id="快速开始">快速开始</h2>
+
+<pre><code class="language-xml">&lt;dependencyManagement&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-sleuth&lt;/artifactId&gt;
+            &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-starter-sleuth&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+
+<p>这里注意一下 <code>version</code>  ，有时候会导致依赖进不来</p>
+
+<p>好了，这就可以了😜，真的非常简单而且没有侵入性</p>
+
+<p>此时打印出来的日志大概是这样的</p>
+
+<pre><code>2018-10-22 23:03:14.029  INFO [-,,,] 12936 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/sandao'
+2018-10-22 23:03:14.039  INFO [-,,,] 12936 --- [           main] com.sandao.DemoSandaoApplication         : Started DemoSandaoApplication in 9.364 seconds (JVM running for 10.336)
+</code></pre>
+
+<p>这里来因为是启动日志，所以没有traceId和spanId</p>
+
+<p>这里我们借用启动类调用一下接口</p>
+
+<pre><code class="language-java">@RestController
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+public class DemoSandaoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoSandaoApplication.class, args);
+	}
+
+	private static final Logger logger = LoggerFactory.getLogger(DemoSandaoApplication.class);
+
+	@RequestMapping(&quot;/log&quot;)
+	public String home() {
+		logger.info(&quot;Handling home&quot;);
+		return &quot;Hello World&quot;;
+	}
+}
+</code></pre>
+
+<p>打印出来的日志大概是这样的</p>
+
+<pre><code>2018-10-22 23:06:29.838  INFO [-,30f87869bf24ede4,30f87869bf24ede4,false] 12936 --- [nio-8081-exec-2] com.sandao.DemoSandaoApplication         : Handling home
+</code></pre>
+
+<p>我们就可以看见两个id了</p>
+
+<hr />
+
+<p>有些教程会建议你（包括官方文档）在 <code>application.yml</code> / <code>application.properties</code> 里面加上项目的名称</p>
+
+<p>比如 <code>application.yml</code>：</p>
+
+<pre><code class="language-yaml">spring:
+  application:
+    name: sandao
+</code></pre>
+
+<p>这时候打印出来的日志大概是这样的</p>
+
+<pre><code>2018-10-22 23:00:23.209  INFO [sandao,,,] 9280 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/sandao'
+2018-10-22 23:00:23.221  INFO [sandao,,,] 9280 --- [           main] com.sandao.DemoSandaoApplication         : Started DemoSandaoApplication in 17.512 seconds (JVM running for 19.017)
+</code></pre>
+
+<h2 id="为什么日志没有打印出来id">为什么日志没有打印出来id</h2>
+
+<p>首先看一下你的依赖导进来没有</p>
+
+<p>然后你看一下你是不是配置了日志的格式，如果配置了日志的格式，就需要显式地写出来 <code>traceId</code> 和 <code>spanId</code> ，我当时被这个坑了很久……</p>
+
+<pre><code class="language-xml">&lt;configuration&gt;
+    &lt;!-- TraceId:一个请求一个id --&gt;
+    &lt;property name=&quot;CONSOLE_LOG_PATTERN&quot;
+              value=&quot;%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [ %X{X-B3-TraceId:-} %X{X-B3-SpanId:-}] %logger{5} - %msg%n&quot;/&gt;
+
+    &lt;appender name=&quot;rollingAppender&quot; class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;
+        &lt;file&gt;${LOG_PATH}/doct.log&lt;/file&gt;
+        &lt;rollingPolicy class=&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;&gt;
+            &lt;fileNamePattern&gt;/logs/heuristic-%d{yyyy-MM-dd}.log&lt;/fileNamePattern&gt;
+            &lt;maxHistory&gt;30&lt;/maxHistory&gt;
+        &lt;/rollingPolicy&gt;
+        &lt;encoder&gt;
+            &lt;pattern&gt;${CONSOLE_LOG_PATTERN}&lt;/pattern&gt;
+            &lt;charset&gt;utf8&lt;/charset&gt;
+        &lt;/encoder&gt;
+        &lt;append&gt;false&lt;/append&gt;
+        &lt;prudent&gt;false&lt;/prudent&gt;
+    &lt;/appender&gt;
+
+    &lt;appender name=&quot;STDOUT&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;
+        &lt;encoder&gt;
+            &lt;pattern&gt;${CONSOLE_LOG_PATTERN}&lt;/pattern&gt;
+            &lt;charset&gt;utf8&lt;/charset&gt;
+        &lt;/encoder&gt;
+    &lt;/appender&gt;
+
+    &lt;root level=&quot;info&quot;&gt;
+        &lt;appender-ref ref=&quot;STDOUT&quot;/&gt;
+        &lt;appender-ref ref=&quot;rollingAppender&quot;/&gt;
+    &lt;/root&gt;
+
+&lt;/configuration&gt;
+</code></pre>
+
+<h2 id="获取当前的traceid">获取当前的traceId</h2>
+
+<p><code>sleuth</code> 多用于分部署系统，和 <code>zipkin</code> 配合使用，不过有时候我们可能也需要在项目中获取traceId，可以参考下述的方式。</p>
+
+<pre><code class="language-java">import brave.Tracer;
+
+@Service
+public class Breadcrumb {
+
+  @Autowired
+  private Tracer tracer;
+
+  public String breadcrumbId() {
+    return tracer.currentSpan().context().traceIdString();
+  }
+}
+</code></pre>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

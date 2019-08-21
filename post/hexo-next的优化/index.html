@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>hexo-NexT的优化 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>hexo-NexT的优化</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#写在前面">写在前面</a></li>
+<li><a href="#字数统计">字数统计</a>
+<ul>
+<li><a href="#阅读时间">阅读时间</a></li>
+<li><a href="#字数统计-1">字数统计</a></li>
+</ul></li>
+<li><a href="#看板娘">看板娘</a></li>
+<li><a href="#背景">背景</a></li>
+<li><a href="#首页隐藏指定文章">首页隐藏指定文章</a></li>
+<li><a href="#问题">问题</a>
+<ul>
+<li><a href="#一-host-key-verification-failed-fatal-could-not-read-from-remote-repository-错误">一、Host key verification failed. fatal: Could not read from remote repository.错误</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-02-07T10:59:24Z class="post-date">Wed, Feb 7, 2018</time>
+  <p>一些基于NexT的优化</p>
+
+<h2 id="写在前面">写在前面</h2>
+
+<p>基本的就不讲了，可参考：<a href="https://www.jianshu.com/p/efbeddc5eb19">Hexo+Next个人博客主题优化</a></p>
+
+<p>只记录一些自己的修改</p>
+
+<p>个人觉得blog还是清爽一点的好，东西弄多了过于喧宾夺主；</p>
+
+<p>特别是背景，之前看一个blog背景是个二次元萌妹子，太花了，看背景我就看不下去文章了。</p>
+
+<h2 id="字数统计">字数统计</h2>
+
+<p>Next的_config.yml文件里面推荐使用<code>hexo-symbols-count-time</code></p>
+
+<pre><code class="language-yml"># Post wordcount display settings
+# Dependencies: https://github.com/theme-next/hexo-symbols-count-time
+</code></pre>
+
+<p>具体使用可见<a href="https://github.com/theme-next/hexo-symbols-count-time">GitHub</a></p>
+
+<h3 id="阅读时间">阅读时间</h3>
+
+<p>因为每个人的基础不同速度不同，个人不建议放上去。</p>
+
+<p>注意：这里显示的时间是以min为单位，依据个人习惯，可以修改<code>./node_modules/_hexo-symbols-count-time@0.2.0@hexo-symbols-count-time/lib/helper.js</code>里面<code>getFormatTime</code>的return来改变显示方式。</p>
+
+<h3 id="字数统计-1">字数统计</h3>
+
+<p>个人觉得是有点争议的，关于这一点Issues里面有人和开发者争论过，详见<a href="https://github.com/theme-next/hexo-symbols-count-time/issues/3">No use by changing the parameter <code>awl</code> and <code>wpm</code>. [some html tags can add excess additions in symbols counting] #3</a></p>
+
+<hr />
+
+<h2 id="看板娘">看板娘</h2>
+
+<p>如果你去过b站的直播，大概就对那个bilibili娘有点印象</p>
+
+<p>这东西叫live2D，当然你也可以放入自己的blog</p>
+
+<p>GitHub地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/EYHN/hexo-helper-live2d">EYHN/hexo-helper-live2d</a></p>
+
+<p>把它添加进你的hexo中，就能在页面上看见一个萌妹子的身体随着你的鼠标晃啊晃了～</p>
+
+<p>也可以自己制作模型，但是制作这个好像还是蛮费神的，需要不停地调。</p>
+
+<hr />
+
+<h2 id="背景">背景</h2>
+
+<p>修改背景很简单，这里只说一下，我改好背景以后，本地浏览是没问题的，但是上传到git上去就是显示不出来。后来无意中clean了一下就好了Ծ ̮ Ծ。</p>
+
+<p>背景是我自己做的，白色为主，只有右侧有图案，看文章的时候侧边栏会完全挡住背景。</p>
+
+<pre><code class="language-css">body {
+  background:url(https://github.com/maoyanting/readme_pic/blob/master/blog/background.jpeg?raw=true);
+  background-attachment: fixed;
+  background-size:cover
+  +mobile() {
+    background: white;
+  }
+}
+</code></pre>
+
+<p>这里有个问题，开始手机端的浏览体验不是很好╮(￣▽￣&rdquo;)╭，手机端背景显示有问题</p>
+
+<p>索性把手机端的背景图片去掉，加上这句就行了，<code>+mobile() {background: white; }</code>，完美！</p>
+
+<hr />
+
+<h2 id="首页隐藏指定文章">首页隐藏指定文章</h2>
+
+<p>参考：<a href="https://github.com/iissnan/hexo-theme-next/issues/474">首页隐藏部分文章#474</a></p>
+
+<p>next/layout/index.swig文件中， post_template.render(post, true) 这一部分修改为</p>
+
+<pre><code>{% if post.visible !== 'hide' %}
+{{ post_template.render(post, true) }}
+{% endif %}
+</code></pre>
+
+<p>在文章里面加上：visible: hide 在首页隐藏指定文章</p>
+
+<h2 id="问题">问题</h2>
+
+<h3 id="一-host-key-verification-failed-fatal-could-not-read-from-remote-repository-错误">一、Host key verification failed. fatal: Could not read from remote repository.错误</h3>
+
+<p>原因：莫名其妙的，有一段时间没去碰blog就这样了</p>
+
+<p>解决方案：查看你的ssh有没有问题，没有的话运行一下</p>
+
+<pre><code>ssh git@github.com
+</code></pre>
+
+<p>然后就好了</p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

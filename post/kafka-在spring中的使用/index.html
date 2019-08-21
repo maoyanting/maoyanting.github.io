@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>KafKa-在Spring中的使用 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>KafKa-在Spring中的使用</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#写在前面">写在前面</a></li>
+<li><a href="#为什么使用消息队列">为什么使用消息队列</a></li>
+<li><a href="#zookeeper">Zookeeper</a>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#kafka中的zookeeper">Kafka中的Zookeeper</a>
+<ul>
+<li><a href="#新版本">新版本</a></li>
+<li><a href="#结构">结构</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#spring-配置">Spring 配置</a>
+<ul>
+<li><a href="#pom-xml">pom.xml</a></li>
+<li><a href="#web-xml">web.xml</a></li>
+</ul></li>
+<li><a href="#spring-integration-kafka">spring-integration-kafka</a></li>
+<li><a href="#spring-integration">spring integration</a></li>
+<li><a href="#生产者配置">生产者配置</a>
+<ul>
+<li><a href="#线程池">线程池</a></li>
+</ul></li>
+<li><a href="#消费者配置">消费者配置</a>
+<ul>
+<li><a href="#channel">channel</a></li>
+<li><a href="#poller">poller</a></li>
+</ul></li>
+<li><a href="#生产者类">生产者类</a></li>
+<li><a href="#消费者类">消费者类</a></li>
+<li><a href="#controller类">Controller类</a></li>
+<li><a href="#一些小问题">一些小问题</a></li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-01-10T09:26:50Z class="post-date">Wed, Jan 10, 2018</time>
+  <h2 id="写在前面">写在前面</h2>
+
+<p>Kafka的简单介绍可以看<a href="http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability">这个博客</a></p>
+
+<p>Kafka的简单使用可参看之前的<a href="https://maoyanting.github.io/2018/01/08/kafka%E5%AE%89%E8%A3%85%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/">KafKa安装（翻译）</a></p>
+
+<p>Spring for Kafka 的简单使用可参看<a href="https://my.oschina.net/zhengweishan/blog/736213">这个博客</a></p>
+
+<p>这里放一张我自己弄的简单的图</p>
+
+<p><img src="https://github.com/maoyanting/readme_pic/blob/master/kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.png?raw=true" alt="kafka基础知识" /></p>
+
+<hr />
+
+<h2 id="为什么使用消息队列">为什么使用消息队列</h2>
+
+<p>这里引用一下知乎答主的话：</p>
+
+<blockquote>
+<p>个人认为消息队列的主要特点是异步处理，主要目的是减少请求响应时间和解耦。所以主要的使用场景就是将比较耗时而且不需要即时（同步）返回结果的操作作为消息放入消息队列。同时由于使用了消息队列，只要保证消息格式不变，消息的发送方和接收方并不需要彼此联系，也不需要受对方的影响，即解耦和。</p>
+
+<ol>
+<li>校验用户名等信息，如果没问题会在数据库中添加一个用户记录</li>
+<li>如果是用邮箱注册会给你发送一封注册成功的邮件，手机注册则会发送一条短信</li>
+<li>分析用户的个人信息，以便将来向他推荐一些志同道合的人，或向那些人推荐他</li>
+<li>发送给用户一个包含操作指南的系统通知</li>
+<li>等等……</li>
+</ol>
+
+<p>但是对于用户来说，注册功能实际只需要第一步，只要服务端将他的账户信息存到数据库中他便可以登录上去做他想做的事情了。至于其他的事情，非要在这一次请求中全部完成么？值得用户浪费时间等你处理这些对他来说无关紧要的事情么？所以实际当第一步做完后，服务端就可以把其他的操作放入对应的消息队列中然后马上返回用户结果，由消息队列异步的进行这些操作。</p>
+
+<p>或者还有一种情况，同时有大量用户注册你的软件，再高并发情况下注册请求开始出现一些问题，例如邮件接口承受不住，或是分析信息时的大量计算使cpu满载，这将会出现虽然用户数据记录很快的添加到数据库中了，但是却卡在发邮件或分析信息时的情况，导致请求的响应时间大幅增长，甚至出现超时，这就有点不划算了。面对这种情况一般也是将这些操作放入消息队列（生产者消费者模型），消息队列慢慢的进行处理，同时可以很快的完成注册请求，不会影响用户使用其他功能。</p>
+</blockquote>
+
+<p>简单概括就是：虽然这个用户操作在后端实际上有很多事要做，但是用户当下需要的只有部分事情的结果，那就可以把多出来的事情放入消息队列中慢慢实现。</p>
+
+<p>当然消息队列也不局限于此，比如消息队列一般都内置了高效的通信机制，因此也可以用在纯的消息通讯，具体可以看<a href="https://www.jianshu.com/p/689ce4205021">这个博客</a>。</p>
+
+<p>//我是用消息队列来实现离线消息，消息到后端的时候，如果发现对应用户不在线，就把消息放入消息队列（生产者），等对应用户登录了（用户相当于一个消费者），会去获取订阅的消息，其实很扯淡……请不要效仿（离线消息搞个数据库不就行了嘛我就是吃饱了撑着用这个复杂地要死的来实现ಥ_ಥ），后来放弃了，觉得这个想法很傻逼(~￣△￣)~</p>
+
+<p>况且kafka默认消息的保存时间是7天</p>
+
+<hr />
+
+<h2 id="zookeeper">Zookeeper</h2>
+
+<p>在KafKa安装（翻译）中，我们使用的是Kafka自带的zookeeper。</p>
+
+<p>我们先来了解一下什么是zookeeper？</p>
+
+<h3 id="简介">简介</h3>
+
+<blockquote>
+<p>Zookeeper是Hadoop分布式调度服务，用来构建分布式应用系统。构建一个分布式应用是一个很复杂的事情，主要的原因是我们需要合理有效的处理分布式集群中的部分失败的问题。例如，集群中的节点在相互通信时，A节点向B节点发送消息。A节点如果想知道消息是否发送成功，只能由B节点告诉A节点。那么如果B节点关机或者由于其他的原因脱离集群网络，问题就出现了。A节点不断的向B发送消息，并且无法获得B的响应。B也没有办法通知A节点已经离线或者关机。集群中其他的节点完全不知道B发生了什么情况，还在不断的向B发送消息。这时，你的整个集群就发生了部分失败的故障。</p>
+
+<p>Zookeeper不能让部分失败的问题彻底消失，但是它提供了一些工具能够让你的分布式应用安全合理的处理部分失败的问题。</p>
+</blockquote>
+
+<hr />
+
+<h3 id="kafka中的zookeeper">Kafka中的Zookeeper</h3>
+
+<p>ZooKeeper用于管理、协调Kafka broker。每个Kafka broker都通过ZooKeeper协调其它Kafka broker。当Kafka系统中新增了broker或者某个broker故障失效时，ZooKeeper服务将通知Producer和consumer。Producer和consumer据此开始与其它broker协调工作。Kafka整体系统架构如下图所示。</p>
+
+<p><img src="https://res.infoq.com/articles/apache-kafka/zh/resources/0609014.png" alt="Kafka zookeeper" /></p>
+
+<p>Zookeeper 主要用来<strong>跟踪</strong>Kafka 集群中的节点状态, 以及Kafka Topic, message 等等其他信息.。</p>
+
+<p>没有Zookeeper 是<strong>不能运行</strong>起来Kafka 的。</p>
+
+<p>Kafka将<strong>元数据信息保存</strong>在Zookeeper中，但是发送给Topic本身的数据是不会发到Zk上的。</p>
+
+<h4 id="新版本">新版本</h4>
+
+<blockquote>
+<p>早期版本的kafka用zk做meta信息存储，consumer的消费状态，group的管理以及 offset的值。</p>
+
+<p>新版本中逐渐弱化了zookeeper的作用：</p>
+
+<p>consumer使用了kafka内部的group coordination协议。</p>
+
+<p>消费者offset不存放在zk，而是以Topic的形式（__consumer_offset）的形式存放在集群上。</p>
+</blockquote>
+
+<h4 id="结构">结构</h4>
+
+<p><img src="http://img.blog.csdn.net/20140923175837147?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl6aGl0YW8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Kafka中zookeeper的储存结构" /></p>
+
+<p>zookeeper里面，没有文件和文件夹的概念，只有一个叫做znode的节点概念。</p>
+
+<p>znode既是数据的容器，也是其他节点的容器。（就是它里面可以放别的znode，也可以直接放数据）</p>
+
+<hr />
+
+<h2 id="spring-配置">Spring 配置</h2>
+
+<h3 id="pom-xml">pom.xml</h3>
+
+<p>Spring整合kafka有两种方式：</p>
+
+<blockquote>
+<p>spring-kafka</p>
+
+<p>spring-integration-kafka</p>
+</blockquote>
+
+<pre><code class="language-xml">        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.kafka&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-kafka&lt;/artifactId&gt;
+            &lt;version&gt;1.0.3.RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+
+<pre><code class="language-xml">		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.integration&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-integration-kafka&lt;/artifactId&gt;
+			&lt;version&gt;1.3.0.RELEASE&lt;/version&gt;
+		&lt;/dependency&gt;
+</code></pre>
+
+<p>差别大概就是</p>
+
+<p><code>spring-integration-kafka</code>封装更彻底，集成底层使用的就是<code>spring-kafka</code>。</p>
+
+<p><code>spring-integration-kafka</code>的配置里面还需要包括<code>spring integration</code>的部分（一种便捷的事件驱动消息框架）。</p>
+
+<p><code>spring-kafka</code>其实使用起来比<code>spring-integration-kafka</code>更简单一点</p>
+
+<p>网上也有人说spring集成的Kafka的功能比Kafka API要少，建议直接使用Kafka API（当然我们这里不考虑这个意见( ˙³˙)( ˙³˙)( ˙³˙)）</p>
+
+<h3 id="web-xml">web.xml</h3>
+
+<pre><code class="language-xml">    &lt;context-param&gt;
+		&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+		&lt;param-value&gt;classpath*:spring-kafka-*.xml&lt;/param-value&gt;
+	&lt;/context-param&gt;
+</code></pre>
+
+<p>这里注意一下<context-param>和<init-param>的区别。</p>
+
+<hr />
+
+<h2 id="spring-integration-kafka">spring-integration-kafka</h2>
+
+<p><code>Outbound Channel Adapter</code> 和 <code>Message Driven Channel Adapter</code> 分别是
+<code>spring-integration-kafka</code> 中对应 kafka 的生产者和消费者的适配器。</p>
+
+<p><strong>Outbound Channel Adapter</strong>用来发送消息到Kafka。消息从Spring Integration Channel中发出,一旦配置好这个Channel，就可以利用这个Channel往Kafka发消息。(MessageChannel类)。</p>
+
+<p><strong>Message Driven Channel Adapter</strong> 则接收并转化 kafka 消费者接收到的消息为 Spring
+消息。</p>
+
+<p>因此，我们的创建、接受的消息内容都是 Spring 消息。</p>
+
+<hr />
+
+<h2 id="spring-integration">spring integration</h2>
+
+<p><strong>Message</strong>：在Spring Integration中，Message是任何Java对象连同框架处理对象时使用的元数据的一个通用包装。</p>
+
+<p>它由payload和headers组成。 payload可以是任何类型，headers通常一些必须的数据，如id，timestamp，correlation id, 和返回address。</p>
+
+<p><img src="https://docs.spring.io/spring-integration/docs/4.0.0.M3/reference/html/images/message.jpg" alt="Message" /></p>
+
+<hr />
+
+<p><strong>Message Channel</strong>：消息生产者发送消息到Channel，消息消费者从Channel接收Message。</p>
+
+<p>Message Channel因此解耦了消息组件，同时也提供了消息拦截和监控的切入点。</p>
+
+<p>一个消息通道可能符合点对点模式或者发布-订阅模式。如果是点对点模式的通道，发布到通道中的每个消息，最多只有一个消费者可以接收。如果是发布-订阅模式的通道，则会尝试广播每个消息给其所有的订阅者。Spring Integration支持这两种模式。</p>
+
+<p><img src="https://docs.spring.io/spring-integration/docs/4.0.0.M3/reference/html/images/channel.jpg" alt="Message Channel" /></p>
+
+<hr />
+
+<p><strong>Channel Adapter</strong>：Channel Adapter为一个消息端点，连接了发送者或接收者和Message Channel。</p>
+
+<p>一个inbound &ldquo;Channel Adapter&rdquo; endpoint连接一个source system到一个Message Channel。</p>
+
+<p><img src="http://docs.spring.io/spring-integration/reference/htmlsingle/images/source-endpoint.jpg" alt="Channel Adapter" /></p>
+
+<p>一个outbound &ldquo;Channel Adapter&rdquo; endpoint 连接一个MessageChannel 到一个目标系统。</p>
+
+<p><img src="http://static.oschina.net/uploads/space/2012/1212/112921_8RB4_114515.jpg" alt="sss" /></p>
+
+<hr />
+
+<h2 id="生产者配置">生产者配置</h2>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:int=&quot;http://www.springframework.org/schema/integration&quot;
+	xmlns:int-kafka=&quot;http://www.springframework.org/schema/integration/kafka&quot;
+	xmlns:task=&quot;http://www.springframework.org/schema/task&quot;
+	xsi:schemaLocation=&quot;http://www.springframework.org/schema/integration/kafka http://www.springframework.org/schema/integration/kafka/spring-integration-kafka.xsd
+        http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd&quot;&gt;
+
+	&lt;!-- String序列化，下面有使用到 --&gt;
+	&lt;bean id=&quot;stringSerializer&quot; class=&quot;org.apache.kafka.common.serialization.StringSerializer&quot; /&gt;
+	&lt;!-- 这里的Encoder在下面没有用到，删掉也可以  Encoder和Serializer只用设置一个就行了。
+    consumer.xml中的配置也是一样 --&gt;
+	&lt;bean id=&quot;kafkaEncoder&quot;
+		class=&quot;org.springframework.integration.kafka.serializer.avro.AvroReflectDatumBackedKafkaEncoder&quot;&gt;
+		&lt;constructor-arg value=&quot;java.lang.String&quot; /&gt;
+	&lt;/bean&gt;
+	&lt;!-- 生产者一些配置属性。不配置按默认执行 --&gt;
+	&lt;bean id=&quot;producerProperties&quot;
+		class=&quot;org.springframework.beans.factory.config.PropertiesFactoryBean&quot;&gt;
+		&lt;property name=&quot;properties&quot;&gt;
+			&lt;props&gt;
+				&lt;prop key=&quot;topic.metadata.refresh.interval.ms&quot;&gt;3600000&lt;/prop&gt;
+				&lt;prop key=&quot;message.send.max.retries&quot;&gt;5&lt;/prop&gt;
+				&lt;prop key=&quot;serializer.class&quot;&gt;kafka.serializer.StringEncoder&lt;/prop&gt;
+				&lt;prop key=&quot;request.required.acks&quot;&gt;1&lt;/prop&gt;
+			&lt;/props&gt;
+		&lt;/property&gt;
+	&lt;/bean&gt;
+
+	&lt;!-- 生产者通过这个频道传送消息  基于queue --&gt;
+	&lt;int:channel id=&quot;kafkaTopicTest&quot;&gt;
+		&lt;int:queue /&gt;
+	&lt;/int:channel&gt;
+
+	&lt;!-- 生产者发送消息设置 --&gt;
+	&lt;!-- outbound-channel-adapter 发送+频道+分类。该类就是设置这三个的联系 --&gt;
+	&lt;!-- kafka-producer-context-ref。他是生产者消息的来源地 --&gt;
+	&lt;int-kafka:outbound-channel-adapter
+		id=&quot;kafkaOutboundChannelAdapterTopicTest&quot; kafka-producer-context-ref=&quot;producerContextTopicTest&quot;
+		auto-startup=&quot;true&quot; channel=&quot;kafkaTopicTest&quot; order=&quot;3&quot;&gt;
+		&lt;int:poller fixed-delay=&quot;1000&quot; time-unit=&quot;MILLISECONDS&quot;
+			receive-timeout=&quot;1&quot; task-executor=&quot;taskExecutor&quot; /&gt;
+	&lt;/int-kafka:outbound-channel-adapter&gt;
+
+	&lt;!-- 线程池 --&gt;
+	&lt;task:executor id=&quot;taskExecutor&quot; pool-size=&quot;5&quot;
+		keep-alive=&quot;120&quot; queue-capacity=&quot;500&quot; /&gt;
+
+
+	&lt;!-- 消息发送的topic设置。必须设置了topic才能发送相应topic消息 --&gt;
+	&lt;int-kafka:producer-context id=&quot;producerContextTopicTest&quot;
+		producer-properties=&quot;producerProperties&quot;&gt;
+		&lt;int-kafka:producer-configurations&gt;
+			&lt;!-- 多个topic配置 --&gt;
+			&lt;!-- 每个topic对应一个类。topic中的broker-list是kafka服务(集群)。
+			key-serializer和key-encoder分别设置序列化和编码。两者只需要设置一个就行。
+			value-class-type是消息的类型。
+			value-serializer和value-encoder和key是一样的解释 --&gt;
+			&lt;int-kafka:producer-configuration
+				broker-list=&quot;localhost:9092&quot; key-serializer=&quot;stringSerializer&quot;
+				value-class-type=&quot;java.lang.String&quot; value-serializer=&quot;stringSerializer&quot;
+				topic=&quot;testTopic&quot; /&gt;
+			&lt;int-kafka:producer-configuration
+				broker-list=&quot;localhost:9092&quot; key-serializer=&quot;stringSerializer&quot;
+				value-class-type=&quot;java.lang.String&quot; value-serializer=&quot;stringSerializer&quot;
+				topic=&quot;myTopic&quot; /&gt;
+		&lt;/int-kafka:producer-configurations&gt;
+	&lt;/int-kafka:producer-context&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<p>这里可以分成两部分，一部分是属性配置，一部分是<strong>Spring integration</strong></p>
+
+<p>Spring integration命名空间使用前缀 <strong>int</strong>，每个Spring integration适配器（模块）都将提供它自己的命名空间，<strong>int-</strong>随后的是不同模块的名称。</p>
+
+<p>这里提一句和<code>spring-kafka</code>配置的区别：<code>spring-kafka</code>生产者最基本的配置就是：</p>
+
+<p>1、生产者一些配置属性（<code>spring-integration-kafka</code>里也有）</p>
+
+<p>2、创建<code>kafkatemplate</code>需要使用的<code>producerfactory bean</code></p>
+
+<p>3、创建<code>kafkatemplate</code>，使用的时候，只需要注入这个bean，即可使用template的send消息方法</p>
+
+<hr />
+
+<h3 id="线程池">线程池</h3>
+
+<pre><code class="language-xml">&lt;task:executor id=&quot;taskExecutor&quot; pool-size=&quot;5&quot; keep-alive=&quot;120&quot; queue-capacity=&quot;500&quot; /&gt;
+</code></pre>
+
+<p>这里是一个异步线程池的XML配置</p>
+
+<p>pool-size：线程池的大小。支持范围”min-max”和固定值</p>
+
+<p>keep-alive： 线程保活时间（单位秒）</p>
+
+<p>queue-capacity：排队队列长度</p>
+
+<p>至于为什么要用异步线程池……emmmm……你猜？</p>
+
+<hr />
+
+<h2 id="消费者配置">消费者配置</h2>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:int=&quot;http://www.springframework.org/schema/integration&quot;
+	xmlns:int-kafka=&quot;http://www.springframework.org/schema/integration/kafka&quot;
+	xmlns:task=&quot;http://www.springframework.org/schema/task&quot;
+	xsi:schemaLocation=&quot;http://www.springframework.org/schema/integration/kafka 
+                        http://www.springframework.org/schema/integration/kafka/spring-integration-kafka.xsd
+                        http://www.springframework.org/schema/integration 
+                        http://www.springframework.org/schema/integration/spring-integration.xsd
+                        http://www.springframework.org/schema/beans 
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/task 
+                        http://www.springframework.org/schema/task/spring-task.xsd&quot;&gt;
+
+	&lt;bean id=&quot;kafkaDecoder&quot; class=&quot;org.springframework.integration.kafka.serializer.common.StringDecoder&quot; /&gt;
+
+	&lt;!-- 消费者一些配置属性。不配置按默认执行 --&gt;
+	&lt;bean id=&quot;consumerProperties&quot;
+		  class=&quot;org.springframework.beans.factory.config.PropertiesFactoryBean&quot;&gt;
+		&lt;property name=&quot;properties&quot;&gt;
+			&lt;props&gt;
+				&lt;prop key=&quot;auto.offset.reset&quot;&gt;smallest&lt;/prop&gt;
+				&lt;prop key=&quot;socket.receive.buffer.bytes&quot;&gt;10485760&lt;/prop&gt; &lt;!-- 10M --&gt;
+				&lt;prop key=&quot;fetch.message.max.bytes&quot;&gt;5242880&lt;/prop&gt;
+				&lt;prop key=&quot;auto.commit.interval.ms&quot;&gt;1000&lt;/prop&gt;
+			&lt;/props&gt;
+		&lt;/property&gt;
+	&lt;/bean&gt;
+
+	&lt;!-- 接收的频道 也可以理解为接收的工具类 --&gt;
+	&lt;int:channel id=&quot;inputFromKafka&quot;&gt;
+		&lt;int:dispatcher task-executor=&quot;kafkaMessageExecutor&quot; /&gt;
+	&lt;/int:channel&gt;
+
+	&lt;!-- zookeeper配置 可以配置多个 --&gt;
+	&lt;int-kafka:zookeeper-connect id=&quot;zookeeperConnect&quot;
+		zk-connect=&quot;localhost:2181&quot; zk-connection-timeout=&quot;6000&quot;
+		zk-session-timeout=&quot;6000&quot; zk-sync-time=&quot;2000&quot; /&gt;
+
+	&lt;!-- channel配置 auto-startup=&quot;true&quot; 否则接收不发数据 --&gt;
+	&lt;int-kafka:inbound-channel-adapter
+		id=&quot;kafkaInboundChannelAdapter&quot; kafka-consumer-context-ref=&quot;consumerContext&quot;
+		auto-startup=&quot;true&quot; channel=&quot;inputFromKafka&quot;&gt;
+		&lt;int:poller fixed-delay=&quot;1&quot; time-unit=&quot;MILLISECONDS&quot; /&gt;
+	&lt;/int-kafka:inbound-channel-adapter&gt;
+
+	&lt;!-- 线程池 pool-size --&gt;
+	&lt;task:executor id=&quot;kafkaMessageExecutor&quot; pool-size=&quot;8&quot;
+				   keep-alive=&quot;120&quot; queue-capacity=&quot;500&quot; /&gt;
+
+	&lt;!-- 消息接收的BEEN --&gt;
+	&lt;bean id=&quot;kafkaConsumerService&quot; class=&quot;com.kafka.demo.service.impl.KafkaConsumerService&quot; /&gt;
+	&lt;!-- 指定接收的方法 --&gt;
+	&lt;int:outbound-channel-adapter channel=&quot;inputFromKafka&quot;
+		ref=&quot;kafkaConsumerService&quot; method=&quot;processMessage&quot; /&gt;
+
+	&lt;!-- 消息接收的topic设置。--&gt;
+	&lt;int-kafka:consumer-context id=&quot;consumerContext&quot;
+		consumer-timeout=&quot;1000&quot; zookeeper-connect=&quot;zookeeperConnect&quot;
+		consumer-properties=&quot;consumerProperties&quot;&gt;
+		&lt;int-kafka:consumer-configurations&gt;
+			&lt;int-kafka:consumer-configuration
+				group-id=&quot;default1&quot; value-decoder=&quot;kafkaDecoder&quot; key-decoder=&quot;kafkaDecoder&quot;
+				max-messages=&quot;5000&quot;&gt;
+				&lt;!-- 两个TOPIC配置 --&gt;
+				&lt;int-kafka:topic id=&quot;myTopic&quot; streams=&quot;4&quot; /&gt;
+				&lt;int-kafka:topic id=&quot;testTopic&quot; streams=&quot;4&quot; /&gt;
+			&lt;/int-kafka:consumer-configuration&gt;
+		&lt;/int-kafka:consumer-configurations&gt;
+	&lt;/int-kafka:consumer-context&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="channel">channel</h3>
+
+<p>生产者：</p>
+
+<pre><code class="language-xml">&lt;int:channel id=&quot;kafkaTopicTest&quot;&gt;
+	&lt;int:queue /&gt;
+&lt;/int:channel&gt;
+</code></pre>
+
+<p>消费者：</p>
+
+<pre><code class="language-xml">&lt;int:channel id=&quot;inputFromKafka&quot;&gt;
+	&lt;int:dispatcher task-executor=&quot;kafkaMessageExecutor&quot; /&gt;
+&lt;/int:channel&gt;
+</code></pre>
+
+<p>大致就是：生产者的channel使用queue，消费者的channel使用一个自建线程池。</p>
+
+<p>关于这个部分，spring官方是这么解释的：</p>
+
+<blockquote>
+<p>To create an <code>ExecutorChannel</code>, add the <dispatcher> sub-element along with a <code>task-executor</code> attribute.Its value can reference any <code>TaskExecutor</code> within the context.For example, this enables configuration of a thread-pool for dispatching messages to subscribed handlers.As mentioned above, this does break the &ldquo;single-threaded&rdquo; execution context between sender and receiver so that any active transaction context will not be shared by the invocation of the handler (i.e.the handler may throw an Exception, but the send invocation has already returned successfully).</p>
+</blockquote>
+
+<p>翻译过来大概就是：</p>
+
+<p>创建<code>ExecutorChannel</code>，增加子元素<code>&lt;dispatcher&gt;</code>，同时再里面配置属性<code>task-executor</code>，<code>task-executor</code>的值可以引用自上下文。例如，使得用于发送消息的线程池的配置能用于订阅处理程序。就像上面说的，这会打破发送方和接收方之间的单线程执行关系，任何活着的 transaction context都不会被调用处理程序共享（即。处理程序可能会抛出一个异常，但是send invocation已经返回成功）。</p>
+
+<p>//你看懂了吗，好吧我没看懂（ ’ - ’ * )</p>
+
+<hr />
+
+<h3 id="poller">poller</h3>
+
+<p>确切来说，轮询器是一种机制，在有变化时轮询不同端点，并在感知到某些内容发生变化后让adapter对其做出响应，就像一个事件。</p>
+
+<p>生产者：</p>
+
+<pre><code class="language-xml">&lt;int:poller fixed-delay=&quot;1000&quot; time-unit=&quot;MILLISECONDS&quot;
+			receive-timeout=&quot;1&quot; task-executor=&quot;taskExecutor&quot; /&gt;
+</code></pre>
+
+<p>消费者：</p>
+
+<pre><code class="language-xml">&lt;int:poller fixed-delay=&quot;1&quot; time-unit=&quot;MILLISECONDS&quot; /&gt;
+</code></pre>
+
+<p>这里和上面的channel反过来了，</p>
+
+<p>大致就是：生产者的poller使用一个自建线程池，消费者的poller只配置了固定延迟时间为1毫秒。</p>
+
+<p>翻阅官方文档，没有看到相关资料。此处留疑。⚠️</p>
+
+<hr />
+
+<h2 id="生产者类">生产者类</h2>
+
+<p>生产者有两个类：<code>KafkaProducerService</code> 和<code>KafkaProducerServiceImpl</code></p>
+
+<pre><code class="language-java">public interface KafkaProducerService {
+	/**
+     * 发消息
+     * @param topic 主题
+     * @param obj 发送内容
+     */
+	void sendInfo(String topic, Object obj);
+}
+</code></pre>
+
+<pre><code class="language-java">@Service
+public class KafkaProducerServiceImpl implements KafkaProducerService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(KafkaProducerServiceImpl.class);
+	@Autowired
+	@Qualifier(&quot;kafkaTopicTest&quot;)
+	private MessageChannel messageChannel;
+
+	@Override
+	public void sendInfo(String topic, Object obj) {
+		logger.info(&quot;Service:KafkaProducerService------sendInfo------&quot;+topic);
+		messageChannel.send(MessageBuilder.withPayload(obj).setHeader(KafkaHeaders.TOPIC,topic).build());
+	}
+}
+</code></pre>
+
+<hr />
+
+<h2 id="消费者类">消费者类</h2>
+
+<p>消费者可以只有一个类</p>
+
+<pre><code class="language-java">public class KafkaConsumerService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(KafkaConsumerService.class);
+
+    public void processMessage(Map&lt;String, Map&lt;Integer, String&gt;&gt; msgs) {
+        logger.info(&quot;Service:KafkaConsumerService--------------&quot;);
+        for (Map.Entry&lt;String, Map&lt;Integer, String&gt;&gt; entry : msgs.entrySet()) {
+            logger.info(&quot;Topic:&quot; + entry.getKey());
+            LinkedHashMap&lt;Integer, String&gt; messages = (LinkedHashMap&lt;Integer, String&gt;) entry.getValue();
+            Set&lt;Integer&gt; keys = messages.keySet();
+            for (Integer i : keys){
+            	 logger.info(&quot;Partition:&quot; + i);
+            }
+            Collection&lt;String&gt; values = messages.values();
+            for (Iterator&lt;String&gt; iterator = values.iterator(); iterator.hasNext();) {
+                String message = &quot;[&quot;+iterator.next()+&quot;]&quot;;
+                logger.info(&quot;message:&quot; + message);
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>消费者类会自动去订阅，一旦消息队列中有消息了会立即去消费，当然，kafka也是支持你定时消费和延迟消费的。</p>
+
+<hr />
+
+<h2 id="controller类">Controller类</h2>
+
+<pre><code class="language-java">@Controller
+@RequestMapping(&quot;/kafka&quot;)
+public class KafkaController {
+
+	private static final Logger logger = LoggerFactory.getLogger(KafkaController.class);
+	@Resource
+	private KafkaProducerService kafkaService;
+	
+	@RequestMapping(&quot;/test&quot;)
+	public String test(){
+		logger.info(&quot;KafkaController--------start-----&quot;);
+		kafkaService.sendInfo(&quot;testTopic&quot;,&quot;kafka sendMessage test!&quot;);
+		return &quot;index&quot;;
+	}
+}
+</code></pre>
+
+<p>这个类当然是根据你自己的项目而定。</p>
+
+<hr />
+
+<h2 id="一些小问题">一些小问题</h2>
+
+<p>1、消费者轮询消息的时候，会不断在控制台打印debug，这时需要设置你的log level为INFO</p>
+
+<p>2、关闭的时候，要先关闭kafka，再关闭zookeeper；不然会导致kafka无法关闭。</p>
+
+<hr />
+
+<h2 id="参考资料">参考资料</h2>
+
+<p>除了特殊说明，其余图片均来自各大网站。</p>
+
+<p>Spring Integration Overview：<a href="https://docs.spring.io/spring-integration/docs/4.0.0.M3/reference/html/overview.html">https://docs.spring.io/spring-integration/docs/4.0.0.M3/reference/html/overview.html</a></p>
+
+<p>ZooKeeper深入浅出： <a href="https://holynull.gitbooks.io/zookeeper/content/%E5%AE%89%E8%A3%85%E5%92%8C%E8%BF%90%E8%A1%8Czookeeper.html">https://holynull.gitbooks.io/zookeeper/content/%E5%AE%89%E8%A3%85%E5%92%8C%E8%BF%90%E8%A1%8Czookeeper.html</a></p>
+
+<p>Kafka 中Zookpeer 的作用-原理与实战： <a href="https://www.jianshu.com/p/f6261b8f8314">https://www.jianshu.com/p/f6261b8f8314</a></p>
+
+<p>Apache Kafka：下一代分布式消息系统：<a href="http://www.infoq.com/cn/articles/apache-kafka（建议看原文）">http://www.infoq.com/cn/articles/apache-kafka（建议看原文）</a></p>
+
+<p>apache kafka系列之在zookeeper中存储结构： <a href="http://blog.csdn.net/lizhitao/article/details/23744675">http://blog.csdn.net/lizhitao/article/details/23744675</a></p>
+
+<p>Kafka数据可靠性深度解读：<a href="http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability">http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability</a></p>
+
+<p>spring-integration-kafka 2.0 使用：<a href="http://kylozw.github.io/2016/05/21/spring-integration-kafka-2.0/">http://kylozw.github.io/2016/05/21/spring-integration-kafka-2.0/</a></p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Spring-注释 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Spring-注释</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#注释">注释</a>
+<ul>
+<li>
+<ul>
+<li><a href="#component">@Component：</a>
+<ul>
+<li><a href="#service">@Service</a></li>
+<li><a href="#controller">@Controller</a></li>
+<li><a href="#repository">@Repository</a></li>
+<li><a href="#component-1">@Component</a></li>
+</ul></li>
+<li><a href="#componentscan">@ComponentScan：</a></li>
+<li><a href="#autowired">@Autowired:</a></li>
+<li><a href="#qualifier">@Qualifier</a></li>
+<li><a href="#resource">@Resource</a></li>
+<li><a href="#configuration">@Configuration：</a></li>
+<li><a href="#bean">@Bean：</a></li>
+<li><a href="#enablewebmvc">@EnableWebMvc</a></li>
+<li><a href="#requestmapping">@RequestMapping</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-01-11T15:49:06Z class="post-date">Thu, Jan 11, 2018</time>
+  
+
+<h2 id="注释">注释</h2>
+
+<h4 id="component">@Component：</h4>
+
+<p>功能：表明该类会作为组件类，并告知Spring要为此创建bean</p>
+
+<p>下述这 3 个注释和 @Component 是等效的，但是从注释类的命名上，很容易看出这 3 个注释分别和持久层、业务层和控制层（Web 层）相对应。</p>
+
+<h5 id="service">@Service</h5>
+
+<p>用于标注业务层组件</p>
+
+<h5 id="controller">@Controller</h5>
+
+<p>用于标注控制层组件</p>
+
+<h5 id="repository">@Repository</h5>
+
+<p>用于标注数据访问组件，即DAO组件</p>
+
+<h5 id="component-1">@Component</h5>
+
+<p>泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。</p>
+
+<hr />
+
+<h4 id="componentscan">@ComponentScan：</h4>
+
+<p>功能：在Spring中启用组件扫描（默认组件扫描不启动），默认扫描与配置类相同的包；</p>
+
+<p>@ComponentScan（”packageName&rdquo;）</p>
+
+<p>指明是基础包：@ComponentScan（basePackages=”package1Name”）@ComponentScan（basePackages={”package1Name”,”package2Name”}）</p>
+
+<p>另一种方式：@ComponentScan（basePackagesClasses={ package1Name.class , package2Name.class } ）</p>
+
+<hr />
+
+<h4 id="autowired">@Autowired:</h4>
+
+<p>功能：声明要进行自动装配</p>
+
+<p>使用：在构造器和方法 上</p>
+
+<p>默认<strong>按类型装配</strong>，默认情况下必须要求依赖对象必须存在，如果要允许null值，可以设置它的required属性为false，如：@Autowired(required=false) ，如果我们想使用名称装配可以结合@Qualifier注解进行使用。</p>
+
+<p>加上@Autowired后不需要getter()和setter()方法，Spring也会自动注入。</p>
+
+<hr />
+
+<h4 id="qualifier">@Qualifier</h4>
+
+<p>功能：按名字装配bean</p>
+
+<p>当我们在 Spring 容器中配置了两个类型为 Office 类型的 Bean，当对 Boss 的 office 成员变量进行自动注入时，Spring 容器将无法确定到底要用哪一个 Bean，就会发生异常。</p>
+
+<p>Spring 允许我们通过 @Qualifier 注释指定注入 Bean 的名称，这样歧义就消除了，所以 @Autowired 和 @Qualifier 结合使用时，自动注入的策略就从 byType 转变成 byName 了。</p>
+
+<hr />
+
+<h4 id="resource">@Resource</h4>
+
+<p>功能：按名字装配bean</p>
+
+<p>是<strong>JDK1.6支持的注解</strong>（非Spring），默认按照名称进行装配。</p>
+
+<p>名称可以通过name属性进行指定，如果没有指定name属性，当注解写在字段上时，默认取字段名，按照名称查找，如果注解写在setter方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进行装配。但是需要注意的是，如果name属性一旦指定，就只会按照名称进行装配。</p>
+
+<hr />
+
+<h4 id="configuration">@Configuration：</h4>
+
+<p>表明此类是个配置类</p>
+
+<hr />
+
+<h4 id="bean">@Bean：</h4>
+
+<p>功能：声明简单的bean</p>
+
+<p>这个方法将会返回一个对象并注册为Spring应用上下文中的bean。方法体中包含了最终产生bean实例的逻辑；</p>
+
+<p>@Bean（name:”beanName”），默认为方法名</p>
+
+<p>@Pointcut</p>
+
+<p>定义命名的切点</p>
+
+<p>@Pointcut：（“execution(* 全限定类名  .  方法  (..))”）</p>
+
+<p>public void performance（）{}</p>
+
+<p>后续可以直接使用切点标示：</p>
+
+<p>@Before（“ performance（）”）</p>
+
+<hr />
+
+<h4 id="enablewebmvc">@EnableWebMvc</h4>
+
+<p>功能：启动SpringMVC</p>
+
+<hr />
+
+<h4 id="requestmapping">@RequestMapping</h4>
+
+<p>功能：通过匹配URL路径来访问相应页面的</p>
+
+<p>分类：类级别的和方法级别的</p>
+
+<hr />
+
+<h2 id="参考资料">参考资料</h2>
+
+<p>Spring注释详解：<a href="http://blog.csdn.net/xyh820/article/details/7303330">http://blog.csdn.net/xyh820/article/details/7303330</a></p>
+
+<p><a href="http://blog.csdn.net/zhang854429783/article/details/6785574">http://blog.csdn.net/zhang854429783/article/details/6785574</a></p>
+
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

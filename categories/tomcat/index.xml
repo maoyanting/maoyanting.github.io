@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tomcat on 修仙下属委员会</title>
+    <link>https://maoyanting.github.io/categories/tomcat/</link>
+    <description>Recent content in Tomcat on 修仙下属委员会</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Mar 2018 15:49:06 +0000</lastBuildDate>
+    
+	<atom:link href="https://maoyanting.github.io/categories/tomcat/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tomcat-日志</title>
+      <link>https://maoyanting.github.io/post/tomcat-%E6%97%A5%E5%BF%97/</link>
+      <pubDate>Wed, 28 Mar 2018 15:49:06 +0000</pubDate>
+      
+      <guid>https://maoyanting.github.io/post/tomcat-%E6%97%A5%E5%BF%97/</guid>
+      <description>&lt;p&gt;昨天装了SSH，连接到了linux的远程服务器，然后和我说可以查看Tomcat的日志&lt;/p&gt;
+
+&lt;p&gt;我：喵喵？&lt;/p&gt;
+
+&lt;p&gt;好吧我承认我没怎么搞懂日志这个东西&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

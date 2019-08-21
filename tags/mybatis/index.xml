@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mybatis on 修仙下属委员会</title>
+    <link>https://maoyanting.github.io/tags/mybatis/</link>
+    <description>Recent content in Mybatis on 修仙下属委员会</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Sep 2018 23:03:31 +0000</lastBuildDate>
+    
+	<atom:link href="https://maoyanting.github.io/tags/mybatis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mybatis-小问题</title>
+      <link>https://maoyanting.github.io/post/mybatis-%E5%B0%8F%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 10 Sep 2018 23:03:31 +0000</pubDate>
+      
+      <guid>https://maoyanting.github.io/post/mybatis-%E5%B0%8F%E9%97%AE%E9%A2%98/</guid>
+      <description>一、Parameter &amp;lsquo;id&amp;rsquo; not found. Available parameters are [arg2, arg1, arg0, param3, param1, param2] 原因：多入参的情况下没有在参数前加@Param
+特殊原因：加了@Param还是报错，查看你是import的依赖是不是org.apache.ibatis.annotations.Param
+可能会不小心导入org.springframework.data.repository.query.Param</description>
+    </item>
+    
+    <item>
+      <title>JavaWeb-Mybatis</title>
+      <link>https://maoyanting.github.io/post/javaweb-mybatis/</link>
+      <pubDate>Fri, 09 Feb 2018 14:11:13 +0000</pubDate>
+      
+      <guid>https://maoyanting.github.io/post/javaweb-mybatis/</guid>
+      <description>&lt;p&gt;spring-mybatis与原生mybatis使用对比、使用mybatis-generator&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

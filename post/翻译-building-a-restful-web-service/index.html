@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>翻译-Building a RESTful Web Service &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>翻译-Building a RESTful Web Service</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#创建一个restful-web-service">创建一个RESTful Web Service</a>
+<ul>
+<li><a href="#你会建立什么">你会建立什么</a></li>
+<li><a href="#你需要什么">你需要什么</a></li>
+<li><a href="#如何完成本指南">如何完成本指南</a></li>
+<li><a href="#用gradle构建">用Gradle构建</a></li>
+<li><a href="#用maven构建">用Maven构建</a></li>
+<li><a href="#用您的ide构建">用您的IDE构建</a></li>
+<li><a href="#创建一个资源表示类">创建一个资源表示类</a></li>
+<li><a href="#创建一个资源控制器">创建一个资源控制器</a></li>
+<li><a href="#使应用程序可执行">使应用程序可执行</a>
+<ul>
+<li><a href="#构建一个可执行的jar">构建一个可执行的JAR</a></li>
+</ul></li>
+<li><a href="#测试服务">测试服务</a></li>
+<li><a href="#总结">总结</a></li>
+<li><a href="#也可以看看">也可以看看</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-02-14T21:00:27Z class="post-date">Wed, Feb 14, 2018</time>
+  <p>翻译——使用Spring创建一个RESTful Web Service</p>
+
+<h1 id="创建一个restful-web-service">创建一个RESTful Web Service</h1>
+
+<p>本指南将引导您完成使用Spring创建“hello world” <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/REST&amp;usg=ALkJrhjA4okemhma2AiF2YSmzUKeGHZEsg">RESTful Web服务的过程</a> 。</p>
+
+<h2 id="你会建立什么">你会建立什么</h2>
+
+<p>您将在以下位置创建一个接受HTTP GET请求的服务：</p>
+
+<pre><code>http://localhost:8080/greeting
+</code></pre>
+
+<p>并用一个<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/JSON&amp;usg=ALkJrhiAdpYHVloWmoMLbhBu221YaBxk1w">JSON</a>表示欢迎：</p>
+
+<pre><code> {&quot;id&quot;:1,&quot;content&quot;:&quot;Hello, World!&quot;} 
+</code></pre>
+
+<p>您可以使用查询字符串中可选的<code>name</code>参数来自定义问候语：</p>
+
+<pre><code>http://localhost:8080/greeting?name=User
+</code></pre>
+
+<p><code>name</code>参数值覆盖“World”的默认值，并反映在response中：</p>
+
+<pre><code> {&quot;id&quot;:1,&quot;content&quot;:&quot;Hello, User!&quot;} 
+</code></pre>
+
+<h2 id="你需要什么">你需要什么</h2>
+
+<ul>
+<li>大约15分钟</li>
+<li>喜欢的文本编辑器或IDE</li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://www.oracle.com/technetwork/java/javase/downloads/index.html&amp;usg=ALkJrhi2isGPHV-sq7jUziPVE-l9jBalvg">JDK 1.8</a>或更高版本</li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://www.gradle.org/downloads&amp;usg=ALkJrhjd_PiqFxW7gUhy0tzUXfe3aZH-1A">Gradle 2.3+</a>或<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://maven.apache.org/download.cgi&amp;usg=ALkJrhj_AbU4UixGaWViIk58fBiQPaEg9A">Maven 3.0+</a></li>
+<li>您还可以直接将代码导入到您的IDE中：
+
+<ul>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/sts&amp;usg=ALkJrhiKfyyZVm8Ccgl2yvAU_rBxEYHlIA">Spring工具套件（STS）</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/intellij-idea/&amp;usg=ALkJrhhcC0vJb4UeMWHkEiTZjFgFEM065Q">IntelliJ IDEA</a></li>
+</ul></li>
+</ul>
+
+<h2 id="如何完成本指南">如何完成本指南</h2>
+
+<p>像大多数Spring <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides&amp;usg=ALkJrhgRlfg-cgquXd16m2zYJRELyIHD8A">入门指南</a>一样，您可以从头开始并完成每个步骤，也可以绕过已熟悉的基本设置步骤。 无论哪种方式，你最终都能得到成功的代码。</p>
+
+<p>要<strong>从头开始</strong> ，请继续阅读<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-service/&amp;usg=ALkJrhh5TggyMiWSsyF0qIYKW_Py__4VYw#scratch">使用Gradle构建</a> 。</p>
+
+<p>要<strong>跳过这些基础知识</strong> ，请执行以下操作：</p>
+
+<ul>
+<li><a href="https://github.com/spring-guides/gs-rest-service/archive/master.zip">下载</a>并解压缩本指南的源代码库，或使用<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/Git&amp;usg=ALkJrhiGT-aa_xL0VmXxdVXwTGjValsEkA">Git</a>克隆它： <code>git clone https://github.com/spring-guides/gs-rest-service.git</code></li>
+<li>cd进入<code>gs-rest-service/initial</code></li>
+<li>跳转到<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-service/&amp;usg=ALkJrhh5TggyMiWSsyF0qIYKW_Py__4VYw#initial">创建资源表示类</a> 。</li>
+</ul>
+
+<p><strong>完成后</strong> ，您可以根据<code>gs-rest-service/complete</code>中的代码检查结果。</p>
+
+<h2 id="用gradle构建">用Gradle构建</h2>
+
+<h2 id="用maven构建">用Maven构建</h2>
+
+<h2 id="用您的ide构建">用您的IDE构建</h2>
+
+<h2 id="创建一个资源表示类">创建一个资源表示类</h2>
+
+<p>现在您已经设置了项目和构建系统，您可以创建您的Web服务。</p>
+
+<p>考虑服务交互开始流程。</p>
+
+<p>该服务将处理<code>/greeting</code>的 <code>GET</code>请求，可选择性地在查询字符串中使用<code>name</code>参数。  <code>GET</code>请求应该在表示问候的正文中返回带有JSON的<code>200 OK</code>响应。 它应该如下所示：</p>
+
+<pre><code> { &quot;id&quot;: 1, &quot;content&quot;: &quot;Hello, World!&quot; } 
+</code></pre>
+
+<p><code>id</code>字段是问候语的唯一标识符， <code>content</code>是问候语的文字表示。</p>
+
+<p>为了对问候表示进行建模，您可以创建一个资源表示类。 为<code>id</code>和<code>content</code>数据提供一个普通的java对象，其中包含字段，构造函数和访问器：</p>
+
+<p><code>src/main/java/hello/Greeting.java</code></p>
+
+<pre><code class="language-java">package hello;
+
+public class Greeting {
+
+    private final long id;
+    private final String content;
+
+    public Greeting(long id, String content) {
+        this.id = id;
+        this.content = content;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>正如您在下面的步骤中看到的，Spring使用<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://wiki.fasterxml.com/JacksonHome&amp;usg=ALkJrhj-SRgPHPGJwDCVc6iKW6RJ6EkmFA">Jackson JSON</a>库自动将类型为<code>Greeting</code>实例编组为JSON。</p>
+</blockquote>
+
+<p>接下来，您将创建将提供这些问候的资源控制器。</p>
+
+<h2 id="创建一个资源控制器">创建一个资源控制器</h2>
+
+<p>在Spring构建RESTful Web服务的方法中，HTTP请求由控制器处理。 这些组件可以通过<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html&amp;usg=ALkJrhj2jREdSv48jCAFQ8mkmMNuTdphDQ"><code>@RestController</code></a>批注轻松识别，并且<code>GreetingController</code>通过返回<code>Greeting</code>类的新实例来处理<code>/greeting</code>的<code>GET</code>请求：</p>
+
+<p><code>src/main/java/hello/GreetingController.java</code></p>
+
+<pre><code class="language-java">package hello;
+
+import java.util.concurrent.atomic.AtomicLong;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class GreetingController {
+
+    private static final String template = &quot;Hello, %s!&quot;;
+    private final AtomicLong counter = new AtomicLong();
+
+    @RequestMapping(&quot;/greeting&quot;)
+    public Greeting greeting(@RequestParam(value=&quot;name&quot;, defaultValue=&quot;World&quot;) String name) {
+        return new Greeting(counter.incrementAndGet(),
+                            String.format(template, name));
+    }
+}
+</code></pre>
+
+<p>这个控制器简洁明了，但有很多内容。 让我们一步一步分解它。</p>
+
+<p><code>@RequestMapping</code>注释可确保对<code>/greeting</code> HTTP请求映射到<code>greeting()</code>方法。</p>
+
+<blockquote>
+<p>上面的例子没有指定<code>GET</code>与<code>PUT</code> ， <code>POST</code>等等，因为<code>@RequestMapping</code>默认映射所有的HTTP操作。 使用<code>@RequestMapping(method=GET)</code>来缩小这个映射。</p>
+</blockquote>
+
+<p><code>@RequestParam</code>将查询字符串参数<code>name</code>的值绑定到<code>greeting()</code>方法的<code>name</code>参数中。 此查询字符串参数显式标记为可选（默认情况下为<code>required=true</code> ）：如果请求中没有带name参数，则使用<code>defaultValue</code> “World”。</p>
+
+<p>方法体的实现基于<code>counter</code>的下一个值创建并返回一个带有<code>id</code>和<code>content</code>属性的新<code>Greeting</code>对象，并使用问候<code>template</code>格式化给定<code>name</code> 。</p>
+
+<p>传统的MVC控制器和上面的RESTful Web服务控制器之间一个主要区别在于HTTP响应主体的创建方式。 这个RESTful Web服务控制器只需填充并返回一个<code>Greeting</code>对象，而不是依赖<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/view-templates&amp;usg=ALkJrhiiKud_Qn3fmLH4xFp3bRaUhkjz2A">视图技术</a>将问候数据的服务器端呈现呈现给HTML。 对象数据将作为JSON直接写入HTTP响应。</p>
+
+<p>此代码使用Spring 4的新的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html&amp;usg=ALkJrhj2jREdSv48jCAFQ8mkmMNuTdphDQ"><code>@RestController</code></a>注释，该注释将类标记为控制器，其中每个方法都返回一个域对象而不是视图。 它是<code>@Controller</code>和<code>@ResponseBody</code>的缩写。</p>
+
+<p><code>Greeting</code>对象必须转换为JSON。 由于Spring的HTTP消息转换器支持，您不需要手动执行此转换。 由于<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://wiki.fasterxml.com/JacksonHome&amp;usg=ALkJrhj-SRgPHPGJwDCVc6iKW6RJ6EkmFA">Jackson 2</a>位于类路径中， <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html&amp;usg=ALkJrhjRG0KiqvFIa-ROG_uk7sOLBnwMWw"><code>MappingJackson2HttpMessageConverter</code></a>会自动选择Spring的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html&amp;usg=ALkJrhjRG0KiqvFIa-ROG_uk7sOLBnwMWw"><code>MappingJackson2HttpMessageConverter</code></a>将<code>Greeting</code>实例转换为JSON。</p>
+
+<h2 id="使应用程序可执行">使应用程序可执行</h2>
+
+<p>虽然可以将此服务作为传统<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/WAR&amp;usg=ALkJrhjIuNhNJ-rDfCCslAH8c2nm7VJLOQ">WAR</a>文件打包以部署到外部应用程序服务器，但下面演示的更简单的方法会创建独立应用程序。 您将所有内容打包到一个单独的、可执行的JAR文件中，由一个Java <code>main()</code>方法驱动。 过程中，您使用Spring的支持将<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/Tomcat&amp;usg=ALkJrhj3Th8AEUCyP-Wu97HP4kFNHf2KCQ">Tomcat</a> servlet容器作为HTTP运行时嵌入，而不是部署到外部实例。</p>
+
+<p><code>src/main/java/hello/Application.java</code></p>
+
+<pre><code class="language-java">package hello;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+</code></pre>
+
+<p><code>@SpringBootApplication</code>是一个方便的注释，它增加了以下所有内容：</p>
+
+<ul>
+<li><code>@Configuration</code>将类标记为应用程序上下文的bean定义的来源。</li>
+<li><code>@EnableAutoConfiguration</code>通知Spring Boot根据类路径设置，其他bean和各种属性设置开始添加bean。</li>
+<li>通常你会为Spring MVC应用程序添加<code>@EnableWebMvc</code> ，但Spring Boot在类路径中看到<strong>spring-webmvc</strong>时会自动添加。 这将该应用程序标记为Web应用程序并激活关键行为，例如设置<code>DispatcherServlet</code> 。</li>
+<li><code>@ComponentScan</code>告诉Spring在<code>hello</code>包中查找其他组件，配置和服务，以便找到控制器。</li>
+</ul>
+
+<p><code>main()</code>方法使用Spring Boot的<code>SpringApplication.run()</code>方法启动应用程序。 你有没有注意到没有一行XML？ 没有<strong>web.xml</strong>文件。 这个Web应用程序是100％纯Java，您不必处理配置任何管道或基础设施。</p>
+
+<h3 id="构建一个可执行的jar">构建一个可执行的JAR</h3>
+
+<p>您可以使用Gradle或Maven从命令行运行应用程序。 或者您可以构建一个包含所有必需的依赖项，类和资源的可执行JAR文件，并运行该文件。 这使得在整个开发生命周期内跨越不同环境等，将服务作为应用程序发布，版本化和部署变得非常容易。</p>
+
+<p>如果您正在使用Gradle，则可以使用<code>./gradlew bootRun</code>运行该应用程序。 或者您可以使用<code>./gradlew build</code> JAR文件。 然后你可以运行JAR文件：</p>
+
+<pre><code>  java -jar build / libs / gs-rest-service-0.1.0.jar 
+</code></pre>
+
+<p>如果您使用的是Maven，则可以使用<code>./mvnw spring-boot:run</code>来运行该应用程序。 或者，您可以使用<code>./mvnw clean package</code>构建JAR文件。 然后你可以运行JAR文件：</p>
+
+<pre><code>  java -jar target / gs-rest-service-0.1.0.jar 
+</code></pre>
+
+<blockquote>
+<p>上述过程将创建一个可运行的JAR。 您也可以选择<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/convert-jar-to-war/&amp;usg=ALkJrhg_q399dCbdi_hrE92GWpqBBT0Zvw">构建经典的WAR文件</a> 。</p>
+</blockquote>
+
+<p>记录输出显示。 该服务应该在几秒钟内启动并运行。</p>
+
+<h2 id="测试服务">测试服务</h2>
+
+<p>现在服务已启动，请访问<a href="http://localhost:8080/greeting">http://localhost:8080/greeting</a> ，您会看到：</p>
+
+<pre><code> {&quot;id&quot;:1,&quot;content&quot;:&quot;Hello, World!&quot;} 
+</code></pre>
+
+<p>使用<a href="http://localhost:8080/greeting?name=User">http://localhost:8080/greeting?name=User</a>，提供<code>name</code>的字符串参数。 请注意<code>content</code>属性的值是如何从“Hello，World！”更改的 到“Hello User！”：</p>
+
+<pre><code> {&quot;id&quot;:2,&quot;content&quot;:&quot;Hello, User!&quot;} 
+</code></pre>
+
+<p>此更改演示了<code>GreetingController</code>中的<code>@RequestParam</code>按预期工作。  <code>name</code>参数已被赋予默认值“World”，但始终可以通过传入字符串显式覆盖。</p>
+
+<p>还要注意<code>id</code>属性如何从<code>1</code>更改为<code>2</code> 。 这证明您正在使用相同<code>GreetingController</code>实例处理多个请求，并且按照预期，在每次调用中其<code>counter</code>字段正在递增。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>恭喜！ 您刚刚用Spring开发了一个RESTful Web服务。</p>
+
+<h2 id="也可以看看">也可以看看</h2>
+
+<p>以下指南也可能有所帮助：</p>
+
+<ul>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-gemfire-data-rest/&amp;usg=ALkJrhj1OmuMq7kjSpX7uShbVE-zxLwx_Q">使用REST访问GemFire数据</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-mongodb-data-rest/&amp;usg=ALkJrhgK7im05koFc2NpxrldC_xEgoC39w">使用REST访问MongoDB数据</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-data-mysql/&amp;usg=ALkJrhgxcX3RIzyxbdBLJZ-zK4H27_fKVg">使用MySQL访问数据</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-data-rest/&amp;usg=ALkJrhhYAb-t7bTTQo0y2bOIcSuTMqyGiA">使用REST访问JPA数据</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-neo4j-data-rest/&amp;usg=ALkJrhgJ2STjGhA8Cz5dDgpA9mN0whXMvA">使用REST访问Neo4j数据</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest/&amp;usg=ALkJrhjXaFKj82jVDmdmEAssGF5vQpLyEg">使用RESTful Web服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest-angularjs/&amp;usg=ALkJrhjSBHfooUAXrstjhIMdybuu4e-w9g">在AngularJS中使用REST风格的Web服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest-jquery/&amp;usg=ALkJrhgS_ZOF9YypRaZZ6xD-vbnhfi0SuQ">使用jQuery来使用RESTful Web服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest-restjs/&amp;usg=ALkJrhgjrvSyKWtPjgAltOCWlPudTAHVhg">与rest.js一起使用RESTful Web服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/securing-web/&amp;usg=ALkJrhgf6Pj_Jfm7_K0lofEyyXuOs9zY_A">保护Web应用程序</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/tutorials/bookmarks/&amp;usg=ALkJrhjS0qWCIYxfR8XHb16LKeT9Ar9oMA">用Spring构建REST服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/tutorials/react-and-spring-data-rest/&amp;usg=ALkJrhinRUyarQ1ByM_ZytJrx-ge79HdKQ">React.js和Spring Data REST</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/spring-boot/&amp;usg=ALkJrhiKg3GyTsXISfFB9fKLMRE_j27MBA">使用Spring Boot构建应用程序</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/testing-restdocs/&amp;usg=ALkJrhhQ2pTFcypwxGRCdCD0pI3VSVvHGA">使用Restdocs创建API文档</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-service-cors/&amp;usg=ALkJrhhOC4B1tMgfnh4XKkiKp6b4B8VFvA">启用RESTful Web服务的跨源请求</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-hateoas/&amp;usg=ALkJrhjjhbkd7UX2EPn7FaBHS6P-Ves1oA">构建超媒体驱动的RESTful Web服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/circuit-breaker/&amp;usg=ALkJrhgTFRUyx7gpbEH8VgTH8hCgKXeYsw">断路器</a></li>
+</ul>
+
+<p>想写一个新的指南或贡献一个现有的？ 查看我们的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://github.com/spring-guides/getting-started-guides/wiki&amp;usg=ALkJrhiB1b057IhnynHRSxHvX6ZckyPlzA">贡献指南</a> 。</p>
+
+<blockquote>
+<p>所有指南均附带代码的ASLv2许可证，以及用于撰写的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://creativecommons.org/licenses/by-nd/3.0/&amp;usg=ALkJrhiBe5s-_7VG19vKBczGPd-MS34luA">归属，NoDerivatives创意公共许可证</a> 。</p>
+</blockquote>
+
+<hr />
+
+<p>原文链接：<a href="https://spring.io/guides/gs/rest-service/">Building a RESTful Web Service</a></p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

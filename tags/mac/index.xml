@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MAC on 修仙下属委员会</title>
+    <link>https://maoyanting.github.io/tags/mac/</link>
+    <description>Recent content in MAC on 修仙下属委员会</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Aug 2019 23:56:20 +0000</lastBuildDate>
+    
+	<atom:link href="https://maoyanting.github.io/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>homebrew下载缓慢问题</title>
+      <link>https://maoyanting.github.io/post/homebrew%E4%B8%8B%E8%BD%BD%E7%BC%93%E6%85%A2%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Tue, 20 Aug 2019 23:56:20 +0000</pubDate>
+      
+      <guid>https://maoyanting.github.io/post/homebrew%E4%B8%8B%E8%BD%BD%E7%BC%93%E6%85%A2%E9%97%AE%E9%A2%98/</guid>
+      <description>&lt;p&gt;homebrew下载缓慢问题&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

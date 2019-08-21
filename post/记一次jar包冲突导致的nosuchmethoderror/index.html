@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>记一次jar包冲突导致的NoSuchMethodError &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>记一次jar包冲突导致的NoSuchMethodError</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    
+    </div>
+  <time datetime=2019-04-10T08:40:46&#43;0800 class="post-date">Wed, Apr 10, 2019</time>
+  <p>记一次jar包冲突导致的 <code>NoSuchMethodError</code></p>
+
+<p>对接 <code>webService</code> 的时候，项目本身一直是用动态调用的，但是有部分代码出于技术原因使用的是生成的代码调用，然后引入了一个新的jar包</p>
+
+<pre><code class="language-xml">		&lt;dependency&gt;
+			&lt;groupId&gt;axis&lt;/groupId&gt;
+			&lt;artifactId&gt;axis&lt;/artifactId&gt;
+			&lt;version&gt;1.4&lt;/version&gt;
+		&lt;/dependency&gt;
+</code></pre>
+
+<p>运行新的代码没有问题，运行原有的动态调用的代码，就开始报错了。</p>
+
+<pre><code>java.lang.NoSuchMethodError: javax.wsdl.xml.WSDLReader.readWSDL(Ljavax/wsdl/xml/WSDLLocator;Lorg/w3c/dom/Element;)Ljavax/wsdl/Definition;
+</code></pre>
+
+<p>一般 <code>NoSuchMethodError</code> 通常就是 jar 包冲突了，我们搜索 <code>javax.wsdl.xml.WSDLReader</code> ，发现果然有两个</p>
+
+<p><img src="https://pic-1256291953.cos.ap-shanghai.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190410085511.png?q-sign-algorithm=sha1&amp;q-ak=AKIDBNpxfmVdsFEuqgBMz7aLXKwKr8z8036j&amp;q-sign-time=1554857716;1554859516&amp;q-key-time=1554857716;1554859516&amp;q-header-list=&amp;q-url-param-list=&amp;q-signature=d24a04dc0a701587f6903ae2947dce13d7d7c87c&amp;x-cos-security-token=861736242294de818803fa7f25c80395b2ec0e3b10001" alt="全局搜索" /></p>
+
+<p>我们继续查找一下我们需要调用的方法 <code>readWSDL</code> 在哪一个类里面。发现是新导入的包里面没有这个方法，然后我们把新导入的包里面这个jar包剔除掉</p>
+
+<pre><code class="language-xml">		&lt;dependency&gt;
+			&lt;groupId&gt;axis&lt;/groupId&gt;
+			&lt;artifactId&gt;axis&lt;/artifactId&gt;
+			&lt;version&gt;1.4&lt;/version&gt;
+			&lt;exclusions&gt;
+				&lt;exclusion&gt;
+					&lt;artifactId&gt;axis-wsdl4j&lt;/artifactId&gt;
+					&lt;groupId&gt;axis&lt;/groupId&gt;
+				&lt;/exclusion&gt;
+			&lt;/exclusions&gt;
+		&lt;/dependency&gt;
+</code></pre>
+
+<p>再启动一下，两个都能正常运行啦</p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

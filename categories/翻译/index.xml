@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>翻译 on 修仙下属委员会</title>
+    <link>https://maoyanting.github.io/categories/%E7%BF%BB%E8%AF%91/</link>
+    <description>Recent content in 翻译 on 修仙下属委员会</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Feb 2018 21:00:27 +0000</lastBuildDate>
+    
+	<atom:link href="https://maoyanting.github.io/categories/%E7%BF%BB%E8%AF%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>翻译-Building a RESTful Web Service</title>
+      <link>https://maoyanting.github.io/post/%E7%BF%BB%E8%AF%91-building-a-restful-web-service/</link>
+      <pubDate>Wed, 14 Feb 2018 21:00:27 +0000</pubDate>
+      
+      <guid>https://maoyanting.github.io/post/%E7%BF%BB%E8%AF%91-building-a-restful-web-service/</guid>
+      <description>&lt;p&gt;翻译——使用Spring创建一个RESTful Web Service&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>翻译-Spring for Apache Kafka</title>
+      <link>https://maoyanting.github.io/post/%E7%BF%BB%E8%AF%91-spring-for-apache-kafka/</link>
+      <pubDate>Mon, 08 Jan 2018 12:27:46 +0000</pubDate>
+      
+      <guid>https://maoyanting.github.io/post/%E7%BF%BB%E8%AF%91-spring-for-apache-kafka/</guid>
+      <description>&lt;p&gt;翻译——Spring for Apache Kafka官方文档&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>杭州二手房 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>杭州二手房</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#零-写在前面">零、写在前面</a></li>
+<li><a href="#一-数据">一、数据</a>
+<ul>
+<li><a href="#需要的数据">需要的数据</a></li>
+<li><a href="#收集数据">收集数据</a>
+<ul>
+<li><a href="#小区的数据">小区的数据：</a></li>
+<li><a href="#地铁的数据">地铁的数据：</a></li>
+<li><a href="#其余数据">其余数据：</a></li>
+</ul></li>
+<li><a href="#处理数据">处理数据</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-02-27T15:43:51Z class="post-date">Tue, Feb 27, 2018</time>
+  
+
+<h2 id="零-写在前面">零、写在前面</h2>
+
+<p>家里有在杭州买房的需求，自己还在忙着找工作，只能说结合着来了XD。</p>
+
+<p>这几天恰好围观了下GitHub上的这个<a href="https://github.com/houshanren/hangzhou_house_knowledge">repository</a></p>
+
+<p>star数蹭蹭蹭往上涨啊</p>
+
+<p>其实作者的数据真的是相当得全了</p>
+
+<p>但是作为一个强迫症，幻想着如果能在一张图内显示所有自己需要的数据就好了啊</p>
+
+<hr />
+
+<h2 id="一-数据">一、数据</h2>
+
+<h3 id="需要的数据">需要的数据</h3>
+
+<p><a href="https://zhuanlan.zhihu.com/p/33623170">杭州二手房看房、询价、谈判、过户技巧</a></p>
+
+<p>这篇看下来受益良多，大致也能分析出我们在去找中介之前，</p>
+
+<p>自己的需求：</p>
+
+<ol>
+<li><p>预算</p></li>
+
+<li><p>交通</p></li>
+
+<li><p>户型和大小</p></li>
+
+<li><p>楼层</p></li>
+
+<li><p>学区</p></li>
+
+<li><p>朝向</p></li>
+</ol>
+
+<p>etc&hellip;</p>
+
+<p>网上所需要收集的数据：</p>
+
+<ol>
+<li>小区位置</li>
+<li>小区单价：其实这里还需少户型，但是这个数据批量不好找</li>
+<li>小区年代：老房子会有很多问题，新房子肯定贵</li>
+<li>地铁位置</li>
+<li>主干道交通</li>
+<li>周边学校、商场、医院、菜场、超市等</li>
+</ol>
+
+<hr />
+
+<h3 id="收集数据">收集数据</h3>
+
+<h4 id="小区的数据">小区的数据：</h4>
+
+<p>一个爬虫解决，链家的数据还是比较靠谱的。</p>
+
+<h4 id="地铁的数据">地铁的数据：</h4>
+
+<p>杭州运行的地铁（截止2018.2.27）只有三条，在建2条，其余的均为规划。</p>
+
+<p>参考：<a href="http://www.hzplanning.gov.cn/DesktopModules/GHJ.PlanningNotice/PublicityInfoGH.aspx?GUID=20171228090306146">杭州市轨道交通三期线路及沿线用地控制规划（草案）</a></p>
+
+<p>人力把能找到的地铁经纬度全部找了出来，部分连周边道路都是规划中的除外（萧山有部分地铁站真的是荒郊野岭）</p>
+
+<p>用了最简单也是最强大的excel，然后把数据导出为csv，再导入MySQL。</p>
+
+<h4 id="其余数据">其余数据：</h4>
+
+<p>准备使用地图的api，所以不用收集。</p>
+
+<hr />
+
+<h3 id="处理数据">处理数据</h3>
+
+<p>计算出每个地铁站和小区之间的距离，每个小区取最小值，为其最近地铁站。</p>
+
+<pre><code class="language-mysql">UPDATE lianjia_xiaoqu AS r,
+(
+SELECT
+ a.housecode,
+ a.distance,
+ b.metro,
+ b.metro_line 
+FROM
+ ( SELECT housecode, min( distance ) AS distance FROM xiaoqu_metro_distance GROUP BY housecode ) AS a,
+ xiaoqu_metro_distance AS b 
+WHERE
+ a.housecode = b.housecode 
+ AND a.distance = b.distance 
+ ) AS t 
+ SET r.metro = t.metro,
+ r.metro_line = t.metro_line,
+ r.distance = t.distance 
+WHERE
+ t.housecode = r.housecode
+</code></pre>
+
+<p>这里吐槽下百度地图的api，界面被高德甩了好几条街不说，导入的scv文件的格式固定完全不友好</p>
+
+<p>但是链家爬下来的数据都是百度的，必须转换</p>
+
+<p>参考：<a href="http://lbsbbs.amap.com/forum.php?mod=viewthread&amp;tid=724&amp;highlight=%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2">坐标转换</a></p>
+
+<p>4月1日更新的分界线</p>
+
+<p>在看了两周的房子以后，我定下来了……老破小</p>
+
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

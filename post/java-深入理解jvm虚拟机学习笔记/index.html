@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Java-深入理解JVM虚拟机学习笔记 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Java-深入理解JVM虚拟机学习笔记</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#摘要">摘要</a></li>
+<li><a href="#java内存区域与内存溢出异常">Java内存区域与内存溢出异常</a>
+<ul>
+<li><a href="#内存分区">内存分区</a></li>
+</ul></li>
+<li><a href="#垃圾收集器与内存分配策略">垃圾收集器与内存分配策略</a>
+<ul>
+<li><a href="#对象已死吗">对象已死吗</a></li>
+<li><a href="#垃圾回收算法">垃圾回收算法</a></li>
+<li><a href="#并行和并发">并行和并发</a></li>
+<li><a href="#垃圾收集器">垃圾收集器</a></li>
+<li><a href="#内存分配与回收策略">内存分配与回收策略</a></li>
+<li><a href="#元空间">元空间</a></li>
+<li><a href="#内存申请过程">内存申请过程</a></li>
+</ul></li>
+<li><a href="#虚拟机类加载机制">虚拟机类加载机制</a>
+<ul>
+<li><a href="#类加载的过程">类加载的过程</a></li>
+<li><a href="#类加载器">类加载器</a>
+<ul>
+<li><a href="#类与类加载器">类与类加载器</a></li>
+<li><a href="#双亲委派模型">双亲委派模型</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-01-16T18:03:50Z class="post-date">Tue, Jan 16, 2018</time>
+  <h2 id="摘要">摘要</h2>
+
+<p>《深入理解JVM虚拟机》学习笔记</p>
+
+<h2 id="java内存区域与内存溢出异常">Java内存区域与内存溢出异常</h2>
+
+<h3 id="内存分区">内存分区</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">线程</th>
+<th align="left">功能</th>
+<th align="left">异常</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">程序计数器</td>
+<td align="left">私有</td>
+<td align="left"><strong>字节码的行号指示器</strong> ；如果线程正在执行的是一个Java方法，这个计数器记录的是正在执行的虚拟机字节码指令的地址；如果正在执行的是Native方法，这个计数器值则为空。</td>
+<td align="left">/</td>
+</tr>
+
+<tr>
+<td align="left">虚拟机栈</td>
+<td align="left">私有</td>
+<td align="left">生命周期与线程相同。 虚拟机栈描述的是Java方法执行的内存模型：每个方法在执行的同时都会创建一个<strong>栈帧</strong>用于存储局部变量表、 操作数栈、 动态链接、 方法出口等信息。 <strong>每一个方法从调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中入栈到出栈的过程</strong>。</td>
+<td align="left">StackOverflow  OutOfMemory</td>
+</tr>
+
+<tr>
+<td align="left">本地方法栈</td>
+<td align="left">/</td>
+<td align="left">与虚拟机栈类似，为<strong>Native方法</strong>服务</td>
+<td align="left">同上</td>
+</tr>
+
+<tr>
+<td align="left">堆</td>
+<td align="left">共享</td>
+<td align="left"><strong>存放对象实例，分配内存。</strong>可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可</td>
+<td align="left">OutOfMemory</td>
+</tr>
+
+<tr>
+<td align="left">方法区</td>
+<td align="left">共享</td>
+<td align="left">储存被加载的类信息，常量，静态变量，即时编译器编译后的代码等。</td>
+<td align="left">OutOfMemory</td>
+</tr>
+
+<tr>
+<td align="left">运行时常量池</td>
+<td align="left"></td>
+<td align="left">方法区的一部分， <strong>JDK7开始常量池被移到了堆中</strong>。</td>
+<td align="left">OutOfMemory</td>
+</tr>
+
+<tr>
+<td align="left">直接内存</td>
+<td align="left"></td>
+<td align="left">它可以使用Native函数库直接分配堆外内存，然后通过一个存储在Java堆中的DirectByteBuffer对象作为这块内存的引用进行操作。</td>
+<td align="left">OutOfMemory</td>
+</tr>
+</tbody>
+</table>
+
+<!--more-->
+
+<p>一个 Java 源程序文件，会被编译为字节码文件（以 class  为扩展名），每个java程序都需要运行在自己的JVM上，然后告知 JVM 程序的运行入口，再被 JVM  通过字节码解释器加载运行。那么程序开始运行后，都是如何涉及到各内存区域的呢？</p>
+
+<p>概括地说来，JVM初始运行的时候都会分配好 <strong>Method  Area（方法区）</strong> 和<strong>Heap（堆）</strong> ，而JVM 每遇到一个线程，就为其分配一个 <strong>Program Counter    Register（程序计数器）</strong> ,   **VM Stack（虚拟机栈）和Native Method  Stack  （本地方法栈）， **当线程终止时，三者（虚拟机栈，本地方法栈和程序计数器）所占用的内存空间也会被释放掉。非线程共享的那三个区域的生命周期与所属线程相同，而线程共享的区域与JAVA程序运行的生命周期相同，所以这也是系统垃圾回收的场所只发生在线程共享的区域（实际上对大部分虚拟机来说知发生在Heap上）的原因。</p>
+
+<hr />
+
+<h2 id="垃圾收集器与内存分配策略">垃圾收集器与内存分配策略</h2>
+
+<h3 id="对象已死吗">对象已死吗</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="center">实现</th>
+<th align="center">利弊</th>
+<th align="right">使用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">引用计数法</td>
+<td align="center">给对象添加一个引用计数器，引用一次计数器加1，引用失效计数器减1。任何计数器为0的对象不可能再被使用</td>
+<td align="center">很难解决对象之间相互循环引用的问题，java虚拟机不使用</td>
+<td align="right">Python，FlashPlayer等(Netty4引入)</td>
+</tr>
+
+<tr>
+<td align="left">可达性分析法</td>
+<td align="center">一个对象到GC Roots没有任何引用链相连（即GC Roots到这个对象不可达），则对象不可用。（虚拟机栈、方法区中类静态属性引用的和常量引用的对象、本地方法栈中JNI引用的对象均可作为GC Roots）</td>
+<td align="center">/</td>
+<td align="right">主流商用程序语言</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="垃圾回收算法">垃圾回收算法</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">实现</th>
+<th align="left">利弊</th>
+<th>适用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">标记－清除</td>
+<td align="left">先暂停整个程序的全部运行线程，让回收线程以单线程进行扫描标记，并进行直接清除回收，然后回收完成，再恢复运行线程。</td>
+<td align="left">效率低；产生内存碎片</td>
+<td>老年代</td>
+</tr>
+
+<tr>
+<td align="left">标记－整理</td>
+<td align="left">和“标记－清除”相似，不同的是，该算法在回收期间会同时将保留下来的对象移动聚集到连续的内存空间，从而避免内存空间碎片。</td>
+<td align="left">对象的移动是需要时间成本的。</td>
+<td>老年代</td>
+</tr>
+
+<tr>
+<td align="left">复制</td>
+<td align="left">内存空间分成两个部分。每次只使用其中一块，清理时把存活的放到另一块，这块整块清理。</td>
+<td align="left">避免了内存碎片；但是内存浪费；复制操作</td>
+<td>新生代</td>
+</tr>
+
+<tr>
+<td align="left">分代收集</td>
+<td align="left">把java堆分为老年代和新生代，根据各年代特点采用不同算法</td>
+<td align="left"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>传统的GC收集器将连续的内存空间划分为新生代、老年代和永久代（JDK 8去除了永久代，引入了元空间Metaspace），这种划分的特点是各代的存储地址（逻辑地址，下同）是连续的。如下图所示：</p>
+
+<p><img src="https://tech.meituan.com/img/g1/conventional_gc_layout.png" alt="ss" /></p>
+
+<hr />
+
+<h3 id="并行和并发">并行和并发</h3>
+
+<ul>
+<li><strong>并行（Parallel）</strong>：指多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态。</li>
+<li><strong>并发（Concurrent）</strong>：指用户线程与垃圾收集线程同时执行（但不一定是并行的，可能会交替执行），用户程序在继续运行。而垃圾收集程序运行在另一个CPU上。</li>
+</ul>
+
+<h3 id="垃圾收集器">垃圾收集器</h3>
+
+<p>总结：新生代基本采用复制，老年代基本采用标记-整理，CMS采用标记-清除。</p>
+
+<table>
+<thead>
+<tr>
+<th>收集器</th>
+<th>串行、并行or并发</th>
+<th>新生代/老年代</th>
+<th>算法</th>
+<th>目标</th>
+<th>适用场景</th>
+<th>Jdk</th>
+<th>其他</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Serial</strong></td>
+<td>串行</td>
+<td>新生代</td>
+<td>复制算法</td>
+<td>速度优先</td>
+<td>单CPU环境下的Client模式</td>
+<td>1.3</td>
+<td></td>
+</tr>
+
+<tr>
+<td><strong>ParNew</strong></td>
+<td>并行</td>
+<td>新生代</td>
+<td>复制算法</td>
+<td>速度优先</td>
+<td>多CPU环境时在Server模式下与CMS配合</td>
+<td>1.4</td>
+<td>Serial的多线程版本</td>
+</tr>
+
+<tr>
+<td><strong>Parallel Scavenge</strong></td>
+<td>并行</td>
+<td>新生代</td>
+<td>复制算法</td>
+<td>吞吐量优先</td>
+<td>在后台运算而不需要太多交互的任务</td>
+<td>1.4</td>
+<td></td>
+</tr>
+
+<tr>
+<td><strong>Serial Old</strong></td>
+<td>串行</td>
+<td>老年代</td>
+<td>标记-整理</td>
+<td>速度优先</td>
+<td>单CPU环境下的Client模式、CMS的后备预案</td>
+<td>1.5</td>
+<td>Serial的老年代版本</td>
+</tr>
+
+<tr>
+<td><strong>Parallel Old</strong></td>
+<td>并行</td>
+<td>老年代</td>
+<td>标记-整理</td>
+<td>吞吐量优先</td>
+<td>在后台运算而不需要太多交互的任务</td>
+<td>1.6</td>
+<td>Parallel Scavenge的老年代版本</td>
+</tr>
+
+<tr>
+<td><strong>CMS</strong></td>
+<td>并发</td>
+<td>老年代</td>
+<td>标记-清除</td>
+<td>速度优先</td>
+<td>集中在互联网站或B/S系统服务端上的Java应用</td>
+<td>1.5</td>
+<td>只能和Serial和parNew合作</td>
+</tr>
+
+<tr>
+<td><strong>G1</strong></td>
+<td>并发</td>
+<td>both</td>
+<td>标记-整理+复制算法</td>
+<td>速度优先</td>
+<td>面向服务端应用，将来替换CMS</td>
+<td>1.7</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3 id="内存分配与回收策略">内存分配与回收策略</h3>
+
+<ol>
+<li><p>新生代：所有对象创建在新生代的Eden区，当Eden区满后触发新生代的Minor GC，将Eden区和非空闲Survivor区存活的对象复制到另外一个空闲的Survivor区中。保证一个Survivor区是空的，新生代Minor GC就是在两个Survivor区之间相互复制存活对象，直到Survivor区满为止。</p></li>
+
+<li><p>老年代：当Survivor区也满了之后就通过Minor GC将对象复制到老年代。老年代也满了的话，就将触发Full GC，针对整个堆（包括新生代、老年代、持久代）进行垃圾回收。</p></li>
+
+<li><p>持久代：持久代如果满了，将触发Full GC。</p></li>
+</ol>
+
+<h3 id="元空间">元空间</h3>
+
+<p>元空间并不在虚拟机中，而是使用本地内存。因此，默认情况下，元空间的大小仅受本地内存限制，但可以通过以下参数来指定元空间的大小：</p>
+
+<p>元空间并不在虚拟机中，而是使用本地内存。因此，默认情况下，元空间的大小仅受本地内存限制，但可以通过以下参数来指定元空间的大小：</p>
+
+<h3 id="内存申请过程">内存申请过程</h3>
+
+<ol>
+<li>JVM会试图为相关Java对象在Eden中初始化一块内存区域；<br /></li>
+<li>当Eden空间足够时，内存申请结束。否则到下一步；<br /></li>
+<li>JVM试图释放在Eden中所有不活跃的对象（minor collection），释放后若Eden空间仍然不足以放入新对象，则试图将部分Eden中活跃对象放入Survivor区；<br /></li>
+<li>Survivor区被用来作为Eden及old的中间交换区域，当OLD区空间足够时，Survivor区的对象会被移到Old区，否则会被保留在Survivor区；<br /></li>
+<li>当old区空间不够时，JVM会在old区进行major collection；<br /></li>
+<li>完全垃圾收集后，若Survivor及old区仍然无法存放从Eden复制过来的部分对象，导致JVM无法在Eden区为新对象创建内存区域，则出现&rdquo;Out of memory错误&rdquo;。<br /></li>
+</ol>
+
+<hr />
+
+<h2 id="虚拟机类加载机制">虚拟机类加载机制</h2>
+
+<blockquote>
+<p>对于任意一个类，都需要由加载它的类加载器和这个类本身一同确立其在Java虚拟机中的唯一性</p>
+</blockquote>
+
+<h3 id="类加载的过程">类加载的过程</h3>
+
+<p><img src="http://img.blog.csdn.net/20170430160610299?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamF2YXplamlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="xxx" /></p>
+
+<ol>
+<li><p>加载：类加载器执行，根据类名查找.class文件，查找字节码，并从这些字节码中创建一个Class对象</p></li>
+
+<li><p>链接：验证类中的字节码，确保没有被破坏且不包含不良Java代码。为静态域分配存储空间</p></li>
+
+<li><p>初始化：如果该类具有超类，则对其初始化。</p></li>
+</ol>
+
+<h3 id="类加载器">类加载器</h3>
+
+<h4 id="类与类加载器">类与类加载器</h4>
+
+<p>JDK中提供了三个ClassLoader，根据层级从高到低为：</p>
+
+<ol>
+<li>Bootstrap ClassLoader，主要加载JVM自身工作需要的类。<br /></li>
+<li>Extension ClassLoader，主要加载%JAVA_HOME%\lib\ext目录下的库类。<br /></li>
+<li>Application ClassLoader，主要加载Classpath指定的库类，一般情况下这是程序中的默认类加载器，也是ClassLoader.getSystemClassLoader() 的返回值。（这里的Classpath默认指的是环境变量中配置的Classpath，但是可以在执行Java命令的时候使用-cp 参数来修改当前程序使用的Classpath）<br /></li>
+</ol>
+
+<h4 id="双亲委派模型">双亲委派模型</h4>
+
+<p>​如果一个类加载器收到了类加载的请求，他首先不会自己去尝试加载这个类，而是把这个请求委托给自己的父加载器，每一层的类加载器都是如此，因此所有的类加载请求最终都应该传送到顶层的<strong>Bootstrap ClassLoader</strong>中，只有当父加载器反馈自己无法完成加载请求时，子加载器才会尝试自己加载。</p>
+
+<p><strong>双亲委托模型的重要用途是为了解决类载入过程中的安全性问题。</strong></p>
+
+<p>假设有一个开发者自己编写了一个名为<strong>Java.lang.Object</strong>的类，想借此欺骗JVM。现在他要使用<strong>自定义ClassLoader</strong>来加载自己编写的<strong>java.lang.Object</strong>类。然而幸运的是，<strong>双亲委托模型</strong>不会让他成功。因为JVM会优先在<strong>Bootstrap ClassLoader</strong>的路径下找到<strong>java.lang.Object</strong>类，并载入它</p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Java-HashMap &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Java-HashMap</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#摘要-未完">摘要（未完）</a></li>
+<li><a href="#概述">概述</a></li>
+<li><a href="#hashmap内部结构">HashMap内部结构</a>
+<ul>
+<li><a href="#负载因子">负载因子</a></li>
+<li><a href="#容量">容量</a>
+<ul>
+<li><a href="#默认">默认</a></li>
+<li><a href="#设定">设定</a></li>
+</ul></li>
+<li><a href="#maximum-capacit">MAXIMUM_CAPACIT</a></li>
+<li><a href="#hash">Hash</a></li>
+<li><a href="#扩容">扩容</a></li>
+</ul></li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-01-29T13:55:25Z class="post-date">Mon, Jan 29, 2018</time>
+  <h2 id="摘要-未完">摘要（未完）</h2>
+
+<p>查看了一下HashMap源代码，一些基本知识点</p>
+
+<p>参考资料里面其实写的很好，建议看参考链接</p>
+
+<h2 id="概述">概述</h2>
+
+<p>它根据键的hashCode值存储数据，大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。</p>
+
+<p>HashMap 大概具有以下特点：</p>
+
+<ul>
+<li>底层实现是 链表数组，JDK 8 后又加了 红黑树</li>
+<li>实现了 Map 全部的方法</li>
+<li>key 用 Set 存放，所以想做到 <strong>key 不允许重复</strong>，key 对应的类需要重写 hashCode 和 equals 方法</li>
+<li>允许空键和空值（但空键只有一个，且放在第一位）</li>
+<li>元素是无序的，而且顺序会不定时改变</li>
+<li>插入、获取的时间复杂度基本是 O(1)（前提是有适当的哈希函数，让元素分布在均匀的位置）</li>
+<li>遍历整个 Map 需要的时间与 桶(数组) 的长度成正比（因此初始化时 HashMap 的容量不宜太大）</li>
+<li>两个关键因子：初始容量、加载因子</li>
+</ul>
+
+<p>除了不允许 null 并且同步，Hashtable 几乎和他一样。</p>
+
+<h2 id="hashmap内部结构">HashMap内部结构</h2>
+
+<p>JDK1.7 中hashmap 是通过 桶（数组）加链表的数据结构来实现的。当发生hash碰撞的时候，以链表的形式进行存储。</p>
+
+<p>JDK1.8 中hashmap 增加了在原有桶（数组） + 链表的基础上增加了黑红树的使用。当一个hash碰撞的数量超过指定次数(TREEIFY_THRESHOLD)的时候，链表将转化为红黑树结构。</p>
+
+<h3 id="负载因子">负载因子</h3>
+
+<p>默认为0.75。一般不建议修改，</p>
+
+<ul>
+<li>加载因子太大的话发生冲突的可能就会大，查找的效率反而变低，如果内存空间紧张而对时间效率要求不高可增加。</li>
+<li>太小的话频繁 rehash，导致性能降低，如果内存空间很多而又对时间效率要求很高可</li>
+</ul>
+
+<h3 id="容量">容量</h3>
+
+<h4 id="默认">默认</h4>
+
+<p>桶数默认为16，非常规设计（一般采用素数），主要是为了在取模和扩容时做优化，同时为了减少冲突。</p>
+
+<h4 id="设定">设定</h4>
+
+<p>在构造hashmap时，如果你传入的是一个自己设定的数字，它会调用<code>tableSizeFor</code>帮你转换成一个比传入容量参数值大的最小的<strong>2的n次方</strong>（所以不管你传入什么数字最终还是2的幂）。</p>
+
+<p>这里tableSizeFor如果你看过源代码的话，会发现用的是挺晦涩的位运算（强烈吐槽），下面一大堆的运算你可以理解为把这个数字的所有位都变为1，再加上1，就能得到比传入容量参数值大的最小的<strong>2的n次方</strong>。</p>
+
+<pre><code class="language-java">    static final int tableSizeFor(int cap) {
+        int n = cap - 1;
+        n |= n &gt;&gt;&gt; 1;
+        n |= n &gt;&gt;&gt; 2;
+        n |= n &gt;&gt;&gt; 4;
+        n |= n &gt;&gt;&gt; 8;
+        n |= n &gt;&gt;&gt; 16;
+        return (n &lt; 0) ? 1 : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+    }
+</code></pre>
+
+<h3 id="maximum-capacit">MAXIMUM_CAPACIT</h3>
+
+<p>上面的<code>MAXIMUM_CAPACIT</code>的值是<code>1 &lt;&lt; 30</code></p>
+
+<p>这个设定应该是考虑到int是4个字节，每个字节8位，就是32位，然后有一位是表示正负的，整数最大是(2^31)-1，但是选择<code>小于等于2^30次</code>而不是<code>小于2^31</code>，网上翻了一圈没找到答案，我姑且觉得就是其实无论是2^30也好，2^31也好，其实只是表示一个大概的峰值，实际项目中基本不会出现这种需求，所以具体数字是什么无所谓。</p>
+
+<h3 id="hash">Hash</h3>
+
+<p>HashMap 中通过将<code>传入键的 hashCode</code> 和<code>此值按位右移 16 位补零后的值</code>进行按位异或，得到这个键的哈希值。</p>
+
+<pre><code class="language-java">(h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
+</code></pre>
+
+<p>这里是由于，由于哈希表的容量都是 <strong>2 的 N 次方</strong>（最大2^30），在当前，元素的 hashCode() 在很多时候下低位是相同的，这将导致冲突（碰撞），因此 1.8 以后做了个移位操作：将元素的 hashCode() 和自己右移 16 位后的结果求异或。</p>
+
+<p>由于 int 只有 32 位（4*8），无符号右移 16 位相当于把高位的一半移到低位：</p>
+
+<p><img src="http://img.blog.csdn.net/20160408155045341" alt="ddd" /></p>
+
+<h3 id="扩容">扩容</h3>
+
+<h2 id="参考资料">参考资料</h2>
+
+<p><a href="https://tech.meituan.com/java-hashmap.html">Java 8系列之重新认识HashMap</a></p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>爬虫-pyspider &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>爬虫-pyspider</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#一-python">一、python</a></li>
+<li><a href="#二-charles">二、charles</a>
+<ul>
+<li><a href="#使用">使用</a></li>
+</ul></li>
+<li><a href="#三-pyspider">三、pyspider</a>
+<ul>
+<li>
+<ul>
+<li><a href="#3-1windows安装">3.1windows安装:</a></li>
+</ul></li>
+<li><a href="#3-2mac">3.2MAC</a></li>
+<li><a href="#mysql">MySQL</a></li>
+</ul></li>
+<li><a href="#四-爬虫代码">四、爬虫代码</a>
+<ul>
+<li><a href="#b站热门">B站热门</a></li>
+<li><a href="#链家二手房">链家二手房</a></li>
+<li><a href="#链家小区">链家小区</a></li>
+</ul></li>
+<li><a href="#五-参考链接">五、参考链接</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-02-05T16:19:14Z class="post-date">Mon, Feb 5, 2018</time>
+  <p>爬虫</p>
+
+<h2 id="一-python">一、python</h2>
+
+<h2 id="二-charles">二、charles</h2>
+
+<p>抓包软件</p>
+
+<h3 id="使用">使用</h3>
+
+<p>手机和电脑登录同一个wifi，help-local ip address获取本地ip，</p>
+
+<p>在手机选择对应的wifi-修改网络-高级选项-代理-手动-填写ip和端口（一般为888）</p>
+
+<p>https需要SSL</p>
+
+<p>参考：<a href="http://blog.devtang.com/2015/11/14/charles-introduction/#%E6%88%AA%E5%8F%96-Https-%E9%80%9A%E8%AE%AF%E4%BF%A1%E6%81%AF">Charles 从入门到精通</a></p>
+
+<h2 id="三-pyspider">三、pyspider</h2>
+
+<h4 id="3-1windows安装">3.1windows安装:</h4>
+
+<p>3.1.1安装python</p>
+
+<p><a href="https://www.python.org/downloads/windows/">下载地址</a></p>
+
+<p>3.1.2安装对应python版本的pycurl</p>
+
+<p><a href="https://bintray.com/pycurl/pycurl/pycurl/view#files">下载地址</a></p>
+
+<p>3.1.3配置config文件</p>
+
+<pre><code class="language-json">{
+  &quot;taskdb&quot;: &quot;mysql+taskdb://root:0120@127.0.0.1:3306/taskdb&quot;,
+  &quot;projectdb&quot;: &quot;mysql+projectdb://root:0120@127.0.0.1:3306/projectdb&quot;,
+  &quot;resultdb&quot;: &quot;mysql+resultdb://root:0120@127.0.0.1:3306/resultdb&quot;,
+  &quot;queue-maxsize&quot;: 2000,
+  &quot;webui&quot;: {
+    &quot;port&quot;: 5000,
+    &quot;process-time-limit&quot;: 300
+  },
+  &quot;scheduler&quot;: {
+    &quot;fail-pause-num&quot;: 0,
+    &quot;active-tasks&quot;: 2000,
+    &quot;loop-limit&quot;:2000,
+    &quot;threads&quot;:8
+  },
+  &quot;processor&quot;: {
+    &quot;process-time-limit&quot;: 300
+  },
+  &quot;fetcher&quot;: {
+    &quot;poolsize&quot;:2000
+  },
+  &quot;all&quot;: {
+    &quot;fetcher-num&quot;: 20,
+    &quot;processor-num&quot;: 20
+  }
+}
+
+
+#json文件放到pyspider的安装地址
+C:\Users\Administrator\AppData\Local\Programs\Python\Python35\Lib\site-packages\pyspider
+</code></pre>
+
+<p>3.1.4通过配置文件启动pyspider</p>
+
+<pre><code># pyspider的安装目录下启动
+pyspider -c pyspider-config.json
+</code></pre>
+
+<p>3.1.5打开localhost:5000</p>
+
+<h3 id="3-2mac">3.2MAC</h3>
+
+<p>启动pyspider虚拟环境</p>
+
+<pre><code>source venv/bin/activate
+</code></pre>
+
+<p>使用自己的配置启动pyspider</p>
+
+<pre><code>pyspider -c pyspider-config.json
+</code></pre>
+
+<p>打开<a href="http://localhost:5000/进入pyspider页面">http://localhost:5000/进入pyspider页面</a></p>
+
+<p>点击create-把页面右边的代码复制下来，修改为自己的爬虫。</p>
+
+<p>参考：<a href="http://docs.pyspider.org/en/latest/">pyspider官方</a></p>
+
+<p>参考：<a href="https://www.kancloud.cn/manbuheiniu/pyspider">pyspider文档</a></p>
+
+<p><a href="http://www.pyspider.cn/jiaocheng/pyspider-pyquery-14.html">pyspider中内容选择器常用方法汇总</a></p>
+
+<p><a href="http://www.cnblogs.com/shaosks/p/6845655.html">Python中PyQuery库的使用总结</a></p>
+
+<p><a href="http://blog.csdn.net/u010267996/article/details/59480578">在Mac上安装phantomjs及运行</a></p>
+
+<h3 id="mysql">MySQL</h3>
+
+<p>参考：<a href="https://segmentfault.com/q/1010000006507996">https://segmentfault.com/q/1010000006507996</a></p>
+
+<pre><code>pip search mysql-connector | grep --color mysql-connector-python
+然后选择安装版本
+pip install mysql-connector-python-rf==2.1.3
+</code></pre>
+
+<h2 id="四-爬虫代码">四、爬虫代码</h2>
+
+<h3 id="b站热门">B站热门</h3>
+
+<pre><code class="language-python">#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+# Created on 2018-02-03 16:36:48
+# Project: netease
+
+from pyspider.libs.base_handler import *
+import time
+import mysql.connector
+import json
+
+
+class Handler(BaseHandler):
+    crawl_config = {
+    }
+
+    mysql_config = {
+        'host': 'localhost',
+        'user': '***',
+        'password': '******',
+        'port': 3306,
+        'database': '*****',
+        'charset': 'utf8'
+    }
+
+    cnx = mysql.connector.connect(**mysql_config)
+    cursor = cnx.cursor()
+
+    table_name = 'bilibili_ranking'
+
+    @every(minutes=1 * 60)
+    def on_start(self):
+            self.crawl(u'https://api.bilibili.com/x/web-interface/ranking?rid=0&amp;day=3&amp;jsonp=jsonp',
+                       callback=self.index_page,)
+
+    @config(age=0)
+    def index_page(self, response):
+        data1 = json.loads(response.text)
+        data = data1['data']
+        article_list = data['list']
+        result_list = []
+        for article in article_list:
+            result = {}
+            result['aid'] = article['aid'].encode('utf8', 'ignore')
+            result['author'] = article['author'].encode('utf8', 'ignore')
+            result['coins'] = str(article['coins']).encode('utf8', 'ignore')
+            result['duration'] = article['duration'].encode('utf8', 'ignore')
+            result['mid'] = str(article['mid'])
+            result['pic'] = article['pic'].encode('utf8', 'ignore')
+            result['play'] = str(article['play'])
+            result['pts'] = str(article['pts'])
+            result['title'] = article['title'].encode('utf8', 'ignore')
+            result['trend'] = str(article['trend'])
+            result['video_review'] = str(article['video_review'])
+            result['update_time'] = time.strftime('%Y-%m-%d %H:%M:%S').encode('utf8', 'ignore')
+            result['table_name'] = self.table_name
+            result_list.append(result)
+        return result_list
+
+    def on_result(self, result):
+        if not result:
+            return
+        print(result)
+        for item in result:
+            self.process_result(item)
+
+    def process_result(self, result):
+        table_name = result.pop('table_name')
+        col_str = ''
+        row_str = ''
+        for key in result.keys():
+            col_str = col_str + &quot; &quot; + key + &quot;,&quot;
+            row_str = &quot;{}'{}',&quot;.format(row_str,
+                                       result[key] if &quot;'&quot; not in result[key] else result[key].replace(&quot;'&quot;, &quot;\\'&quot;))
+            sql = &quot;insert ignore INTO {} ({}) VALUES ({}) ON DUPLICATE KEY UPDATE &quot;.format(table_name, col_str[1:-1],
+                                                                                           row_str[:-1])
+        for (key, value) in six.iteritems(result):
+            sql += &quot;{} = '{}', &quot;.format(key, value if &quot;'&quot; not in value else value.replace(&quot;'&quot;, &quot;\\'&quot;))
+        sql = sql[:-2]
+        self.cursor.execute(sql)
+        self.cnx.commit()
+
+</code></pre>
+
+<p>数据库（MySQL）</p>
+
+<pre><code class="language-mysql">CREATE TABLE `bilibili_ranking` (
+  `aid` varchar(32) NOT NULL DEFAULT '',
+  `author` varchar(32) DEFAULT NULL,
+  `coins` varchar(32) DEFAULT NULL,
+  `duration` varchar(32) DEFAULT NULL,
+  `mid` varchar(32) DEFAULT NULL,
+  `pic` varchar(128) DEFAULT NULL,
+  `play` varchar(32) DEFAULT NULL,
+  `pts` varchar(128) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `title` varchar(32) DEFAULT NULL,
+  `trend` varchar(32) DEFAULT NULL,
+  `video_review` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`aid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+</code></pre>
+
+<hr />
+
+<h3 id="链家二手房">链家二手房</h3>
+
+<p>以杭州为例</p>
+
+<pre><code class="language-python">from pyspider.libs.base_handler import *
+
+start_page = 1
+stop_page = 100
+
+
+class Handler(BaseHandler):
+    crawl_config = {
+    }
+
+    def __init__(self):
+        self.url = &quot;https://m.lianjia.com/hz/ershoufang/index/pg&quot;
+        self.start_page = start_page
+        self.stop_page = stop_page
+
+    @every(minutes=24 * 60)
+    def on_start(self):
+        while self.start_page &lt; self.stop_page:
+            url = self.url + str(self.start_page)
+            self.crawl(url, callback=self.index_page)
+            self.start_page += 1
+
+    @config(age=0)
+    def index_page(self, response):
+        for each in response.doc('li[class=&quot;pictext&quot;]').items():
+            detail_url = each('a').attr.href
+            print (detail_url)
+            self.crawl(detail_url, callback=self.detail_page)
+
+    @config(priority=2)
+    def detail_page(self, response):
+        return {
+            &quot;url&quot;: response.url,
+            &quot;标题&quot;: response.doc('title').text().encode('utf8', 'ignore'),
+            &quot;售价&quot;: response.doc('.similar_data &gt; .similar_data_detail &gt; p &gt; span').text().encode('utf8', 'ignore'),
+            &quot;单价&quot;: response.doc('ul &gt; .short').eq(0).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;挂牌&quot;: response.doc('ul &gt; .short').eq(1).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;朝向&quot;: response.doc('ul &gt; .short').eq(2).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;楼层&quot;: response.doc('ul &gt; .short').eq(3).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;楼型&quot;: response.doc('ul &gt; .short').eq(4).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;电梯&quot;: response.doc('ul &gt; .short').eq(5).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;装修&quot;: response.doc('ul &gt; .short').eq(6).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;年代&quot;: response.doc('ul &gt; .short').eq(7).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;用途&quot;: response.doc('ul &gt; .short').eq(8).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;权属&quot;: response.doc('ul &gt; .short').eq(9).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;房源编码&quot;: response.doc('ul &gt; .long').eq(0).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;首付预算&quot;: response.doc('ul &gt; .long').eq(1).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;标签&quot;: response.doc('.tag_group').text().encode('utf8', 'ignore'),
+            &quot;小区&quot;: response.doc('ul &gt; .long').eq(2).text().encode('utf8', 'ignore').split(&quot;：&quot;)[1],
+            &quot;房源介绍&quot;: response.doc('.sub_mod_box &gt; .mod_cont').eq(2).text().encode('utf8', 'ignore'),
+            &quot;经纪人带看反馈&quot;: response.doc('.sub_mod_box &gt; .mod_cont').eq(3).text().encode('utf8', 'ignore'),
+            &quot;房源户型&quot;: response.doc('.info_li &gt; .info_content').eq(0).text().encode('utf8', 'ignore'),
+            &quot;建筑面积&quot;: response.doc('.info_li &gt; .info_content').eq(1).text().encode('utf8', 'ignore'),
+            &quot;套内面积&quot;: response.doc('.info_li &gt; .info_content').eq(2).text().encode('utf8', 'ignore'),
+            &quot;户型结构&quot;: response.doc('.info_li &gt; .info_content').eq(3).text().encode('utf8', 'ignore'),
+            &quot;梯户比例&quot;: response.doc('.info_li &gt; .info_content').eq(4).text().encode('utf8', 'ignore'),
+            &quot;供暖方式&quot;: response.doc('.info_li &gt; .info_content').eq(5).text().encode('utf8', 'ignore'),
+            &quot;上次交易&quot;: response.doc('.info_li &gt; .info_content').eq(6).text().encode('utf8', 'ignore'),
+            &quot;购房年限&quot;: response.doc('.info_li &gt; .info_content').eq(7).text().encode('utf8', 'ignore'),
+            &quot;房屋用途&quot;: response.doc('.info_li &gt; .info_content').eq(8).text().encode('utf8', 'ignore'),
+            &quot;交易权属&quot;: response.doc('.info_li &gt; .info_content').eq(9).text().encode('utf8', 'ignore'),
+            &quot;产权所属&quot;: response.doc('.info_li &gt; .info_content').eq(10).text().encode('utf8', 'ignore'),
+            &quot;抵押信息&quot;: response.doc('.info_li &gt; .info_content').eq(11).text().encode('utf8', 'ignore'),
+            &quot;房本备件&quot;: response.doc('.info_li &gt; .info_content').eq(12).text().encode('utf8', 'ignore'),
+            &quot;看房时间&quot;: response.doc('.info_li &gt; .info_content').eq(13).text().encode('utf8', 'ignore'),
+            &quot;链家编号&quot;: response.doc('.info_li &gt; .info_content').eq(14).text().encode('utf8', 'ignore'),
+            &quot;土地年限&quot;: response.doc('.info_li &gt; .info_content').eq(15).text().encode('utf8', 'ignore'),
+            &quot;近7日带看(次)&quot;:
+                response.doc('.mod_box &gt; .mod_cont &gt; .data &gt; .box_col').eq(0).text().encode('utf8', 'ignore').split(
+                    ' ')[1],
+            &quot;30日带看(次)&quot;:
+                response.doc('.mod_box &gt; .mod_cont &gt; .data &gt; .box_col').eq(1).text().encode('utf8', 'ignore').split(
+                    ' ')[1],
+            &quot;关注(人)&quot;:
+                response.doc('.mod_box &gt; .mod_cont &gt; .data &gt; .box_col').eq(2).text().encode('utf8', 'ignore').split(
+                    ' ')[1],
+            &quot;户型分间&quot;: response.doc('.sub_mod_box').eq(0).text().encode('utf8', 'ignore'),
+            &quot;户型分间img&quot;: response.doc('.sub_mod_box &gt; .mod_cont &gt; .pictext &gt; .mod_media &gt; .media_main &gt; .lazyload').attr(
+                'origin-src')
+        }
+
+</code></pre>
+
+<hr />
+
+<h3 id="链家小区">链家小区</h3>
+
+<p>以杭州为例</p>
+
+<pre><code class="language-python">#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+# Created on 2018-02-03 16:36:48
+# Project: netease
+
+from pyspider.libs.base_handler import *
+import time
+import mysql.connector
+import json
+
+
+class Handler(BaseHandler):
+    crawl_config = {
+    }
+
+    mysql_config = {
+        'host': 'localhost',
+        'user': 'root',
+        'password': '******',
+        'port': 3306,
+        'database': '******',
+        'charset': 'utf8'
+    }
+
+    cnx = mysql.connector.connect(**mysql_config)
+    cursor = cnx.cursor()
+
+    table_name = 'bilibili_ranking'
+
+    @every(minutes=1 * 60)
+    def on_start(self):
+            self.crawl(u'https://api.bilibili.com/x/web-interface/ranking?rid=0&amp;day=3&amp;jsonp=jsonp',
+                       callback=self.index_page,)
+
+    @config(age=0)
+    def index_page(self, response):
+        data1 = json.loads(response.text)
+        data = data1['data']
+        article_list = data['list']
+        result_list = []
+        for article in article_list:
+            result = {}
+            result['aid'] = article['aid'].encode('utf8', 'ignore')
+            result['author'] = article['author'].encode('utf8', 'ignore')
+            result['coins'] = str(article['coins']).encode('utf8', 'ignore')
+            result['duration'] = article['duration'].encode('utf8', 'ignore')
+            result['mid'] = str(article['mid'])
+            result['pic'] = article['pic'].encode('utf8', 'ignore')
+            result['play'] = str(article['play'])
+            result['pts'] = str(article['pts'])
+            result['title'] = article['title'].encode('utf8', 'ignore')
+            result['trend'] = str(article['trend'])
+            result['video_review'] = str(article['video_review'])
+            result['update_time'] = time.strftime('%Y-%m-%d %H:%M:%S').encode('utf8', 'ignore')
+            result['table_name'] = self.table_name
+            result_list.append(result)
+        return result_list
+
+    def on_result(self, result):
+        if not result:
+            return
+        print(result)
+        for item in result:
+            self.process_result(item)
+
+    def process_result(self, result):
+        table_name = result.pop('table_name')
+        col_str = ''
+        row_str = ''
+        for key in result.keys():
+            col_str = col_str + &quot; &quot; + key + &quot;,&quot;
+            row_str = &quot;{}'{}',&quot;.format(row_str,
+                                       result[key] if &quot;'&quot; not in result[key] else result[key].replace(&quot;'&quot;, &quot;\\'&quot;))
+            sql = &quot;insert ignore INTO {} ({}) VALUES ({}) ON DUPLICATE KEY UPDATE &quot;.format(table_name, col_str[1:-1],
+                                                                                           row_str[:-1])
+        for (key, value) in six.iteritems(result):
+            sql += &quot;{} = '{}', &quot;.format(key, value if &quot;'&quot; not in value else value.replace(&quot;'&quot;, &quot;\\'&quot;))
+        sql = sql[:-2]
+        self.cursor.execute(sql)
+        self.cnx.commit()
+
+</code></pre>
+
+<p>数据库（MySQL）</p>
+
+<pre><code class="language-mysql">CREATE TABLE `lianjia_xiaoqu` (
+  `housecode` varchar(32) NOT NULL DEFAULT '',
+  `title` varchar(32) DEFAULT NULL,
+  `totalPrice` int(11) DEFAULT NULL,
+  `build_time` int(11) DEFAULT NULL,
+  `district` varchar(11) DEFAULT NULL,
+  `bizcircle` varchar(11) DEFAULT NULL,
+  `totalSellCount` int(11) DEFAULT NULL,
+  `url` varchar(128) DEFAULT NULL,
+  `subwary` varchar(32) DEFAULT NULL COMMENT '现有地铁',
+  `resblockPosition` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`housecode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+</code></pre>
+
+<h2 id="五-参考链接">五、参考链接</h2>
+
+<p><a href="https://blog.csdn.net/liyadongcn/article/details/55211137">Pyspider windows下的安装</a></p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

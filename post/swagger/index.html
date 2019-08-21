@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Swagger &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Swagger</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#零-使用">零、使用</a>
+<ul>
+<li>
+<ul>
+<li><a href="#一-添加-maven-依赖">一、添加 <code>maven</code> 依赖</a></li>
+<li><a href="#二-添加配置类">二、添加配置类</a></li>
+<li><a href="#三-启动项目">三、启动项目</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#一-配置">一、配置</a>
+<ul>
+<li>
+<ul>
+<li><a href="#一-文档描述">一、文档描述</a></li>
+<li><a href="#二-类描述">二、类描述</a></li>
+<li><a href="#三-方法描述">三、方法描述</a></li>
+<li><a href="#四-参数描述">四、参数描述</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2019-08-21T17:43:35&#43;0800 class="post-date">Wed, Aug 21, 2019</time>
+  <p>Swagger的简单使用</p>
+
+<h2 id="零-使用">零、使用</h2>
+
+<h4 id="一-添加-maven-依赖">一、添加 <code>maven</code> 依赖</h4>
+
+<pre><code class="language-xml">        &lt;!-- swagger --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+            &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
+            &lt;version&gt;2.9.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+            &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
+            &lt;version&gt;2.9.2&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+
+<p>截止2019年8月，当前最新的稳定版本就是 2.9.2</p>
+
+<h4 id="二-添加配置类">二、添加配置类</h4>
+
+<pre><code class="language-java">@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+
+    @Bean
+    public Docket api() {
+        Docket docket = new Docket(DocumentationType.SWAGGER_2);
+        docket
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(this.infoApi().build());
+        return docket;
+    }
+
+    /**
+     * 文档信息配置
+     */
+    private ApiInfoBuilder infoApi() {
+        ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
+
+        apiInfoBuilder.title(&quot;Swagger 文档&quot;);
+        apiInfoBuilder.description(&quot;Swagger 文档 描述&quot;);
+        apiInfoBuilder.version(&quot;1.0&quot;);
+
+        return apiInfoBuilder;
+    }
+}
+</code></pre>
+
+<h4 id="三-启动项目">三、启动项目</h4>
+
+<p>启动项目，访问 <a href="https://yq.aliyun.com/go/articleRenderRedirect?url=">http://</a>{path}:{port}/swagger-ui.html 即可查看controller中的接口信息</p>
+
+<h2 id="一-配置">一、配置</h2>
+
+<h4 id="一-文档描述">一、文档描述</h4>
+
+<p>在之前配置的 <code>SwaggerConfig</code> 中，我们可以配置整个文档的描述</p>
+
+<pre><code class="language-java">     /**
+     * 文档信息配置
+     */
+    private ApiInfoBuilder infoApi() {
+        ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
+        //标题
+        apiInfoBuilder.title(&quot;Swagger 文档&quot;);
+        //文档描述
+        apiInfoBuilder.description(&quot;Swagger 文档 描述&quot;);
+        //服务条款网址
+        apiInfoBuilder.termsOfServiceUrl(&quot;https://maoyanting.com&quot;);
+        //联系方式
+        apiInfoBuilder.contact(new Contact(&quot;sandao&quot;,&quot;https://maoyanting.com&quot;,&quot;fhmaoyanting@163.com&quot;));
+        //开源协议
+        apiInfoBuilder.license(&quot;MIT 协议&quot;);
+        //开源协议地址
+        apiInfoBuilder.licenseUrl(&quot;http://www.opensource.org/licenses/MIT&quot;);
+        //版本号
+        apiInfoBuilder.version(&quot;1.0&quot;);
+
+        return apiInfoBuilder;
+    }
+</code></pre>
+
+<h4 id="二-类描述">二、类描述</h4>
+
+<p>使用 <code>@Api</code>  注解</p>
+
+<pre><code class="language-java">@Api(&quot;用户相关接口&quot;)
+@RestController()
+public class UserController {}
+</code></pre>
+
+<p><code>@Api</code>  主要属性</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>注解属性</strong></th>
+<th align="left"><strong>类型</strong></th>
+<th align="left"><strong>描述</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">value</td>
+<td align="left">String</td>
+<td align="left">接口说明</td>
+</tr>
+
+<tr>
+<td align="left">tags</td>
+<td align="left">Stirng[]</td>
+<td align="left">标签。</td>
+</tr>
+
+<tr>
+<td align="left">produces</td>
+<td align="left">String</td>
+<td align="left">接口返回方式</td>
+</tr>
+
+<tr>
+<td align="left">consumes</td>
+<td align="left">String</td>
+<td align="left">接口请求方式</td>
+</tr>
+
+<tr>
+<td align="left">Authorization</td>
+<td align="left">Authorization[]</td>
+<td align="left">权限</td>
+</tr>
+
+<tr>
+<td align="left">protocols</td>
+<td align="left">String</td>
+<td align="left">可用协议</td>
+</tr>
+
+<tr>
+<td align="left">hidden</td>
+<td align="left">boolean</td>
+<td align="left">是否隐藏</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="三-方法描述">三、方法描述</h4>
+
+<p>使用 <code>@ApiOperation</code> 注解</p>
+
+<pre><code class="language-java">    @GetMapping(&quot;/testValid&quot;)
+    @ApiOperation(&quot;校验用户接口&quot;)
+    public String testValid(@Valid User user, BindingResult bindingResult){
+    }
+</code></pre>
+
+<p><code>@ApiOperation</code>  主要属性</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>注解属性</strong></th>
+<th align="left"><strong>类型</strong></th>
+<th align="left"><strong>描述</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">value</td>
+<td align="left">String</td>
+<td align="left">接口说明。</td>
+</tr>
+
+<tr>
+<td align="left">notes</td>
+<td align="left">String</td>
+<td align="left">操作的详细描述</td>
+</tr>
+
+<tr>
+<td align="left">tags</td>
+<td align="left">Stirng[]</td>
+<td align="left">标签，可用于按资源或任何其他限定符对操作进行分组</td>
+</tr>
+
+<tr>
+<td align="left">response</td>
+<td align="left">Class&lt;?&gt;</td>
+<td align="left">接口返回类型。</td>
+</tr>
+
+<tr>
+<td align="left">httpMethod</td>
+<td align="left">String</td>
+<td align="left">接口请求方式。通常为 &ldquo;GET&rdquo;, &ldquo;HEAD&rdquo;, &ldquo;POST&rdquo;, &ldquo;PUT&rdquo;, &ldquo;DELETE&rdquo;, &ldquo;OPTIONS&rdquo; and &ldquo;PATCH&rdquo;.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="四-参数描述">四、参数描述</h4>
+
+<p><code>@ApiModel</code>  设置实体类的描述。</p>
+
+<p><code>@ApiModelProperty</code> 设置实体类属性的描述</p>
+
+<pre><code class="language-java">@Data
+@ApiModel
+public class User {
+    @NotNull
+    @ApiModelProperty(&quot;姓名&quot;)
+    private String name;
+    private String sex;
+    private Integer age;
+    private CareerEnum career;
+    private List&lt;User&gt; children;
+    }
+</code></pre>
+
+<p>@ApiModelProperty 主要属性</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>注解属性</strong></th>
+<th align="left"><strong>类型</strong></th>
+<th align="left"><strong>描述</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">value</td>
+<td align="left">String</td>
+<td align="left">字段说明。</td>
+</tr>
+
+<tr>
+<td align="left">name</td>
+<td align="left">String</td>
+<td align="left">重写字段名称。</td>
+</tr>
+
+<tr>
+<td align="left">dataType</td>
+<td align="left">Stirng</td>
+<td align="left">重写字段类型。</td>
+</tr>
+
+<tr>
+<td align="left">required</td>
+<td align="left">boolean</td>
+<td align="left">是否必填。</td>
+</tr>
+
+<tr>
+<td align="left">example</td>
+<td align="left">Stirng</td>
+<td align="left">举例说明。</td>
+</tr>
+
+<tr>
+<td align="left">hidden</td>
+<td align="left">boolean</td>
+<td align="left">是否在文档中隐藏该字段。</td>
+</tr>
+
+<tr>
+<td align="left">allowEmptyValue</td>
+<td align="left">boolean</td>
+<td align="left">是否允许为空。</td>
+</tr>
+
+<tr>
+<td align="left">allowableValues</td>
+<td align="left">String</td>
+<td align="left">该字段允许的值，当我们 API 的某个参数为枚举类型时，使用这个属性就可以清楚地告诉 API 使用者该参数所能允许传入的值。</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JavaWeb-Maven &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>JavaWeb-Maven</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#设置">设置</a>
+<ul>
+<li><a href="#查找依赖包">查找依赖包</a></li>
+<li><a href="#设置中央仓库的镜像">设置中央仓库的镜像</a></li>
+</ul></li>
+<li><a href="#pom">POM</a>
+<ul>
+<li><a href="#ssm必要的依赖">SSM必要的依赖</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-02-08T20:09:53Z class="post-date">Thu, Feb 8, 2018</time>
+  <p>依赖寻找和设置，POM，SSM必要依赖等</p>
+
+<h2 id="设置">设置</h2>
+
+<h3 id="查找依赖包">查找依赖包</h3>
+
+<p>推荐<a href="https://repository.sonatype.org/index.html#nexus-search;quick~mybatis-generator-maven-plugin">sonatype RSO</a></p>
+
+<p>就是有时候有点慢</p>
+
+<h3 id="设置中央仓库的镜像">设置中央仓库的镜像</h3>
+
+<p>maven默认的 central 中央仓库，指向的地址是 <code>repo.maven.apache.org</code> 。</p>
+
+<p>这个地址经常出现问题，比如不能访问，或者速度超慢（低于1k/s）。因此在国内最好找一个国内的镜像站点来避免直接访问 central 中央仓库。</p>
+
+<p>参考：<a href="https://skyao.gitbooks.io/learning-maven/content/installation/mirror.html">设置中央仓库的镜像</a></p>
+
+<hr />
+
+<h2 id="pom">POM</h2>
+
+<p><a href="https://www.jianshu.com/p/8417a94c4d94">@Maven POM 详解</a></p>
+
+<p>最基本的pom.xml如下：</p>
+
+<pre><code class="language-xml">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;//POM 模型版本号 (通常为 4.0.0)
+    &lt;groupId&gt;com.sandao&lt;/groupId&gt;//组织或者公司名，通常是反向域名
+    &lt;artifactId&gt;newjavaweb&lt;/artifactId&gt;
+    &lt;packaging&gt;war&lt;/packaging&gt;//项目的包装方式，可选，默认为jar或者war
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;//当前版本号
+    &lt;name&gt;newjavaweb Maven Webapp&lt;/name&gt;
+    &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+    
+ &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;//这个依赖所属于的组织或公司
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;//我们需要的依赖的程序库
+      &lt;version&gt;4.12&lt;/version&gt;//版本号
+      &lt;scope&gt;test&lt;/scope&gt;//作用域
+    &lt;/dependency&gt;
+ &lt;dependencies&gt;  
+    &lt;build&gt;
+        &lt;finalName&gt;interview_question&lt;/finalName&gt;
+    &lt;/build&gt;
+&lt;/project&gt;
+</code></pre>
+
+<blockquote>
+<p>延伸资料：<a href="https://www.zhihu.com/question/22129866">tar包和jar包和war包的区别？</a></p>
+</blockquote>
+
+<h3 id="ssm必要的依赖">SSM必要的依赖</h3>
+
+<blockquote>
+<p>这里是我觉得必要的依赖，网上没找到讲这方面的，如有错请务必提出来。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th align="left">依赖名</th>
+<th>功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>———测试—————</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td align="left">junit</td>
+<td></td>
+</tr>
+
+<tr>
+<td align="left"><strong>———日志—————</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td align="left">slf4j-api</td>
+<td>使用lSlf4j+logback组合</td>
+</tr>
+
+<tr>
+<td align="left">logback-core</td>
+<td>其余组合详见<a href="http://tech.lede.com/2017/02/06/rd/server/log4jSearch/">日志工具现状调研</a>、<a href="http://www.ixirong.com/2016/03/13/intro-to-java-log/">混乱的 Java 日志体系</a></td>
+</tr>
+
+<tr>
+<td align="left">logback-classic(集成包)</td>
+<td></td>
+</tr>
+
+<tr>
+<td align="left"><strong>———数据库—————</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td align="left">mysql-connector-java</td>
+<td>使用了c3p0，其余选择见<a href="http://blog.csdn.net/u012050416/article/details/50738892">c3p0数据库连接池介绍+实例</a></td>
+</tr>
+
+<tr>
+<td align="left">c3p0</td>
+<td></td>
+</tr>
+
+<tr>
+<td align="left"><strong>———Mybatis—————</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td align="left">mybatis</td>
+<td>使用了mybatis-spring</td>
+</tr>
+
+<tr>
+<td align="left">mybatis-spring</td>
+<td>具体使用详见<a href="http://www.mybatis.org/spring/zh/index.html">mybatis-spring(中文)</a>和<a href="http://www.mybatis.org/spring/factorybean.html">mybatis-spring(English)</a></td>
+</tr>
+
+<tr>
+<td align="left">mybatis-generator-core</td>
+<td>辅助：自动生成Mapping的映射文件</td>
+</tr>
+
+<tr>
+<td align="left"><strong>———Spring—————</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td align="left">spring-webmvc</td>
+<td></td>
+</tr>
+
+<tr>
+<td align="left">spring-test</td>
+<td>配合junit使用，详见[<a href="http://www.cnblogs.com/rainisic/archive/2012/01/22/Spring_Test_Framework.html">Spring Test 整合 JUnit 4 使用总结</a>]</td>
+</tr>
+
+<tr>
+<td align="left">spring-tx</td>
+<td>spring提供对事务的支持</td>
+</tr>
+
+<tr>
+<td align="left"></td>
+<td>其余可参考<a href="http://www.cnblogs.com/zhangminghui/p/3455782.html">Spring3.2.2中相关Jar包的作用</a></td>
+</tr>
+
+<tr>
+<td align="left"><strong>———Json—————</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td align="left">fastjson</td>
+<td>ali的一个开源json软件</td>
+</tr>
+
+<tr>
+<td align="left"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>这里重点提一下spring-webmvc，这里导入的是4.3.13.RELEASE，同时，还会隐式导入</p>
+
+<ul>
+<li><p>spring-beans:</p></li>
+
+<li><p>spring-context:</p></li>
+
+<li><p>spring-aop:</p></li>
+
+<li><p>spring-core:</p></li>
+
+<li><p>spring-web:</p></li>
+
+<li><p>spring-expression:</p></li>
+
+<li><p>commons-logging:</p></li>
+
+<li><p>spring-context-support</p></li>
+
+<li><p>spring-oxm</p></li>
+
+<li><p>javax.servlet-api</p></li>
+</ul>
+
+<p>等依赖，所以，如果你导入了spring-webmvc，这些依赖就不需要重复写一遍了。</p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

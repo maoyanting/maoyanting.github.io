@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Git-基本操作 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Git-基本操作</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#merge">merge</a></li>
+<li><a href="#reset">reset</a></li>
+<li><a href="#cherry-pick">cherry pick</a></li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-03-19T23:14:11Z class="post-date">Mon, Mar 19, 2018</time>
+  <p>继装Git就遇到很大的问题后，我发现我对Git并不是很了解……因为之前都是直接用sourcetree的</p>
+
+<p>整理学习一下吧</p>
+
+<p>当然，新手其实最需要的就是三个技能：clone，merge，push</p>
+
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png" alt="git" /></p>
+
+<blockquote>
+<ul>
+<li>Workspace：工作区</li>
+<li>Index / Stage：暂存区</li>
+<li>Repository：仓库区（或本地仓库）</li>
+<li>Remote：远程仓库</li>
+</ul>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>method</th>
+<th>解释</th>
+<th>其他</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>git remote</code></td>
+<td>列出每个远程库的简短名字</td>
+<td>可加上 <code>-v</code> 选项（ <code>--verbose</code> 的简写），显示对应的克隆地址</td>
+</tr>
+
+<tr>
+<td><code>git remote add [shortname] [url]</code></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git fetch</code></td>
+<td>同步远程分支</td>
+<td>可能有人新建了远程分支，但是在本地上的Remote Branches中并没有远程分支</td>
+</tr>
+
+<tr>
+<td><code>git revert</code></td>
+<td>本地的文件修改后，想要恢复到本地git仓库上次的提交</td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git clone</code></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git reset</code></td>
+<td>回退到某次提交</td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="merge">merge</h3>
+
+<p>A merge B是把A中的改动放到B分支上</p>
+
+<p>例如把master分支上的改动移到分支orign上，可以这样merge。</p>
+
+<ol>
+<li>转到master分支上，然后更新master最新更新。</li>
+<li>再转到orign上，然后在Local Branches中选择master分支，选择merge，这样就把本地的master merge到 本地仓库的orign上，然后再选择git push ，这样就把远程master merge到 orign上, 并会提示: Merged master to orign。</li>
+</ol>
+
+<h3 id="reset">reset</h3>
+
+<pre><code>$ git reset --hard HEAD^         回退到上个版本
+$ git reset --hard HEAD~3        回退到前3次提交之前，以此类推，回退到n次提交之前
+$ git reset --hard commit_id     退到/进到 指定commit的sha码
+</code></pre>
+
+<h3 id="cherry-pick">cherry pick</h3>
+
+<p>使用情况：其中一个分支A的部分commit你想单独拿出来，放到另一个分支B上去。</p>
+
+<p>这篇讲的很清晰，就不摘抄过来了。</p>
+
+<blockquote>
+<p>使用链接：<a href="https://yq.aliyun.com/articles/640890">使用IDEA进行git cherry-pick操作</a></p>
+</blockquote>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="https://blog.csdn.net/lovesummerforever/article/details/50032937">Intellij IDEA 中的git操作 </a></p>
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>

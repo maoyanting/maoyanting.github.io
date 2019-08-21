@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JavaWeb-WebSocket在Spring&#43;React的实现 &middot; 修仙下属委员会</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="修仙下属委员会" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://maoyanting.github.io/"><h1>修仙下属委员会</h1></a>
+      <p class="lead">
+      前给排水工程师现程序媛 
+      <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://maoyanting.github.io/">Home</a> </li>
+        <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
+        <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
+        
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>JavaWeb-WebSocket在Spring&#43;React的实现</h1>
+  <div id="toc" class="well col-md-4 col-sm-6">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#背景">背景</a></li>
+<li><a href="#前端部分">前端部分：</a></li>
+<li><a href="#后端部分">后端部分</a>
+<ul>
+<li><a href="#添加依赖">添加依赖</a></li>
+<li><a href="#handler类">Handler类</a></li>
+<li><a href="#拦截器">拦截器</a>
+<ul>
+<li><a href="#不实现自己的拦截器">不实现自己的拦截器</a></li>
+<li><a href="#实现自己的拦截器">实现自己的拦截器</a></li>
+</ul></li>
+<li><a href="#配置">配置</a>
+<ul>
+<li><a href="#编写-websocketconfig-配置类-实现-websocketconfigurer-接口">编写 <code>WebSocketConfig</code> 配置类，实现 <code>WebSocketConfigurer</code>接口</a>
+<ul>
+<li><a href="#addhandler">addHandler()</a></li>
+<li><a href="#addinterceptors">addInterceptors()</a></li>
+<li><a href="#setallowedorigins-string-domains">setAllowedOrigins(String[] domains)</a></li>
+</ul></li>
+<li><a href="#通过-xml-配置文件添加配置">通过 XML 配置文件添加配置</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#开启和关闭websocket">开启和关闭webSocket</a>
+<ul>
+<li><a href="#1-开启">1 开启</a></li>
+<li><a href="#2-运行">2 运行</a></li>
+<li><a href="#3-关闭">3 关闭</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  <time datetime=2018-01-05T11:27:46Z class="post-date">Fri, Jan 5, 2018</time>
+  
+
+<h2 id="背景">背景</h2>
+
+<p><strong>先说一下别的轮询方式：</strong>
+ajax轮询：让浏览器隔个几秒就发送一次请求，询问服务器是否有新信息。
+long poll：浏览器发起连接后，如果没消息，就一直不返回Response给浏览器。直到有消息才返回，返回完之后，浏览器再次建立连接，周而复始。</p>
+
+<p>ajax轮询 需要服务器有很快的处理速度和资源。
+long poll 需要有很高的并发。</p>
+
+<p><strong>再说webSocket</strong>，先必须记住，<strong>webSocket是一个协议</strong>
+我们使用的应该说是webSocket API</p>
+
+<p>WebSocket是基于TCP的独立的协议。
+和HTTP的唯一关联就是HTTP服务器需要发送一个“Upgrade”请求，即101 Switching Protocol到HTTP服务器，然后由服务器进行协议转换</p>
+
+<p>//简单来说，就是我是从TCP那边继承过来的，干活需要依靠HTTP先帮我连接上</p>
+
+<h2 id="前端部分">前端部分：</h2>
+
+<p><strong>最简单的实现：</strong></p>
+
+<pre><code>const ws = new WebSocket(&quot;ws://echo.websocket.org/ws&quot;);
+
+ws.onopen = function(evt) {
+  console.log(&quot;Connection open ...&quot;);
+  ws.send(&quot;Hello WebSockets!&quot;);
+};
+
+ws.onmessage = function(evt) {
+  console.log( &quot;Received Message: &quot; + evt.data);
+  ws.close();
+};
+
+ws.onclose = function(evt) {
+  console.log(&quot;Connection closed.&quot;);
+};
+</code></pre>
+
+<h2 id="后端部分">后端部分</h2>
+
+<p>先放<a href="https://docs.spring.io/spring/docs/4.3.12.RELEASE/spring-framework-reference/htmlsingle/#websocket">官方文档</a>(我用的是spring 4.3.13.RELEASE)</p>
+
+<p>其实基本上就4四个部分：
+1. 添加依赖
+2. Handler类
+3. 拦截器
+4. 配置</p>
+
+<h3 id="添加依赖">添加依赖</h3>
+
+<pre><code>    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-websocket&lt;/artifactId&gt;
+      &lt;version&gt;4.3.13.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
+      &lt;artifactId&gt;tomcat-embed-websocket&lt;/artifactId&gt;
+      &lt;version&gt;8.0.23&lt;/version&gt;
+      &lt;scope&gt;provided&lt;/scope&gt;
+    &lt;/dependency&gt;
+</code></pre>
+
+<h3 id="handler类">Handler类</h3>
+
+<p>Handler类一般implementing <code>WebSocketHandler</code> 或者extending <code>TextWebSocketHandler</code> or <code>BinaryWebSocketHandler</code></p>
+
+<pre><code>public interface WebSocketHandler {
+	void afterConnectionEstablished(WebSocketSession session) throws Exception;
+	void handleMessage(WebSocketSession session, WebSocketMessage&lt;?&gt; message) throws Exception;
+	void handleTransportError(WebSocketSession session, Throwable exception) throws Exception;
+	void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception;
+	boolean supportsPartialMessages();
+}
+</code></pre>
+
+<h3 id="拦截器">拦截器</h3>
+
+<p>这里你可以选择:</p>
+
+<h4 id="不实现自己的拦截器">不实现自己的拦截器</h4>
+
+<p>使用spring给你的<code>HttpSessionHandshakeInterceptor</code></p>
+
+<p>Spring官方文档是有写：</p>
+
+<blockquote>
+<p>easiest way to customize the initial HTTP WebSocket handshake request is through a HandshakeInterceptor, which exposes &ldquo;before&rdquo; and &ldquo;after&rdquo; the handshake methods. Such an interceptor can be used to preclude the handshake or to make any attributes available to the WebSocketSession.</p>
+</blockquote>
+
+<p>通俗的说</p>
+
+<p>普通request的session和webSocket的<code>WebSocketSession</code>是不一样的。</p>
+
+<p><code>HttpSessionHandshakeInterceptor</code>会帮你把session中的attributes拿出来，放到<code>WebSocketSession</code>里面去</p>
+
+<h4 id="实现自己的拦截器">实现自己的拦截器</h4>
+
+<pre><code>@Component
+public class WebSocketHandshakeInterceptor extends BaseController implements HandshakeInterceptor {
+    private static final Logger logger = LoggerFactory.getLogger(WebSocketHandshakeInterceptor.class);
+
+    @Override
+    public boolean beforeHandshake(ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse, WebSocketHandler webSocketHandler, Map&lt;String, Object&gt; map) throws Exception {
+        if (serverHttpRequest instanceof ServletServerHttpRequest) {
+            ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) serverHttpRequest;
+            HttpSession session = servletRequest.getServletRequest().getSession(false);
+            User user = getSessionUser(servletRequest.getServletRequest());
+            if (session != null) {
+                map.put(WEBSOCKET_USERID, user.getUserId());
+            }else {
+                logger.error(&quot;session为空&quot;);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void afterHandshake(ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse, WebSocketHandler webSocketHandler, Exception e) {
+
+    }
+}
+</code></pre>
+
+<p>其中，beforeHandshake()方法，在调用 handler 前调用。
+常用来注册用户信息，绑定 WebSocketSession，在 handler 里根据用户信息获取WebSocketSession发送消息。
+注意：⚠️需要把这个拦截器注册让spring识别</p>
+
+<p>//这里获取的user是之前在用户登录的时候就把user放入了session中。
+继承的controller里面有getSessionUser方法。</p>
+
+<h3 id="配置">配置</h3>
+
+<h4 id="编写-websocketconfig-配置类-实现-websocketconfigurer-接口">编写 <code>WebSocketConfig</code> 配置类，实现 <code>WebSocketConfigurer</code>接口</h4>
+
+<pre><code>@Configuration
+@EnableWebSocket
+public class WebSocketConfig implements WebSocketConfigurer {
+    @Autowired
+    private SystemWebSocketHandler systemWebSocketHandler;
+    @Autowired
+    private WebSocketHandshakeInterceptor webSocketHandshakeInterceptor;
+
+    /**
+     * 注册实现类，设置访问WebSocket的地址
+     * 注册拦截器
+     *
+     * @param webSocketHandlerRegistry
+     */
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
+        webSocketHandlerRegistry.addHandler(systemWebSocketHandler, &quot;/ws&quot;)
+                .addInterceptors(webSocketHandshakeInterceptor).setAllowedOrigins(&quot;http://localhost:8000&quot;);
+    }
+}
+</code></pre>
+
+<p>实现<code>WebSocketConfigurer</code> 接口，重写 <code>registerWebSocketHandlers</code> 方法，这是一个核心实现方法，配置 <code>websocket</code> 入口，允许访问的域、注册 Handler、SockJs 支持和拦截器。</p>
+
+<h5 id="addhandler">addHandler()</h5>
+
+<p>注册和路由的功能，当客户端发起 websocket 连接，把 /path 交给对应的 handler 处理，而不实现具体的业务逻辑，可以理解为收集和任务分发中心。</p>
+
+<h5 id="addinterceptors">addInterceptors()</h5>
+
+<p>顾名思义就是为 handler 添加拦截器，
+可以用spring给的<code>HttpSessionHandshakeInterceptor</code>，</p>
+
+<pre><code>addInterceptors(new HttpSessionHandshakeInterceptor())
+</code></pre>
+
+<p>也可以如上文，使用自己写的拦截器</p>
+
+<h5 id="setallowedorigins-string-domains">setAllowedOrigins(String[] domains)</h5>
+
+<p>允许指定的域名或IP(含端口号)建立长连接，如果只允许自家域名访问，这里轻松设置。如果不限时使用&rdquo;*&ldquo;号，如果指定了域名，则必须要以http或https开头。
+//我这里是因为我的前端项目通过代理访问后端的接口所以需要设置。</p>
+
+<h4 id="通过-xml-配置文件添加配置">通过 XML 配置文件添加配置</h4>
+
+<pre><code>&lt;bean id=&quot;chatHandler&quot; class=&quot;com.websocket.SystemWebSocketHandler&quot;/&gt;
+&lt;websocket:handlers&gt;
+    &lt;!-- 配置消息处理bean和路径的映射关系 --&gt;
+    &lt;websocket:mapping path=&quot;/ws&quot; handler=&quot;chatHandler&quot;/&gt;
+    &lt;!-- 配置握手拦截器 --&gt;
+    &lt;websocket:handshake-interceptors&gt;
+        &lt;bean class=&quot;com.websocket.WebSocketHandshakeInterceptor&quot;/&gt;
+    &lt;/websocket:handshake-interceptors&gt;
+    &lt;!-- 开启sockjs，去掉则关闭sockjs --&gt;
+    &lt;websocket:sockjs/&gt;
+&lt;/websocket:handlers&gt;
+&lt;!-- 配置websocket消息的最大缓冲区长度，可以不配 --&gt;
+&lt;bean class=&quot;org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean&quot;&gt;
+    &lt;property name=&quot;maxTextMessageBufferSize&quot; value=&quot;8192&quot;/&gt;
+    &lt;property name=&quot;maxBinaryMessageBufferSize&quot; value=&quot;8192&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+
+<h2 id="开启和关闭websocket">开启和关闭webSocket</h2>
+
+<h3 id="1-开启">1 开启</h3>
+
+<p>当运行到前端</p>
+
+<pre><code>const ws = new WebSocket(&quot;ws://echo.websocket.org/ws&quot;);
+</code></pre>
+
+<p>这一行代码的时候，前端就发起和后端的webSocket连接，
+会先触发拦截器
+后端连接上后，会调用<code>afterConnectionEstablished</code>里面的方法
+前端会调用<code>.open</code>方法
+至此，webSocket开启成功。</p>
+
+<h3 id="2-运行">2 运行</h3>
+
+<p><strong>前端&mdash;-&gt;后端</strong>
+前端调用<code>.send()</code>方法发送信息
+后端调用<code>handleMessage</code>方法接收并消息
+<strong>后端&mdash;-&gt;前端</strong>
+后端调用<code>webSocketSession.sendMessage(message)</code>方法发送信息
+前端调用<code>.onmessage()</code>方法接收信息</p>
+
+<h3 id="3-关闭">3 关闭</h3>
+
+<p>前端调用<code>.close()</code>方法</p>
+
+</div>
+
+
+
+    </main>
+
+    
+  </body>
+</html>
