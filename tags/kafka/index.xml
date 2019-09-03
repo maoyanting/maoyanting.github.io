@@ -5,7 +5,7 @@
     <link>https://maoyanting.github.io/tags/kafka/</link>
     <description>Recent content in Kafka on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Wed, 10 Jan 2018 09:26:50 +0000</lastBuildDate>
     
 	<atom:link href="https://maoyanting.github.io/tags/kafka/index.xml" rel="self" type="application/rss+xml" />
@@ -19,11 +19,11 @@
       <guid>https://maoyanting.github.io/post/kafka-%E5%9C%A8spring%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
       <description>&lt;h2 id=&#34;写在前面&#34;&gt;写在前面&lt;/h2&gt;
 
-&lt;p&gt;Kafka的简单介绍可以看&lt;a href=&#34;http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability&#34;&gt;这个博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kafka的简单介绍可以看&lt;a href=&#34;http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;这个博客&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Kafka的简单使用可参看之前的&lt;a href=&#34;https://maoyanting.github.io/2018/01/08/kafka%E5%AE%89%E8%A3%85%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/&#34;&gt;KafKa安装（翻译）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kafka的简单使用可参看之前的&lt;a href=&#34;https://maoyanting.github.io/2018/01/08/kafka%E5%AE%89%E8%A3%85%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;KafKa安装（翻译）&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Spring for Kafka 的简单使用可参看&lt;a href=&#34;https://my.oschina.net/zhengweishan/blog/736213&#34;&gt;这个博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Spring for Kafka 的简单使用可参看&lt;a href=&#34;https://my.oschina.net/zhengweishan/blog/736213&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;这个博客&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;这里放一张我自己弄的简单的图&lt;/p&gt;
 

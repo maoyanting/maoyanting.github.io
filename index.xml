@@ -5,7 +5,7 @@
     <link>https://maoyanting.github.io/</link>
     <description>Recent content on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Wed, 21 Aug 2019 17:43:35 +0800</lastBuildDate>
     
 	<atom:link href="https://maoyanting.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -242,9 +242,9 @@ try {
 &lt;p&gt;基本上，BPMN规范&lt;strong&gt;定义了任务看起来怎样的，哪些结构可以 与其他进行连接，等等。&lt;/strong&gt;这就意味着意思不会被误解。&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;推荐阅读：&lt;a href=&#34;http://www.mossle.com/docs/jbpm4devguide/html/bpmn2.html&#34;&gt;BPMN 2.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;推荐阅读：&lt;a href=&#34;http://www.mossle.com/docs/jbpm4devguide/html/bpmn2.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;BPMN 2.0&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.mossle.com/docs/activiti/index.html#bpmn20&#34;&gt;Activiti用户手册-BPMN2.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.mossle.com/docs/activiti/index.html#bpmn20&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Activiti用户手册-BPMN2.0&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</description>
     </item>
     
@@ -304,7 +304,7 @@ try {
       <guid>https://maoyanting.github.io/post/linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</guid>
       <description>&lt;p&gt;Linux命令大全&lt;/p&gt;
 
-&lt;p&gt;原文链接：&lt;a href=&#34;http://blog.csdn.net/Evankaka/article/details/49227669&#34;&gt;Linux命令大全&amp;mdash;-常用文件操作命令&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;原文链接：&lt;a href=&#34;http://blog.csdn.net/Evankaka/article/details/49227669&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Linux命令大全&amp;mdash;-常用文件操作命令&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -399,7 +399,7 @@ UPDATE lianjia_xiaoqu AS r, ( SELECT a.housecode, a.distance, b.metro, b.metro_l
       <pubDate>Wed, 07 Feb 2018 13:09:29 +0000</pubDate>
       
       <guid>https://maoyanting.github.io/post/java-base64/</guid>
-      <description>&lt;p&gt;某钱包分享链接泄漏手机号码了，&lt;a href=&#34;https://www.v2ex.com/t/429099#reply48&#34;&gt;链接&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;某钱包分享链接泄漏手机号码了，&lt;a href=&#34;https://www.v2ex.com/t/429099#reply48&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;链接&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;安全问题很重要啊&lt;/p&gt;</description>
     </item>
@@ -581,11 +581,11 @@ Spring 允许我们通过 @Qualifier 注释指定注入 Bean 的名称，这样�
       <guid>https://maoyanting.github.io/post/kafka-%E5%9C%A8spring%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
       <description>&lt;h2 id=&#34;写在前面&#34;&gt;写在前面&lt;/h2&gt;
 
-&lt;p&gt;Kafka的简单介绍可以看&lt;a href=&#34;http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability&#34;&gt;这个博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kafka的简单介绍可以看&lt;a href=&#34;http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;这个博客&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Kafka的简单使用可参看之前的&lt;a href=&#34;https://maoyanting.github.io/2018/01/08/kafka%E5%AE%89%E8%A3%85%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/&#34;&gt;KafKa安装（翻译）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kafka的简单使用可参看之前的&lt;a href=&#34;https://maoyanting.github.io/2018/01/08/kafka%E5%AE%89%E8%A3%85%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;KafKa安装（翻译）&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Spring for Kafka 的简单使用可参看&lt;a href=&#34;https://my.oschina.net/zhengweishan/blog/736213&#34;&gt;这个博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Spring for Kafka 的简单使用可参看&lt;a href=&#34;https://my.oschina.net/zhengweishan/blog/736213&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;这个博客&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;这里放一张我自己弄的简单的图&lt;/p&gt;
 

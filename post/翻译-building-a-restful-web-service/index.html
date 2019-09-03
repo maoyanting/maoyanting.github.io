@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -49,7 +49,7 @@
         <li><a href="https://maoyanting.github.io/">Home</a> </li>
         <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
         <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
-        
+        <li><a href="/posts/"> Blog </a></li><li><a href="/categories/"> Categories </a></li><li><a href="/about"> About </a></li>
       </ul>
     </nav>
 
@@ -89,7 +89,7 @@
 
 <h1 id="创建一个restful-web-service">创建一个RESTful Web Service</h1>
 
-<p>本指南将引导您完成使用Spring创建“hello world” <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/REST&amp;usg=ALkJrhjA4okemhma2AiF2YSmzUKeGHZEsg">RESTful Web服务的过程</a> 。</p>
+<p>本指南将引导您完成使用Spring创建“hello world” <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/REST&amp;usg=ALkJrhjA4okemhma2AiF2YSmzUKeGHZEsg" rel="nofollow noreferrer" target="_blank">RESTful Web服务的过程</a> 。</p>
 
 <h2 id="你会建立什么">你会建立什么</h2>
 
@@ -98,7 +98,7 @@
 <pre><code>http://localhost:8080/greeting
 </code></pre>
 
-<p>并用一个<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/JSON&amp;usg=ALkJrhiAdpYHVloWmoMLbhBu221YaBxk1w">JSON</a>表示欢迎：</p>
+<p>并用一个<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/JSON&amp;usg=ALkJrhiAdpYHVloWmoMLbhBu221YaBxk1w" rel="nofollow noreferrer" target="_blank">JSON</a>表示欢迎：</p>
 
 <pre><code> {&quot;id&quot;:1,&quot;content&quot;:&quot;Hello, World!&quot;} 
 </code></pre>
@@ -118,28 +118,28 @@
 <ul>
 <li>大约15分钟</li>
 <li>喜欢的文本编辑器或IDE</li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://www.oracle.com/technetwork/java/javase/downloads/index.html&amp;usg=ALkJrhi2isGPHV-sq7jUziPVE-l9jBalvg">JDK 1.8</a>或更高版本</li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://www.gradle.org/downloads&amp;usg=ALkJrhjd_PiqFxW7gUhy0tzUXfe3aZH-1A">Gradle 2.3+</a>或<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://maven.apache.org/download.cgi&amp;usg=ALkJrhj_AbU4UixGaWViIk58fBiQPaEg9A">Maven 3.0+</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://www.oracle.com/technetwork/java/javase/downloads/index.html&amp;usg=ALkJrhi2isGPHV-sq7jUziPVE-l9jBalvg" rel="nofollow noreferrer" target="_blank">JDK 1.8</a>或更高版本</li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://www.gradle.org/downloads&amp;usg=ALkJrhjd_PiqFxW7gUhy0tzUXfe3aZH-1A" rel="nofollow noreferrer" target="_blank">Gradle 2.3+</a>或<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://maven.apache.org/download.cgi&amp;usg=ALkJrhj_AbU4UixGaWViIk58fBiQPaEg9A" rel="nofollow noreferrer" target="_blank">Maven 3.0+</a></li>
 <li>您还可以直接将代码导入到您的IDE中：
 
 <ul>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/sts&amp;usg=ALkJrhiKfyyZVm8Ccgl2yvAU_rBxEYHlIA">Spring工具套件（STS）</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/intellij-idea/&amp;usg=ALkJrhhcC0vJb4UeMWHkEiTZjFgFEM065Q">IntelliJ IDEA</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/sts&amp;usg=ALkJrhiKfyyZVm8Ccgl2yvAU_rBxEYHlIA" rel="nofollow noreferrer" target="_blank">Spring工具套件（STS）</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/intellij-idea/&amp;usg=ALkJrhhcC0vJb4UeMWHkEiTZjFgFEM065Q" rel="nofollow noreferrer" target="_blank">IntelliJ IDEA</a></li>
 </ul></li>
 </ul>
 
 <h2 id="如何完成本指南">如何完成本指南</h2>
 
-<p>像大多数Spring <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides&amp;usg=ALkJrhgRlfg-cgquXd16m2zYJRELyIHD8A">入门指南</a>一样，您可以从头开始并完成每个步骤，也可以绕过已熟悉的基本设置步骤。 无论哪种方式，你最终都能得到成功的代码。</p>
+<p>像大多数Spring <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides&amp;usg=ALkJrhgRlfg-cgquXd16m2zYJRELyIHD8A" rel="nofollow noreferrer" target="_blank">入门指南</a>一样，您可以从头开始并完成每个步骤，也可以绕过已熟悉的基本设置步骤。 无论哪种方式，你最终都能得到成功的代码。</p>
 
-<p>要<strong>从头开始</strong> ，请继续阅读<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-service/&amp;usg=ALkJrhh5TggyMiWSsyF0qIYKW_Py__4VYw#scratch">使用Gradle构建</a> 。</p>
+<p>要<strong>从头开始</strong> ，请继续阅读<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-service/&amp;usg=ALkJrhh5TggyMiWSsyF0qIYKW_Py__4VYw#scratch" rel="nofollow noreferrer" target="_blank">使用Gradle构建</a> 。</p>
 
 <p>要<strong>跳过这些基础知识</strong> ，请执行以下操作：</p>
 
 <ul>
-<li><a href="https://github.com/spring-guides/gs-rest-service/archive/master.zip">下载</a>并解压缩本指南的源代码库，或使用<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/Git&amp;usg=ALkJrhiGT-aa_xL0VmXxdVXwTGjValsEkA">Git</a>克隆它： <code>git clone https://github.com/spring-guides/gs-rest-service.git</code></li>
+<li><a href="https://github.com/spring-guides/gs-rest-service/archive/master.zip" rel="nofollow noreferrer" target="_blank">下载</a>并解压缩本指南的源代码库，或使用<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/Git&amp;usg=ALkJrhiGT-aa_xL0VmXxdVXwTGjValsEkA" rel="nofollow noreferrer" target="_blank">Git</a>克隆它： <code>git clone https://github.com/spring-guides/gs-rest-service.git</code></li>
 <li>cd进入<code>gs-rest-service/initial</code></li>
-<li>跳转到<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-service/&amp;usg=ALkJrhh5TggyMiWSsyF0qIYKW_Py__4VYw#initial">创建资源表示类</a> 。</li>
+<li>跳转到<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-service/&amp;usg=ALkJrhh5TggyMiWSsyF0qIYKW_Py__4VYw#initial" rel="nofollow noreferrer" target="_blank">创建资源表示类</a> 。</li>
 </ul>
 
 <p><strong>完成后</strong> ，您可以根据<code>gs-rest-service/complete</code>中的代码检查结果。</p>
@@ -190,14 +190,14 @@ public class Greeting {
 </code></pre>
 
 <blockquote>
-<p>正如您在下面的步骤中看到的，Spring使用<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://wiki.fasterxml.com/JacksonHome&amp;usg=ALkJrhj-SRgPHPGJwDCVc6iKW6RJ6EkmFA">Jackson JSON</a>库自动将类型为<code>Greeting</code>实例编组为JSON。</p>
+<p>正如您在下面的步骤中看到的，Spring使用<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://wiki.fasterxml.com/JacksonHome&amp;usg=ALkJrhj-SRgPHPGJwDCVc6iKW6RJ6EkmFA" rel="nofollow noreferrer" target="_blank">Jackson JSON</a>库自动将类型为<code>Greeting</code>实例编组为JSON。</p>
 </blockquote>
 
 <p>接下来，您将创建将提供这些问候的资源控制器。</p>
 
 <h2 id="创建一个资源控制器">创建一个资源控制器</h2>
 
-<p>在Spring构建RESTful Web服务的方法中，HTTP请求由控制器处理。 这些组件可以通过<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html&amp;usg=ALkJrhj2jREdSv48jCAFQ8mkmMNuTdphDQ"><code>@RestController</code></a>批注轻松识别，并且<code>GreetingController</code>通过返回<code>Greeting</code>类的新实例来处理<code>/greeting</code>的<code>GET</code>请求：</p>
+<p>在Spring构建RESTful Web服务的方法中，HTTP请求由控制器处理。 这些组件可以通过<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html&amp;usg=ALkJrhj2jREdSv48jCAFQ8mkmMNuTdphDQ" rel="nofollow noreferrer" target="_blank"><code>@RestController</code></a>批注轻松识别，并且<code>GreetingController</code>通过返回<code>Greeting</code>类的新实例来处理<code>/greeting</code>的<code>GET</code>请求：</p>
 
 <p><code>src/main/java/hello/GreetingController.java</code></p>
 
@@ -234,15 +234,15 @@ public class GreetingController {
 
 <p>方法体的实现基于<code>counter</code>的下一个值创建并返回一个带有<code>id</code>和<code>content</code>属性的新<code>Greeting</code>对象，并使用问候<code>template</code>格式化给定<code>name</code> 。</p>
 
-<p>传统的MVC控制器和上面的RESTful Web服务控制器之间一个主要区别在于HTTP响应主体的创建方式。 这个RESTful Web服务控制器只需填充并返回一个<code>Greeting</code>对象，而不是依赖<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/view-templates&amp;usg=ALkJrhiiKud_Qn3fmLH4xFp3bRaUhkjz2A">视图技术</a>将问候数据的服务器端呈现呈现给HTML。 对象数据将作为JSON直接写入HTTP响应。</p>
+<p>传统的MVC控制器和上面的RESTful Web服务控制器之间一个主要区别在于HTTP响应主体的创建方式。 这个RESTful Web服务控制器只需填充并返回一个<code>Greeting</code>对象，而不是依赖<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/view-templates&amp;usg=ALkJrhiiKud_Qn3fmLH4xFp3bRaUhkjz2A" rel="nofollow noreferrer" target="_blank">视图技术</a>将问候数据的服务器端呈现呈现给HTML。 对象数据将作为JSON直接写入HTTP响应。</p>
 
-<p>此代码使用Spring 4的新的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html&amp;usg=ALkJrhj2jREdSv48jCAFQ8mkmMNuTdphDQ"><code>@RestController</code></a>注释，该注释将类标记为控制器，其中每个方法都返回一个域对象而不是视图。 它是<code>@Controller</code>和<code>@ResponseBody</code>的缩写。</p>
+<p>此代码使用Spring 4的新的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html&amp;usg=ALkJrhj2jREdSv48jCAFQ8mkmMNuTdphDQ" rel="nofollow noreferrer" target="_blank"><code>@RestController</code></a>注释，该注释将类标记为控制器，其中每个方法都返回一个域对象而不是视图。 它是<code>@Controller</code>和<code>@ResponseBody</code>的缩写。</p>
 
-<p><code>Greeting</code>对象必须转换为JSON。 由于Spring的HTTP消息转换器支持，您不需要手动执行此转换。 由于<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://wiki.fasterxml.com/JacksonHome&amp;usg=ALkJrhj-SRgPHPGJwDCVc6iKW6RJ6EkmFA">Jackson 2</a>位于类路径中， <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html&amp;usg=ALkJrhjRG0KiqvFIa-ROG_uk7sOLBnwMWw"><code>MappingJackson2HttpMessageConverter</code></a>会自动选择Spring的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html&amp;usg=ALkJrhjRG0KiqvFIa-ROG_uk7sOLBnwMWw"><code>MappingJackson2HttpMessageConverter</code></a>将<code>Greeting</code>实例转换为JSON。</p>
+<p><code>Greeting</code>对象必须转换为JSON。 由于Spring的HTTP消息转换器支持，您不需要手动执行此转换。 由于<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=http://wiki.fasterxml.com/JacksonHome&amp;usg=ALkJrhj-SRgPHPGJwDCVc6iKW6RJ6EkmFA" rel="nofollow noreferrer" target="_blank">Jackson 2</a>位于类路径中， <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html&amp;usg=ALkJrhjRG0KiqvFIa-ROG_uk7sOLBnwMWw" rel="nofollow noreferrer" target="_blank"><code>MappingJackson2HttpMessageConverter</code></a>会自动选择Spring的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html&amp;usg=ALkJrhjRG0KiqvFIa-ROG_uk7sOLBnwMWw" rel="nofollow noreferrer" target="_blank"><code>MappingJackson2HttpMessageConverter</code></a>将<code>Greeting</code>实例转换为JSON。</p>
 
 <h2 id="使应用程序可执行">使应用程序可执行</h2>
 
-<p>虽然可以将此服务作为传统<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/WAR&amp;usg=ALkJrhjIuNhNJ-rDfCCslAH8c2nm7VJLOQ">WAR</a>文件打包以部署到外部应用程序服务器，但下面演示的更简单的方法会创建独立应用程序。 您将所有内容打包到一个单独的、可执行的JAR文件中，由一个Java <code>main()</code>方法驱动。 过程中，您使用Spring的支持将<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/Tomcat&amp;usg=ALkJrhj3Th8AEUCyP-Wu97HP4kFNHf2KCQ">Tomcat</a> servlet容器作为HTTP运行时嵌入，而不是部署到外部实例。</p>
+<p>虽然可以将此服务作为传统<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/WAR&amp;usg=ALkJrhjIuNhNJ-rDfCCslAH8c2nm7VJLOQ" rel="nofollow noreferrer" target="_blank">WAR</a>文件打包以部署到外部应用程序服务器，但下面演示的更简单的方法会创建独立应用程序。 您将所有内容打包到一个单独的、可执行的JAR文件中，由一个Java <code>main()</code>方法驱动。 过程中，您使用Spring的支持将<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/understanding/Tomcat&amp;usg=ALkJrhj3Th8AEUCyP-Wu97HP4kFNHf2KCQ" rel="nofollow noreferrer" target="_blank">Tomcat</a> servlet容器作为HTTP运行时嵌入，而不是部署到外部实例。</p>
 
 <p><code>src/main/java/hello/Application.java</code></p>
 
@@ -286,19 +286,19 @@ public class Application {
 </code></pre>
 
 <blockquote>
-<p>上述过程将创建一个可运行的JAR。 您也可以选择<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/convert-jar-to-war/&amp;usg=ALkJrhg_q399dCbdi_hrE92GWpqBBT0Zvw">构建经典的WAR文件</a> 。</p>
+<p>上述过程将创建一个可运行的JAR。 您也可以选择<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/convert-jar-to-war/&amp;usg=ALkJrhg_q399dCbdi_hrE92GWpqBBT0Zvw" rel="nofollow noreferrer" target="_blank">构建经典的WAR文件</a> 。</p>
 </blockquote>
 
 <p>记录输出显示。 该服务应该在几秒钟内启动并运行。</p>
 
 <h2 id="测试服务">测试服务</h2>
 
-<p>现在服务已启动，请访问<a href="http://localhost:8080/greeting">http://localhost:8080/greeting</a> ，您会看到：</p>
+<p>现在服务已启动，请访问<a href="http://localhost:8080/greeting" rel="nofollow noreferrer" target="_blank">http://localhost:8080/greeting</a> ，您会看到：</p>
 
 <pre><code> {&quot;id&quot;:1,&quot;content&quot;:&quot;Hello, World!&quot;} 
 </code></pre>
 
-<p>使用<a href="http://localhost:8080/greeting?name=User">http://localhost:8080/greeting?name=User</a>，提供<code>name</code>的字符串参数。 请注意<code>content</code>属性的值是如何从“Hello，World！”更改的 到“Hello User！”：</p>
+<p>使用<a href="http://localhost:8080/greeting?name=User" rel="nofollow noreferrer" target="_blank">http://localhost:8080/greeting?name=User</a>，提供<code>name</code>的字符串参数。 请注意<code>content</code>属性的值是如何从“Hello，World！”更改的 到“Hello User！”：</p>
 
 <pre><code> {&quot;id&quot;:2,&quot;content&quot;:&quot;Hello, User!&quot;} 
 </code></pre>
@@ -316,38 +316,58 @@ public class Application {
 <p>以下指南也可能有所帮助：</p>
 
 <ul>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-gemfire-data-rest/&amp;usg=ALkJrhj1OmuMq7kjSpX7uShbVE-zxLwx_Q">使用REST访问GemFire数据</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-mongodb-data-rest/&amp;usg=ALkJrhgK7im05koFc2NpxrldC_xEgoC39w">使用REST访问MongoDB数据</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-data-mysql/&amp;usg=ALkJrhgxcX3RIzyxbdBLJZ-zK4H27_fKVg">使用MySQL访问数据</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-data-rest/&amp;usg=ALkJrhhYAb-t7bTTQo0y2bOIcSuTMqyGiA">使用REST访问JPA数据</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-neo4j-data-rest/&amp;usg=ALkJrhgJ2STjGhA8Cz5dDgpA9mN0whXMvA">使用REST访问Neo4j数据</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest/&amp;usg=ALkJrhjXaFKj82jVDmdmEAssGF5vQpLyEg">使用RESTful Web服务</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest-angularjs/&amp;usg=ALkJrhjSBHfooUAXrstjhIMdybuu4e-w9g">在AngularJS中使用REST风格的Web服务</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest-jquery/&amp;usg=ALkJrhgS_ZOF9YypRaZZ6xD-vbnhfi0SuQ">使用jQuery来使用RESTful Web服务</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest-restjs/&amp;usg=ALkJrhgjrvSyKWtPjgAltOCWlPudTAHVhg">与rest.js一起使用RESTful Web服务</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/securing-web/&amp;usg=ALkJrhgf6Pj_Jfm7_K0lofEyyXuOs9zY_A">保护Web应用程序</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/tutorials/bookmarks/&amp;usg=ALkJrhjS0qWCIYxfR8XHb16LKeT9Ar9oMA">用Spring构建REST服务</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/tutorials/react-and-spring-data-rest/&amp;usg=ALkJrhinRUyarQ1ByM_ZytJrx-ge79HdKQ">React.js和Spring Data REST</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/spring-boot/&amp;usg=ALkJrhiKg3GyTsXISfFB9fKLMRE_j27MBA">使用Spring Boot构建应用程序</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/testing-restdocs/&amp;usg=ALkJrhhQ2pTFcypwxGRCdCD0pI3VSVvHGA">使用Restdocs创建API文档</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-service-cors/&amp;usg=ALkJrhhOC4B1tMgfnh4XKkiKp6b4B8VFvA">启用RESTful Web服务的跨源请求</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-hateoas/&amp;usg=ALkJrhjjhbkd7UX2EPn7FaBHS6P-Ves1oA">构建超媒体驱动的RESTful Web服务</a></li>
-<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/circuit-breaker/&amp;usg=ALkJrhgTFRUyx7gpbEH8VgTH8hCgKXeYsw">断路器</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-gemfire-data-rest/&amp;usg=ALkJrhj1OmuMq7kjSpX7uShbVE-zxLwx_Q" rel="nofollow noreferrer" target="_blank">使用REST访问GemFire数据</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-mongodb-data-rest/&amp;usg=ALkJrhgK7im05koFc2NpxrldC_xEgoC39w" rel="nofollow noreferrer" target="_blank">使用REST访问MongoDB数据</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-data-mysql/&amp;usg=ALkJrhgxcX3RIzyxbdBLJZ-zK4H27_fKVg" rel="nofollow noreferrer" target="_blank">使用MySQL访问数据</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-data-rest/&amp;usg=ALkJrhhYAb-t7bTTQo0y2bOIcSuTMqyGiA" rel="nofollow noreferrer" target="_blank">使用REST访问JPA数据</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/accessing-neo4j-data-rest/&amp;usg=ALkJrhgJ2STjGhA8Cz5dDgpA9mN0whXMvA" rel="nofollow noreferrer" target="_blank">使用REST访问Neo4j数据</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest/&amp;usg=ALkJrhjXaFKj82jVDmdmEAssGF5vQpLyEg" rel="nofollow noreferrer" target="_blank">使用RESTful Web服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest-angularjs/&amp;usg=ALkJrhjSBHfooUAXrstjhIMdybuu4e-w9g" rel="nofollow noreferrer" target="_blank">在AngularJS中使用REST风格的Web服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest-jquery/&amp;usg=ALkJrhgS_ZOF9YypRaZZ6xD-vbnhfi0SuQ" rel="nofollow noreferrer" target="_blank">使用jQuery来使用RESTful Web服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/consuming-rest-restjs/&amp;usg=ALkJrhgjrvSyKWtPjgAltOCWlPudTAHVhg" rel="nofollow noreferrer" target="_blank">与rest.js一起使用RESTful Web服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/securing-web/&amp;usg=ALkJrhgf6Pj_Jfm7_K0lofEyyXuOs9zY_A" rel="nofollow noreferrer" target="_blank">保护Web应用程序</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/tutorials/bookmarks/&amp;usg=ALkJrhjS0qWCIYxfR8XHb16LKeT9Ar9oMA" rel="nofollow noreferrer" target="_blank">用Spring构建REST服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/tutorials/react-and-spring-data-rest/&amp;usg=ALkJrhinRUyarQ1ByM_ZytJrx-ge79HdKQ" rel="nofollow noreferrer" target="_blank">React.js和Spring Data REST</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/spring-boot/&amp;usg=ALkJrhiKg3GyTsXISfFB9fKLMRE_j27MBA" rel="nofollow noreferrer" target="_blank">使用Spring Boot构建应用程序</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/testing-restdocs/&amp;usg=ALkJrhhQ2pTFcypwxGRCdCD0pI3VSVvHGA" rel="nofollow noreferrer" target="_blank">使用Restdocs创建API文档</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-service-cors/&amp;usg=ALkJrhhOC4B1tMgfnh4XKkiKp6b4B8VFvA" rel="nofollow noreferrer" target="_blank">启用RESTful Web服务的跨源请求</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/rest-hateoas/&amp;usg=ALkJrhjjhbkd7UX2EPn7FaBHS6P-Ves1oA" rel="nofollow noreferrer" target="_blank">构建超媒体驱动的RESTful Web服务</a></li>
+<li><a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://spring.io/guides/gs/circuit-breaker/&amp;usg=ALkJrhgTFRUyx7gpbEH8VgTH8hCgKXeYsw" rel="nofollow noreferrer" target="_blank">断路器</a></li>
 </ul>
 
-<p>想写一个新的指南或贡献一个现有的？ 查看我们的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://github.com/spring-guides/getting-started-guides/wiki&amp;usg=ALkJrhiB1b057IhnynHRSxHvX6ZckyPlzA">贡献指南</a> 。</p>
+<p>想写一个新的指南或贡献一个现有的？ 查看我们的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://github.com/spring-guides/getting-started-guides/wiki&amp;usg=ALkJrhiB1b057IhnynHRSxHvX6ZckyPlzA" rel="nofollow noreferrer" target="_blank">贡献指南</a> 。</p>
 
 <blockquote>
-<p>所有指南均附带代码的ASLv2许可证，以及用于撰写的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://creativecommons.org/licenses/by-nd/3.0/&amp;usg=ALkJrhiBe5s-_7VG19vKBczGPd-MS34luA">归属，NoDerivatives创意公共许可证</a> 。</p>
+<p>所有指南均附带代码的ASLv2许可证，以及用于撰写的<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=zh-CN&amp;rurl=translate.google.com&amp;sl=auto&amp;sp=nmt4&amp;tl=zh-CN&amp;u=https://creativecommons.org/licenses/by-nd/3.0/&amp;usg=ALkJrhiBe5s-_7VG19vKBczGPd-MS34luA" rel="nofollow noreferrer" target="_blank">归属，NoDerivatives创意公共许可证</a> 。</p>
 </blockquote>
 
 <hr />
 
-<p>原文链接：<a href="https://spring.io/guides/gs/rest-service/">Building a RESTful Web Service</a></p>
+<p>原文链接：<a href="https://spring.io/guides/gs/rest-service/" rel="nofollow noreferrer" target="_blank">Building a RESTful Web Service</a></p>
 </div>
 
 
-
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </main>
 
     

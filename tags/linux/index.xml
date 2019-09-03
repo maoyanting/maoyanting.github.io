@@ -5,7 +5,7 @@
     <link>https://maoyanting.github.io/tags/linux/</link>
     <description>Recent content in Linux on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Sun, 04 Mar 2018 15:54:56 +0000</lastBuildDate>
     
 	<atom:link href="https://maoyanting.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
@@ -19,7 +19,7 @@
       <guid>https://maoyanting.github.io/post/linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</guid>
       <description>&lt;p&gt;Linux命令大全&lt;/p&gt;
 
-&lt;p&gt;原文链接：&lt;a href=&#34;http://blog.csdn.net/Evankaka/article/details/49227669&#34;&gt;Linux命令大全&amp;mdash;-常用文件操作命令&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;原文链接：&lt;a href=&#34;http://blog.csdn.net/Evankaka/article/details/49227669&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Linux命令大全&amp;mdash;-常用文件操作命令&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

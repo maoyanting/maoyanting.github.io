@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -49,7 +49,7 @@
         <li><a href="https://maoyanting.github.io/">Home</a> </li>
         <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
         <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
-        
+        <li><a href="/posts/"> Blog </a></li><li><a href="/categories/"> Categories </a></li><li><a href="/about"> About </a></li>
       </ul>
     </nav>
 
@@ -249,11 +249,11 @@
 
 <h3 id="2-1-2-json-改进">2.1.2 JSON 改进</h3>
 
-<p>The <code>StringJsonMessageConverter</code> and <code>JsonSerializer</code> now add type information in <code>Headers</code>, allowing the converter and <code>JsonDeserializer</code> to create specific types on reception, based on the message itself rather than a fixed configured type.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#serdes">Section 4.1.4, “Serialization/Deserialization and Message Conversion”</a> for more information.</p>
+<p>The <code>StringJsonMessageConverter</code> and <code>JsonSerializer</code> now add type information in <code>Headers</code>, allowing the converter and <code>JsonDeserializer</code> to create specific types on reception, based on the message itself rather than a fixed configured type.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#serdes" rel="nofollow noreferrer" target="_blank">Section 4.1.4, “Serialization/Deserialization and Message Conversion”</a> for more information.</p>
 
 <h3 id="2-1-3-container-stopping-error-handlers">2.1.3 Container Stopping Error Handlers</h3>
 
-<p>Container Error handlers are now provided for both record and batch listeners that treat any exceptions thrown by the listener as fatal; they stop the container.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#annotation-error-handling">Section 4.1.7, “Handling Exceptions”</a> for more information.</p>
+<p>Container Error handlers are now provided for both record and batch listeners that treat any exceptions thrown by the listener as fatal; they stop the container.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#annotation-error-handling" rel="nofollow noreferrer" target="_blank">Section 4.1.7, “Handling Exceptions”</a> for more information.</p>
 
 <h1 id="3-介绍">3. 介绍</h1>
 
@@ -501,7 +501,7 @@ spring.kafka.consumer.auto-offset-reset=earliest
 
 <h1 id="4-参考">4. 参考</h1>
 
-<p>参考文档的这一部分详细介绍了构成Spring for Apache Kafka的各种组件。 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#kafka">主要章节</a> 涵盖了开发Spring for Apache Kafka应用程序的核心类。</p>
+<p>参考文档的这一部分详细介绍了构成Spring for Apache Kafka的各种组件。 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#kafka" rel="nofollow noreferrer" target="_blank">主要章节</a> 涵盖了开发Spring for Apache Kafka应用程序的核心类。</p>
 
 <h2 id="4-1-使用-spring-for-apache-kafka">4.1 使用 Spring for Apache Kafka</h2>
 
@@ -617,7 +617,7 @@ interface ProducerCallback&lt;K, V, T&gt; {
 
 <p>//这里看不懂啊，啥意思？</p>
 
-<p>（The <code>metrics</code> and <code>partitionsFor</code> methods simply delegate to the same methods on the underlying <a href="https://kafka.apache.org/0101/javadoc/org/apache/kafka/clients/producer/Producer.html"><code>Producer</code></a>.The <code>execute</code> method provides direct access to the underlying <a href="https://kafka.apache.org/0101/javadoc/org/apache/kafka/clients/producer/Producer.html"><code>Producer</code></a>.）</p>
+<p>（The <code>metrics</code> and <code>partitionsFor</code> methods simply delegate to the same methods on the underlying <a href="https://kafka.apache.org/0101/javadoc/org/apache/kafka/clients/producer/Producer.html" rel="nofollow noreferrer" target="_blank"><code>Producer</code></a>.The <code>execute</code> method provides direct access to the underlying <a href="https://kafka.apache.org/0101/javadoc/org/apache/kafka/clients/producer/Producer.html" rel="nofollow noreferrer" target="_blank"><code>Producer</code></a>.）</p>
 
 <p>为了使用 template，首先配置一个生产工厂，并在 template的构造函数里面使用：</p>
 
@@ -862,7 +862,7 @@ KafkaMessageListenerContainer container(ConsumerFactory&lt;String, String&gt; cf
 
 <h4 id="message-listeners">Message Listeners</h4>
 
-<p>使用 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listener-container">Message Listener Container</a> 的时候你必须提供一个 listener用于接收数据。目前有八个支持消息监听的的接口：</p>
+<p>使用 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listener-container" rel="nofollow noreferrer" target="_blank">Message Listener Container</a> 的时候你必须提供一个 listener用于接收数据。目前有八个支持消息监听的的接口：</p>
 
 <pre><code class="language-java">public interface MessageListener&lt;K, V&gt; { 
     void onMessage(ConsumerRecord&lt;K, V&gt; data);
@@ -897,31 +897,31 @@ public interface BatchAcknowledgingConsumerAwareMessageListener&lt;K, V&gt; exte
 }
 </code></pre>
 
-<p>1 、使用自动提交，或者容器管理的<a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的个人<code>ConsumerRecord</code>。</p>
+<p>1 、使用自动提交，或者容器管理的<a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets" rel="nofollow noreferrer" target="_blank">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的个人<code>ConsumerRecord</code>。</p>
 
-<p>2、使用手动 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets">提交的方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的个人<code>ConsumerRecord</code>。</p>
+<p>2、使用手动 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets" rel="nofollow noreferrer" target="_blank">提交的方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的个人<code>ConsumerRecord</code>。</p>
 
-<p>3、使用自动提交，或者容器管理的 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的个人<code>ConsumerRecord</code>。</p>
-
-<p>需要提供对 <code>Consumer</code> 对象的访问。</p>
-
-<p>4、使用一种手动 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的个人<code>ConsumerRecord</code>。</p>
+<p>3、使用自动提交，或者容器管理的 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets" rel="nofollow noreferrer" target="_blank">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的个人<code>ConsumerRecord</code>。</p>
 
 <p>需要提供对 <code>Consumer</code> 对象的访问。</p>
 
-<p>5、使用自动提交，或者容器管理的 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的所有个人<code>ConsumerRecord</code>。</p>
+<p>4、使用一种手动 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets" rel="nofollow noreferrer" target="_blank">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的个人<code>ConsumerRecord</code>。</p>
+
+<p>需要提供对 <code>Consumer</code> 对象的访问。</p>
+
+<p>5、使用自动提交，或者容器管理的 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets" rel="nofollow noreferrer" target="_blank">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的所有个人<code>ConsumerRecord</code>。</p>
 
 <p>在使用此接口时，不支持<code>AckMode.RECORD</code> ，因为侦听器被提供了完整的批处理。</p>
 
-<p>6、使用一种手动 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的所有个人<code>ConsumerRecord</code>。</p>
+<p>6、使用一种手动 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets" rel="nofollow noreferrer" target="_blank">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的所有个人<code>ConsumerRecord</code>。</p>
 
-<p>7、使用自动提交，或者容器管理的 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的所有个人<code>ConsumerRecord</code>。</p>
+<p>7、使用自动提交，或者容器管理的 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets" rel="nofollow noreferrer" target="_blank">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的所有个人<code>ConsumerRecord</code>。</p>
 
 <p>在使用此接口时，不支持<code>AckMode.RECORD</code> ，因为侦听器被提供了完整的批处理。</p>
 
 <p>需要提供对 <code>Consumer</code> 对象的访问。</p>
 
-<p>8、使用一种手动 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的所有个人<code>ConsumerRecord</code>。</p>
+<p>8、使用一种手动 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#committing-offsets" rel="nofollow noreferrer" target="_blank">提交方法</a>，处理从kafka consumer<code>poll()</code>操作中收到的所有个人<code>ConsumerRecord</code>。</p>
 
 <p>需要提供对 <code>Consumer</code> 对象的访问。</p>
 
@@ -1020,7 +1020,7 @@ return container;
 <li>MANUAL_IMMEDIATE - 当侦听器调用<code>Acknowledgement.acknowledge()</code>方法时立即提交offset。</li>
 </ul>
 
-<p><img src="https://docs.spring.io/spring-kafka/reference/htmlsingle/images/note.png" alt="[Note]" /><code>MANUAL</code>,和 <code>MANUAL_IMMEDIATE</code> 要求监听器是<code>AcknowledgingMessageListener</code> 或者<code>BatchAcknowledgingMessageListener</code>；查看 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listeners">Message Listeners</a>.</p>
+<p><img src="https://docs.spring.io/spring-kafka/reference/htmlsingle/images/note.png" alt="[Note]" /><code>MANUAL</code>,和 <code>MANUAL_IMMEDIATE</code> 要求监听器是<code>AcknowledgingMessageListener</code> 或者<code>BatchAcknowledgingMessageListener</code>；查看 <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listeners" rel="nofollow noreferrer" target="_blank">Message Listeners</a>.</p>
 
 <p>使用消费者的<code>commitSync()</code>或<code>commitAsync()</code>方法，具体取决于<code>syncCommits</code>容器属性。</p>
 
@@ -1223,7 +1223,7 @@ static class MultiListenerBean {
 
 <p>用<code>@KafkaListener</code>注释创建的侦听器容器不是应用程序上下文中的bean。而是使用<code>KafkaListenerEndpointRegistry</code>类型的基础结构bean进行注册。这个bean管理容器的生命周期；它会自动启动任何<code>autoStartup</code>设置为true的容器。所有容器工厂创建的所有容器必须处于同一阶段</p>
 
-<p>请参阅“<a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#container-auto-startup">侦听器容器自动启动</a> ”一节了解更多信息。</p>
+<p>请参阅“<a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#container-auto-startup" rel="nofollow noreferrer" target="_blank">侦听器容器自动启动</a> ”一节了解更多信息。</p>
 
 <p>您可以使用注册表以编程方式管理生命周期；启动/停止注册表将启动/停止所有注册的容器。或者，您可以使用其id属性获取对单个容器的引用；您可以在注释中设置<code>autoStartup</code>，这将覆盖配置到容器工厂的默认设置。</p>
 
@@ -1380,11 +1380,11 @@ public KafkaListenerErrorHandler voidSendToErrorHandler() {
 }
 </code></pre>
 
-<p>See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#annotation-error-handling">Section 4.1.7, “Handling Exceptions”</a> for more information.</p>
+<p>See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#annotation-error-handling" rel="nofollow noreferrer" target="_blank">Section 4.1.7, “Handling Exceptions”</a> for more information.</p>
 
 <h4 id="filtering-messages">Filtering Messages</h4>
 
-<p>In certain scenarios, such as rebalancing, a message may be redelivered that has already been processed.The framework cannot know whether such a message has been processed or not, that is an application-levelfunction.This is known as the <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/IdempotentReceiver.html">IdempotentReceiver</a> pattern and Spring Integration provides an<a href="https://docs.spring.io/spring-integration/reference/html/messaging-endpoints-chapter.html#idempotent-receiver">implementation thereof</a>.</p>
+<p>In certain scenarios, such as rebalancing, a message may be redelivered that has already been processed.The framework cannot know whether such a message has been processed or not, that is an application-levelfunction.This is known as the <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/IdempotentReceiver.html" rel="nofollow noreferrer" target="_blank">IdempotentReceiver</a> pattern and Spring Integration provides an<a href="https://docs.spring.io/spring-integration/reference/html/messaging-endpoints-chapter.html#idempotent-receiver" rel="nofollow noreferrer" target="_blank">implementation thereof</a>.</p>
 
 <p>The Spring for Apache Kafka project also provides some assistance by means of the <code>FilteringMessageListenerAdapter</code>class, which can wrap your <code>MessageListener</code>.This class takes an implementation of <code>RecordFilterStrategy</code> where you implement the <code>filter</code> method to signalthat a message is a duplicate and should be discarded.</p>
 
@@ -1392,7 +1392,7 @@ public KafkaListenerErrorHandler voidSendToErrorHandler() {
 
 <p>When using <code>@KafkaListener</code>, set the <code>RecordFilterStrategy</code> (and optionally <code>ackDiscarded</code>) on the container factory and the listener will be wrapped in the appropriate filtering adapter.</p>
 
-<p>In addition, a <code>FilteringBatchMessageListenerAdapter</code> is provided, for when using a batch <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listeners">message listener</a>.</p>
+<p>In addition, a <code>FilteringBatchMessageListenerAdapter</code> is provided, for when using a batch <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listeners" rel="nofollow noreferrer" target="_blank">message listener</a>.</p>
 
 <h4 id="retrying-deliveries">Retrying Deliveries</h4>
 
@@ -1407,20 +1407,20 @@ public KafkaListenerErrorHandler voidSendToErrorHandler() {
 
 <tbody>
 <tr>
-<td>Two error handler interfaces are provided <code>ErrorHandler</code> and <code>BatchErrorHandler</code>; the appropriate type must be configured to match the <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listeners">Message Listener</a>.</td>
+<td>Two error handler interfaces are provided <code>ErrorHandler</code> and <code>BatchErrorHandler</code>; the appropriate type must be configured to match the <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listeners" rel="nofollow noreferrer" target="_blank">Message Listener</a>.</td>
 </tr>
 </tbody>
 </table>
 
 <p>To retry deliveries, convenient listener adapters - <code>RetryingMessageListenerAdapter</code> and <code>RetryingAcknowledgingMessageListenerAdapter</code> are provided, depending on whether you are using a <code>MessageListener</code> or an <code>AcknowledgingMessageListener</code>.</p>
 
-<p>These can be configured with a <code>RetryTemplate</code> and <code>RecoveryCallback&lt;Void&gt;</code> - see the <a href="https://github.com/spring-projects/spring-retry">spring-retry</a>project for information about these components.If a recovery callback is not provided, the exception is thrown to the container after retries are exhausted.In that case, the <code>ErrorHandler</code> will be invoked, if configured, or logged otherwise.</p>
+<p>These can be configured with a <code>RetryTemplate</code> and <code>RecoveryCallback&lt;Void&gt;</code> - see the <a href="https://github.com/spring-projects/spring-retry" rel="nofollow noreferrer" target="_blank">spring-retry</a>project for information about these components.If a recovery callback is not provided, the exception is thrown to the container after retries are exhausted.In that case, the <code>ErrorHandler</code> will be invoked, if configured, or logged otherwise.</p>
 
 <p>When using <code>@KafkaListener</code>, set the <code>RetryTemplate</code> (and optionally <code>recoveryCallback</code>) on the container factory and the listener will be wrapped in the appropriate retrying adapter.</p>
 
 <p>The contents of the <code>RetryContext</code> passed into the <code>RecoveryCallback</code> will depend on the type of listener.The context will always have an attribute <code>record</code> which is the record for which the failure occurred.If your listener is acknowledging and/or consumer aware, additional attributes <code>acknowledgment</code> and/or <code>consumer</code> will be available.For convenience, the <code>RetryingAcknowledgingMessageListenerAdapter</code> provides static constants for these keys.See its javadocs for more information.</p>
 
-<p>A retry adapter is not provided for any of the batch <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listeners">message listeners</a> because the framework has no knowledge of where, in a batch, the failure occurred.Users wishing retry capabilities, when using a batch listener, are advised to use a <code>RetryTemplate</code> within the listener itself.</p>
+<p>A retry adapter is not provided for any of the batch <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listeners" rel="nofollow noreferrer" target="_blank">message listeners</a> because the framework has no knowledge of where, in a batch, the failure occurred.Users wishing retry capabilities, when using a batch listener, are advised to use a <code>RetryTemplate</code> within the listener itself.</p>
 
 <h4 id="detecting-idle-and-non-responsive-consumers">Detecting Idle and Non-Responsive Consumers</h4>
 
@@ -1525,13 +1525,13 @@ public ConcurrentKafkaListenerContainerFactory kafkaListenerContainerFactory() {
 
 <h5 id="current-positions-when-idle">Current Positions when Idle</h5>
 
-<p>Note that you can obtain the current positions when idle is detected by implementing <code>ConsumerSeekAware</code> in your listener; see <code>onIdleContainer()</code> in `<a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#seek">the section called “Seeking to a Specific Offset”</a>.</p>
+<p>Note that you can obtain the current positions when idle is detected by implementing <code>ConsumerSeekAware</code> in your listener; see <code>onIdleContainer()</code> in `<a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#seek" rel="nofollow noreferrer" target="_blank">the section called “Seeking to a Specific Offset”</a>.</p>
 
 <h4 id="topic-partition-initial-offset">Topic/Partition Initial Offset</h4>
 
 <p>There are several ways to set the initial offset for a partition.</p>
 
-<p>When manually assigning partitions, simply set the initial offset (if desired) in the configured <code>TopicPartitionInitialOffset</code> arguments (see <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listener-container">the section called “Message Listener Containers”</a>).You can also seek to a specific offset at any time.</p>
+<p>When manually assigning partitions, simply set the initial offset (if desired) in the configured <code>TopicPartitionInitialOffset</code> arguments (see <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listener-container" rel="nofollow noreferrer" target="_blank">the section called “Message Listener Containers”</a>).You can also seek to a specific offset at any time.</p>
 
 <p>When using group management where the broker assigns partitions:</p>
 
@@ -1564,7 +1564,7 @@ void seekToBeginning(String topic, int partition);
 void seekToEnd(String topic, int partition);
 </code></pre>
 
-<p>You can also perform seek operations from <code>onIdleContainer()</code> when an idle container is detected; see <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#idle-containers">the section called “Detecting Idle and Non-Responsive Consumers”</a> for how to enable idle container detection.</p>
+<p>You can also perform seek operations from <code>onIdleContainer()</code> when an idle container is detected; see <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#idle-containers" rel="nofollow noreferrer" target="_blank">the section called “Detecting Idle and Non-Responsive Consumers”</a> for how to enable idle container detection.</p>
 
 <p>To arbitrarily seek at runtime, use the callback reference from the <code>registerSeekCallback</code> for the appropriate thread.</p>
 
@@ -1599,7 +1599,7 @@ props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 <li><code>JsonDeserializer.TRUSTED_PACKAGES</code> (default <code>java.util</code>, <code>java.lang</code>); comma-delimited list of package patterns allowed for deserialization; <code>*</code> means deserialize all.</li>
 </ul>
 
-<p>Although the <code>Serializer</code>/<code>Deserializer</code> API is quite simple and flexible from the low-level Kafka <code>Consumer</code> and<code>Producer</code> perspective, you might need more flexibility at the Spring Messaging level, either when using <code>@KafkaListener</code> or <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#si-kafka">Spring Integration</a>.To easily convert to/from <code>org.springframework.messaging.Message</code>, Spring for Apache Kafka provides a <code>MessageConverter</code>abstraction with the <code>MessagingMessageConverter</code> implementation and its <code>StringJsonMessageConverter</code> customization.The <code>MessageConverter</code> can be injected into <code>KafkaTemplate</code> instance directly and via<code>AbstractKafkaListenerContainerFactory</code> bean definition for the <code>@KafkaListener.containerFactory()</code> property:</p>
+<p>Although the <code>Serializer</code>/<code>Deserializer</code> API is quite simple and flexible from the low-level Kafka <code>Consumer</code> and<code>Producer</code> perspective, you might need more flexibility at the Spring Messaging level, either when using <code>@KafkaListener</code> or <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#si-kafka" rel="nofollow noreferrer" target="_blank">Spring Integration</a>.To easily convert to/from <code>org.springframework.messaging.Message</code>, Spring for Apache Kafka provides a <code>MessageConverter</code>abstraction with the <code>MessagingMessageConverter</code> implementation and its <code>StringJsonMessageConverter</code> customization.The <code>MessageConverter</code> can be injected into <code>KafkaTemplate</code> instance directly and via<code>AbstractKafkaListenerContainerFactory</code> bean definition for the <code>@KafkaListener.containerFactory()</code> property:</p>
 
 <pre><code>@Bean
 public KafkaListenerContainerFactory&lt;?&gt; kafkaJsonListenerContainerFactory() {
@@ -1786,7 +1786,7 @@ public DefaultKafkaHeaderMapper(ObjectMapper objectMapper, String... patterns) {
 
 <h3 id="4-1-6-log-compaction">4.1.6 Log Compaction</h3>
 
-<p>When using <a href="https://cwiki.apache.org/confluence/display/KAFKA/Log+Compaction">Log Compaction</a>, it is possible to send and receive messages with <code>null</code> payloads which identifies the deletion of a key.</p>
+<p>When using <a href="https://cwiki.apache.org/confluence/display/KAFKA/Log+Compaction" rel="nofollow noreferrer" target="_blank">Log Compaction</a>, it is possible to send and receive messages with <code>null</code> payloads which identifies the deletion of a key.</p>
 
 <p>Starting with <em>version 1.0.3</em>, this is now fully supported.</p>
 
@@ -2018,7 +2018,7 @@ public KafkaJaasLoginModuleInitializer jaasConfig() throws IOException {
 
 <h3 id="4-2-1-introduction">4.2.1 Introduction</h3>
 
-<p>Starting with <em>version 1.1.4</em>, Spring for Apache Kafka provides first class support for <a href="https://kafka.apache.org/documentation/streams">Kafka Streams</a>.For using it from a Spring application, the <code>kafka-streams</code> jar must be present on classpath.It is an optional dependency of the <code>spring-kafka</code> project and isn’t downloaded transitively.</p>
+<p>Starting with <em>version 1.1.4</em>, Spring for Apache Kafka provides first class support for <a href="https://kafka.apache.org/documentation/streams" rel="nofollow noreferrer" target="_blank">Kafka Streams</a>.For using it from a Spring application, the <code>kafka-streams</code> jar must be present on classpath.It is an optional dependency of the <code>spring-kafka</code> project and isn’t downloaded transitively.</p>
 
 <h3 id="4-2-2-basics">4.2.2 Basics</h3>
 
@@ -2096,14 +2096,14 @@ private StreamsBuilderFactoryBean myKStreamBuilderFactoryBean;
 
 <h3 id="4-2-4-json-serdes">4.2.4 JSON Serdes</h3>
 
-<p>For serializing and deserializing data when reading or writing to topics or state stores in JSON format, Spring Kafka provides a <code>JsonSerde</code> implementation using JSON, delegating to the <code>JsonSerializer</code> and <code>JsonDeserializer</code> described in <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#serdes">the serialization/deserialization section</a>.The <code>JsonSerde</code> provides the same configuration options via its constructor (target type and/or <code>ObjectMapper</code>).In the following example we use the <code>JsonSerde</code> to serialize and deserialize the <code>Foo</code> payload of a Kafka stream - the <code>JsonSerde</code> can be used in a similar fashion wherever an instance is required.</p>
+<p>For serializing and deserializing data when reading or writing to topics or state stores in JSON format, Spring Kafka provides a <code>JsonSerde</code> implementation using JSON, delegating to the <code>JsonSerializer</code> and <code>JsonDeserializer</code> described in <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#serdes" rel="nofollow noreferrer" target="_blank">the serialization/deserialization section</a>.The <code>JsonSerde</code> provides the same configuration options via its constructor (target type and/or <code>ObjectMapper</code>).In the following example we use the <code>JsonSerde</code> to serialize and deserialize the <code>Foo</code> payload of a Kafka stream - the <code>JsonSerde</code> can be used in a similar fashion wherever an instance is required.</p>
 
 <pre><code>stream.through(Serdes.Integer(), new JsonSerde&lt;&gt;(Foo.class), &quot;foos&quot;);
 </code></pre>
 
 <h3 id="4-2-5-configuration">4.2.5 Configuration</h3>
 
-<p>To configure the Kafka Streams environment, the <code>StreamsBuilderFactoryBean</code> requires a <code>Map</code> of particular properties or a <code>StreamsConfig</code> instance.See Apache Kafka <a href="https://kafka.apache.org/0102/documentation/#streamsconfigs">documentation</a> for all possible options.</p>
+<p>To configure the Kafka Streams environment, the <code>StreamsBuilderFactoryBean</code> requires a <code>Map</code> of particular properties or a <code>StreamsConfig</code> instance.See Apache Kafka <a href="https://kafka.apache.org/0102/documentation/#streamsconfigs" rel="nofollow noreferrer" target="_blank">documentation</a> for all possible options.</p>
 
 <p>To avoid boilerplate code for most cases, especially when you develop micro services, Spring for Apache Kafka provides the <code>@EnableKafkaStreams</code> annotation, which should be placed alongside with <code>@Configuration</code>.Only you need is to declare <code>StreamsConfig</code> bean with the <code>defaultKafkaStreamsConfig</code> name.A <code>StreamsBuilder</code> bean with the <code>defaultKafkaStreamsBuilder</code> name will be declare in the application context automatically.Any additional <code>StreamsBuilderFactoryBean</code> beans can be declared and used as well.</p>
 
@@ -2235,7 +2235,7 @@ ConsumerRecord&lt;Integer, String&gt; received = KafkaTestUtils.getSingleRecord(
 
 <p>When the embedded Kafka and embedded Zookeeper server are started by JUnit, a system property <code>spring.embedded.kafka.brokers</code> is set to the address of the Kafka broker(s) and a system property <code>spring.embedded.zookeeper.connect</code> is set to the address of Zookeeper.Convenient constants <code>KafkaEmbedded.SPRING_EMBEDDED_KAFKA_BROKERS</code> and <code>KafkaEmbedded.SPRING_EMBEDDED_ZOOKEEPER_CONNECT</code> are provided for this property.</p>
 
-<p>With the <code>KafkaEmbedded.brokerProperties(Map&lt;String, String&gt;)</code> you can provide additional properties for the Kafka server(s).See <a href="https://kafka.apache.org/documentation/#brokerconfigs">Kafka Config</a> for more information about possible broker properties.</p>
+<p>With the <code>KafkaEmbedded.brokerProperties(Map&lt;String, String&gt;)</code> you can provide additional properties for the Kafka server(s).See <a href="https://kafka.apache.org/documentation/#brokerconfigs" rel="nofollow noreferrer" target="_blank">Kafka Config</a> for more information about possible broker properties.</p>
 
 <h3 id="4-3-3-embeddedkafka-annotation">4.3.3 @EmbeddedKafka Annotation</h3>
 
@@ -2460,9 +2460,9 @@ assertThat(received).has(value(&quot;baz&quot;));
 
 <h3 id="5-1-1-介绍">5.1.1 介绍</h3>
 
-<p>这个文档属于2.0.0版本及以上;文档之前的版本,请参阅<a href="https://github.com/spring-projects/spring-integration-kafka/blob/1.3.x/README.md">1.3.x README</a>.</p>
+<p>这个文档属于2.0.0版本及以上;文档之前的版本,请参阅<a href="https://github.com/spring-projects/spring-integration-kafka/blob/1.3.x/README.md" rel="nofollow noreferrer" target="_blank">1.3.x README</a>.</p>
 
-<p>Spring Integration Kafka 基于 <a href="https://projects.spring.io/spring-kafka/">Spring for Apache Kafka project</a>。它提供了以下组件:</p>
+<p>Spring Integration Kafka 基于 <a href="https://projects.spring.io/spring-kafka/" rel="nofollow noreferrer" target="_blank">Spring for Apache Kafka project</a>。它提供了以下组件:</p>
 
 <ul>
 <li>Outbound Channel Adapter</li>
@@ -2738,7 +2738,7 @@ public IntegrationFlow topic1ListenerFromKafkaFlow() {
 
 <h3 id="5-1-4-message-conversion">5.1.4 Message Conversion</h3>
 
-<p>A <code>StringJsonMessageConverter</code> is provided, see <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#serdes">Section 4.1.4, “Serialization/Deserialization and Message Conversion”</a> for more information.</p>
+<p>A <code>StringJsonMessageConverter</code> is provided, see <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#serdes" rel="nofollow noreferrer" target="_blank">Section 4.1.4, “Serialization/Deserialization and Message Conversion”</a> for more information.</p>
 
 <p>当使用这个转换器驱动通道适配器，你可以指定你想要转换的incoming payload的类型。</p>
 
@@ -2775,7 +2775,7 @@ public KafkaMessageDrivenChannelAdapter&lt;String, String&gt;
 
 <h3 id="5-1-5-what-s-new-in-spring-integration-for-apache-kafka">5.1.5 What’s New in Spring Integration for Apache Kafka</h3>
 
-<p>See the <a href="https://projects.spring.io/spring-kafka/">Spring for Apache Kafka Project Page</a> for a matrix of compatible <code>spring-kafka</code> and <code>kafka-clients</code> versions.</p>
+<p>See the <a href="https://projects.spring.io/spring-kafka/" rel="nofollow noreferrer" target="_blank">Spring for Apache Kafka Project Page</a> for a matrix of compatible <code>spring-kafka</code> and <code>kafka-clients</code> versions.</p>
 
 <h4 id="2-1-x">2.1.x</h4>
 
@@ -2820,10 +2820,10 @@ public KafkaMessageDrivenChannelAdapter&lt;String, String&gt;
 <p>In addition to this reference documentation, there exist a number of other resources that may help you learn aboutSpring and Apache Kafka.</p>
 
 <ul>
-<li><a href="https://kafka.apache.org/">Apache Kafka Project Home Page</a></li>
-<li><a href="https://projects.spring.io/spring-kafka/">Spring for Apache Kafka Home Page</a></li>
-<li><a href="https://github.com/spring-projects/spring-kafka">Spring for Apache Kafka GitHub Repository</a></li>
-<li><a href="https://github.com/spring-projects/spring-integration-kafka">Spring Integration Kafka Extension GitHub Repository</a></li>
+<li><a href="https://kafka.apache.org/" rel="nofollow noreferrer" target="_blank">Apache Kafka Project Home Page</a></li>
+<li><a href="https://projects.spring.io/spring-kafka/" rel="nofollow noreferrer" target="_blank">Spring for Apache Kafka Home Page</a></li>
+<li><a href="https://github.com/spring-projects/spring-kafka" rel="nofollow noreferrer" target="_blank">Spring for Apache Kafka GitHub Repository</a></li>
+<li><a href="https://github.com/spring-projects/spring-integration-kafka" rel="nofollow noreferrer" target="_blank">Spring Integration Kafka Extension GitHub Repository</a></li>
 </ul>
 
 <h1 id="appendix-a-change-history">Appendix A. Change History</h1>
@@ -2836,27 +2836,27 @@ public KafkaMessageDrivenChannelAdapter&lt;String, String&gt;
 
 <h3 id="a-1-2-kafkalistener-changes">A.1.2 @KafkaListener Changes</h3>
 
-<p>You can now annotate <code>@KafkaListener</code> methods (and classes, and <code>@KafkaHandler</code> methods) with <code>@SendTo</code>.If the method returns a result, it is forwarded to the specified topic.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#annotation-send-to">the section called “Forwarding Listener Results using @SendTo”</a> for more information.</p>
+<p>You can now annotate <code>@KafkaListener</code> methods (and classes, and <code>@KafkaHandler</code> methods) with <code>@SendTo</code>.If the method returns a result, it is forwarded to the specified topic.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#annotation-send-to" rel="nofollow noreferrer" target="_blank">the section called “Forwarding Listener Results using @SendTo”</a> for more information.</p>
 
 <h3 id="a-1-3-message-listeners">A.1.3 Message Listeners</h3>
 
-<p>Message listeners can now be aware of the <code>Consumer</code> object.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listeners">the section called “Message Listeners”</a> for more information.</p>
+<p>Message listeners can now be aware of the <code>Consumer</code> object.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#message-listeners" rel="nofollow noreferrer" target="_blank">the section called “Message Listeners”</a> for more information.</p>
 
 <h3 id="a-1-4-consumerawarerebalancelistener">A.1.4 ConsumerAwareRebalanceListener</h3>
 
-<p>Rebalance listeners can now access the <code>Consumer</code> object during rebalance notifications.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#rebalance-listeners">the section called “Rebalance Listeners”</a> for more information.</p>
+<p>Rebalance listeners can now access the <code>Consumer</code> object during rebalance notifications.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#rebalance-listeners" rel="nofollow noreferrer" target="_blank">the section called “Rebalance Listeners”</a> for more information.</p>
 
 <h3 id="a-1-5-embeddedkafka-annotation">A.1.5 @EmbeddedKafka Annotation</h3>
 
-<p>For convenience a test class level <code>@EmbeddedKafka</code> annotation is provided with the purpose to register <code>KafkaEmbedded</code> as a bean.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#testing">Section 4.3, “Testing Applications”</a> for more information.=== Changes Between 1.2 and 1.3</p>
+<p>For convenience a test class level <code>@EmbeddedKafka</code> annotation is provided with the purpose to register <code>KafkaEmbedded</code> as a bean.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#testing" rel="nofollow noreferrer" target="_blank">Section 4.3, “Testing Applications”</a> for more information.=== Changes Between 1.2 and 1.3</p>
 
 <h3 id="a-1-6-support-for-transactions">A.1.6 Support for Transactions</h3>
 
-<p>The 0.11.0.0 client library added support for transactions; the <code>KafkaTransactionManager</code> and other support for transactions has been added.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#transactions">the section called “Transactions”</a> for more information.</p>
+<p>The 0.11.0.0 client library added support for transactions; the <code>KafkaTransactionManager</code> and other support for transactions has been added.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#transactions" rel="nofollow noreferrer" target="_blank">the section called “Transactions”</a> for more information.</p>
 
 <h3 id="a-1-7-support-for-headers">A.1.7 Support for Headers</h3>
 
-<p>The 0.11.0.0 client library added support for message headers; these can now be mapped to/from <code>spring-messaging</code> <code>MessageHeaders</code>.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#headers">Section 4.1.5, “Message Headers”</a> for more information.</p>
+<p>The 0.11.0.0 client library added support for message headers; these can now be mapped to/from <code>spring-messaging</code> <code>MessageHeaders</code>.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#headers" rel="nofollow noreferrer" target="_blank">Section 4.1.5, “Message Headers”</a> for more information.</p>
 
 <h3 id="a-1-8-creating-topics">A.1.8 Creating Topics</h3>
 
@@ -2864,21 +2864,21 @@ public KafkaMessageDrivenChannelAdapter&lt;String, String&gt;
 
 <h3 id="a-1-9-support-for-kafka-timestamps">A.1.9 Support for Kafka timestamps</h3>
 
-<p><code>KafkaTemplate</code> now supports API to add records with timestamps.New <code>KafkaHeaders</code> have been introduced regarding <code>timestamp</code> support.Also new <code>KafkaConditions.timestamp()</code> and <code>KafkaMatchers.hasTimestamp()</code> testing utilities have been added.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#kafka-template">the section called “KafkaTemplate”</a>, <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#kafka-listener-annotation">the section called “@KafkaListener Annotation”</a> and <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#testing">Section 4.3, “Testing Applications”</a> for more details.</p>
+<p><code>KafkaTemplate</code> now supports API to add records with timestamps.New <code>KafkaHeaders</code> have been introduced regarding <code>timestamp</code> support.Also new <code>KafkaConditions.timestamp()</code> and <code>KafkaMatchers.hasTimestamp()</code> testing utilities have been added.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#kafka-template" rel="nofollow noreferrer" target="_blank">the section called “KafkaTemplate”</a>, <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#kafka-listener-annotation" rel="nofollow noreferrer" target="_blank">the section called “@KafkaListener Annotation”</a> and <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#testing" rel="nofollow noreferrer" target="_blank">Section 4.3, “Testing Applications”</a> for more details.</p>
 
 <h3 id="a-1-10-kafkalistener-changes">A.1.10 @KafkaListener Changes</h3>
 
-<p>You can now configure a <code>KafkaListenerErrorHandler</code> to handle exceptions.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#annotation-error-handling">Section 4.1.7, “Handling Exceptions”</a> for more information.</p>
+<p>You can now configure a <code>KafkaListenerErrorHandler</code> to handle exceptions.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#annotation-error-handling" rel="nofollow noreferrer" target="_blank">Section 4.1.7, “Handling Exceptions”</a> for more information.</p>
 
 <p>By default, the <code>@KafkaListener</code> <code>id</code> property is now used as the <code>group.id</code> property, overriding the property configured in the consumer factory (if present).Further, you can explicitly configure the <code>groupId</code> on the annotation.Previously, you would have needed a separate container factory (and consumer factory) to use different <code>group.id</code> s for listeners.To restore the previous behavior of using the factory configured <code>group.id</code>, set the <code>idIsGroup</code> property on the annotation to <code>false</code>.</p>
 
 <h3 id="a-1-11-embeddedkafka-annotation">A.1.11 @EmbeddedKafka Annotation</h3>
 
-<p>For convenience a test class level <code>@EmbeddedKafka</code> annotation is provided with the purpose to register <code>KafkaEmbedded</code> as a bean.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#testing">Section 4.3, “Testing Applications”</a> for more information.</p>
+<p>For convenience a test class level <code>@EmbeddedKafka</code> annotation is provided with the purpose to register <code>KafkaEmbedded</code> as a bean.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#testing" rel="nofollow noreferrer" target="_blank">Section 4.3, “Testing Applications”</a> for more information.</p>
 
 <h3 id="a-1-12-kerberos-configuration">A.1.12 Kerberos Configuration</h3>
 
-<p>Support for configuring Kerberos is now provided.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#kerberos">Section 4.1.8, “Kerberos”</a> for more information.</p>
+<p>Support for configuring Kerberos is now provided.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#kerberos" rel="nofollow noreferrer" target="_blank">Section 4.1.8, “Kerberos”</a> for more information.</p>
 
 <h2 id="a-2-changes-between-1-1-and-1-2">A.2 Changes between 1.1 and 1.2</h2>
 
@@ -2904,11 +2904,31 @@ public KafkaMessageDrivenChannelAdapter&lt;String, String&gt;
 
 <h3 id="a-3-5-seek">A.3.5 Seek</h3>
 
-<p>You can now seek the position of each topic/partition.This can be used to set the initial position during initialization when group management is in use and Kafka assigns the partitions.You can also seek when an idle container is detected, or at any arbitrary point in your application’s execution.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#seek">the section called “Seeking to a Specific Offset”</a> for more information.</p>
+<p>You can now seek the position of each topic/partition.This can be used to set the initial position during initialization when group management is in use and Kafka assigns the partitions.You can also seek when an idle container is detected, or at any arbitrary point in your application’s execution.See <a href="https://docs.spring.io/spring-kafka/reference/htmlsingle/#seek" rel="nofollow noreferrer" target="_blank">the section called “Seeking to a Specific Offset”</a> for more information.</p>
 </div>
 
 
-
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </main>
 
     

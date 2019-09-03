@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -49,7 +49,7 @@
         <li><a href="https://maoyanting.github.io/">Home</a> </li>
         <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
         <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
-        
+        <li><a href="/posts/"> Blog </a></li><li><a href="/categories/"> Categories </a></li><li><a href="/about"> About </a></li>
       </ul>
     </nav>
 
@@ -272,7 +272,7 @@ tomcat为每个web项目都创建一个ServletContext实例，tomcat在启动时
 这里应该是浏览器的请求进来了，Tomcat把resquest给了servlet，servlet到手一看，emmm，你这个url应该转去这个path呢（这里的path过去的是什么文件？html？）
 去吧，我把request和responce也给你一起带过去
 　　　　　　　　　　　　　　　　
-转发和重定向的区别：<a href="http://blog.csdn.net/u011794238/article/details/46801761">http://blog.csdn.net/u011794238/article/details/46801761</a></p>
+转发和重定向的区别：<a href="http://blog.csdn.net/u011794238/article/details/46801761" rel="nofollow noreferrer" target="_blank">http://blog.csdn.net/u011794238/article/details/46801761</a></p>
 
 <hr />
 
@@ -344,7 +344,7 @@ Engine 《Host《Context《 Wrapper。
 通常一个 Servlet class 对应一个 Wrapper，如果有多个 Servlet 就可以定义多个 Wrapper，如果有多个 Wrapper 就要定义一个更高的 Container 了</p>
 
 <p>//这里推荐看许令波的《深入分析Java Web设计模式》
-<a href="https://www.ibm.com/developerworks/cn/java/j-lo-tomcat1/index.html">https://www.ibm.com/developerworks/cn/java/j-lo-tomcat1/index.html</a></p>
+<a href="https://www.ibm.com/developerworks/cn/java/j-lo-tomcat1/index.html" rel="nofollow noreferrer" target="_blank">https://www.ibm.com/developerworks/cn/java/j-lo-tomcat1/index.html</a></p>
 
 <p><strong>工作流程：</strong></p>
 
@@ -372,15 +372,35 @@ Engine 《Host《Context《 Wrapper。
 
 <h2 id="参考资料">参考资料：</h2>
 
-<p>Java Web(一) Servlet详解！！<a href="http://www.cnblogs.com/whgk/p/6399262.html">http://www.cnblogs.com/whgk/p/6399262.html</a>
-servlet 运行工作原理详解  <a href="http://www.51gjie.com/javaweb/847.html">http://www.51gjie.com/javaweb/847.html</a>
-Spring MVC中DispatcherServlet工作原理探究  <a href="http://blog.csdn.net/hzzhoushaoyu/article/details/6853730">http://blog.csdn.net/hzzhoushaoyu/article/details/6853730</a>
-SpringMVC深度探险：<a href="http://downpour.iteye.com/category/196182">http://downpour.iteye.com/category/196182</a>
+<p>Java Web(一) Servlet详解！！<a href="http://www.cnblogs.com/whgk/p/6399262.html" rel="nofollow noreferrer" target="_blank">http://www.cnblogs.com/whgk/p/6399262.html</a>
+servlet 运行工作原理详解  <a href="http://www.51gjie.com/javaweb/847.html" rel="nofollow noreferrer" target="_blank">http://www.51gjie.com/javaweb/847.html</a>
+Spring MVC中DispatcherServlet工作原理探究  <a href="http://blog.csdn.net/hzzhoushaoyu/article/details/6853730" rel="nofollow noreferrer" target="_blank">http://blog.csdn.net/hzzhoushaoyu/article/details/6853730</a>
+SpringMVC深度探险：<a href="http://downpour.iteye.com/category/196182" rel="nofollow noreferrer" target="_blank">http://downpour.iteye.com/category/196182</a>
 //必看，作者写的超级好，可惜去炒股了就不写blog了</p>
 </div>
 
 
-
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </main>
 
     

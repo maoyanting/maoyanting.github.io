@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -49,7 +49,7 @@
         <li><a href="https://maoyanting.github.io/">Home</a> </li>
         <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
         <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
-        
+        <li><a href="/posts/"> Blog </a></li><li><a href="/categories/"> Categories </a></li><li><a href="/about"> About </a></li>
       </ul>
     </nav>
 
@@ -87,7 +87,7 @@
 
 <h2 id="写在前面">写在前面</h2>
 
-<p>基本的就不讲了，可参考：<a href="https://www.jianshu.com/p/efbeddc5eb19">Hexo+Next个人博客主题优化</a></p>
+<p>基本的就不讲了，可参考：<a href="https://www.jianshu.com/p/efbeddc5eb19" rel="nofollow noreferrer" target="_blank">Hexo+Next个人博客主题优化</a></p>
 
 <p>只记录一些自己的修改</p>
 
@@ -103,7 +103,7 @@
 # Dependencies: https://github.com/theme-next/hexo-symbols-count-time
 </code></pre>
 
-<p>具体使用可见<a href="https://github.com/theme-next/hexo-symbols-count-time">GitHub</a></p>
+<p>具体使用可见<a href="https://github.com/theme-next/hexo-symbols-count-time" rel="nofollow noreferrer" target="_blank">GitHub</a></p>
 
 <h3 id="阅读时间">阅读时间</h3>
 
@@ -113,7 +113,7 @@
 
 <h3 id="字数统计-1">字数统计</h3>
 
-<p>个人觉得是有点争议的，关于这一点Issues里面有人和开发者争论过，详见<a href="https://github.com/theme-next/hexo-symbols-count-time/issues/3">No use by changing the parameter <code>awl</code> and <code>wpm</code>. [some html tags can add excess additions in symbols counting] #3</a></p>
+<p>个人觉得是有点争议的，关于这一点Issues里面有人和开发者争论过，详见<a href="https://github.com/theme-next/hexo-symbols-count-time/issues/3" rel="nofollow noreferrer" target="_blank">No use by changing the parameter <code>awl</code> and <code>wpm</code>. [some html tags can add excess additions in symbols counting] #3</a></p>
 
 <hr />
 
@@ -123,7 +123,7 @@
 
 <p>这东西叫live2D，当然你也可以放入自己的blog</p>
 
-<p>GitHub地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/EYHN/hexo-helper-live2d">EYHN/hexo-helper-live2d</a></p>
+<p>GitHub地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/EYHN/hexo-helper-live2d" rel="nofollow noreferrer" target="_blank">EYHN/hexo-helper-live2d</a></p>
 
 <p>把它添加进你的hexo中，就能在页面上看见一个萌妹子的身体随着你的鼠标晃啊晃了～</p>
 
@@ -155,7 +155,7 @@
 
 <h2 id="首页隐藏指定文章">首页隐藏指定文章</h2>
 
-<p>参考：<a href="https://github.com/iissnan/hexo-theme-next/issues/474">首页隐藏部分文章#474</a></p>
+<p>参考：<a href="https://github.com/iissnan/hexo-theme-next/issues/474" rel="nofollow noreferrer" target="_blank">首页隐藏部分文章#474</a></p>
 
 <p>next/layout/index.swig文件中， post_template.render(post, true) 这一部分修改为</p>
 
@@ -181,7 +181,27 @@
 </div>
 
 
-
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </main>
 
     

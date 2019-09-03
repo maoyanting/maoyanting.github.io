@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -49,7 +49,7 @@
         <li><a href="https://maoyanting.github.io/">Home</a> </li>
         <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
         <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
-        
+        <li><a href="/posts/"> Blog </a></li><li><a href="/categories/"> Categories </a></li><li><a href="/about"> About </a></li>
       </ul>
     </nav>
 
@@ -131,7 +131,7 @@
     },12345678910
 </code></pre>
 
-<p>这里面的内容可以参考：<a href="https://www.jianshu.com/p/3bdff821f859">https://www.jianshu.com/p/3bdff821f859</a>
+<p>这里面的内容可以参考：<a href="https://www.jianshu.com/p/3bdff821f859" rel="nofollow noreferrer" target="_blank">https://www.jianshu.com/p/3bdff821f859</a>
 service里面和后端的交互：</p>
 
 <pre><code>export async function login(data) {
@@ -176,7 +176,7 @@ hashHistory在开发阶段比较好用，不需要服务器
 
 <p><strong>后端Java部分</strong></p>
 
-<p>参考：<a href="https://stackoverflow.com/questions/41246261/react-routing-is-able-to-handle-different-url-path-but-tomcat-returns-404-not-av/41249464#41249464">https://stackoverflow.com/questions/41246261/react-routing-is-able-to-handle-different-url-path-but-tomcat-returns-404-not-av/41249464#41249464</a>
+<p>参考：<a href="https://stackoverflow.com/questions/41246261/react-routing-is-able-to-handle-different-url-path-but-tomcat-returns-404-not-av/41249464#41249464" rel="nofollow noreferrer" target="_blank">https://stackoverflow.com/questions/41246261/react-routing-is-able-to-handle-different-url-path-but-tomcat-returns-404-not-av/41249464#41249464</a>
 在web.xml文件内加上：</p>
 
 <pre><code>&lt;error-page&gt;
@@ -204,9 +204,9 @@ const app = dva({
 })12345678
 </code></pre>
 
-<p>参考：<a href="https://github.com/sorrycc/roadhog/issues/187">https://github.com/sorrycc/roadhog/issues/187</a>
+<p>参考：<a href="https://github.com/sorrycc/roadhog/issues/187" rel="nofollow noreferrer" target="_blank">https://github.com/sorrycc/roadhog/issues/187</a>
 这里参考链接里面的是用的react-router3，但是最新的dva带的是react-router4，所以一开始一直走不通，提示useRouterHistory is not a function
-后来参考了<a href="https://github.com/ReactTraining/react-router/issues/4006">https://github.com/ReactTraining/react-router/issues/4006</a></p>
+后来参考了<a href="https://github.com/ReactTraining/react-router/issues/4006" rel="nofollow noreferrer" target="_blank">https://github.com/ReactTraining/react-router/issues/4006</a></p>
 
 <p>至此，前后端服务器下页面都能正常显示了
 这里有个小问题：因为这里其实我是把basename写死了，在项目迁移的时候肯定有问题。</p>
@@ -247,7 +247,7 @@ RequestMapping里面的是api请求的路径
 <h2 id="q-每次request没有cookies-导致每次的sessionid不同">Q：每次request没有cookies，导致每次的sessionId不同</h2>
 
 <p>A：开始认为是跨域的锅
-同源：<a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html">http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html</a>
+同源：<a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html" rel="nofollow noreferrer" target="_blank">http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html</a>
 同源：
 协议相同、域名相同、端口相同
 导致的问题：
@@ -255,8 +255,8 @@ RequestMapping里面的是api请求的路径
 2、DOM 无法获得。
 3、AJAX 请求不能发送。</p>
 
-<p>跨域：<a href="http://www.ruanyifeng.com/blog/2016/04/cors.html">http://www.ruanyifeng.com/blog/2016/04/cors.html</a>
-上网查了下，按照：<a href="https://github.com/dvajs/dva/issues/139">https://github.com/dvajs/dva/issues/139</a>
+<p>跨域：<a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" rel="nofollow noreferrer" target="_blank">http://www.ruanyifeng.com/blog/2016/04/cors.html</a>
+上网查了下，按照：<a href="https://github.com/dvajs/dva/issues/139" rel="nofollow noreferrer" target="_blank">https://github.com/dvajs/dva/issues/139</a>
 来写，添加了
 <code>const options= { method: &quot;GET&quot;,mode: 'cors',credentials: 'include'};</code>
 再次运行的时候，cookies是有了，但是依旧没有sessionId。
@@ -295,7 +295,7 @@ response.setHeader(&quot;Access-Control-Allow-Credentials&quot;,&quot;true&quot;
 <p>登出后，后端删除这个session，即使是同一个浏览器过来的数据，它没有找到session，就会新给一个sessionId。</p>
 
 <p>前端好像一般会用token
-<a href="https://tkvern.com/20170204/Dva%20+%20Ant%20Design%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E4%B9%8B%20React%20%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5/">https://tkvern.com/20170204/Dva%20+%20Ant%20Design%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E4%B9%8B%20React%20%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5/</a></p>
+<a href="https://tkvern.com/20170204/Dva%20+%20Ant%20Design%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E4%B9%8B%20React%20%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5/" rel="nofollow noreferrer" target="_blank">https://tkvern.com/20170204/Dva%20+%20Ant%20Design%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E4%B9%8B%20React%20%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5/</a></p>
 
 <p>实现：
 每次刷新的时候state里面的内容会不见。
@@ -366,7 +366,7 @@ login后，调用这个effect</p>
 <h2 id="q-websocket没有session">Q:webSocket没有session</h2>
 
 <p>A:跨域问题导致的
-<a href="https://github.com/dvajs/dva/issues/139">https://github.com/dvajs/dva/issues/139</a></p>
+<a href="https://github.com/dvajs/dva/issues/139" rel="nofollow noreferrer" target="_blank">https://github.com/dvajs/dva/issues/139</a></p>
 
 <hr />
 
@@ -383,7 +383,27 @@ login后，调用这个effect</p>
 </div>
 
 
-
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </main>
 
     

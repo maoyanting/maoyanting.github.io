@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -49,7 +49,7 @@
         <li><a href="https://maoyanting.github.io/">Home</a> </li>
         <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
         <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
-        
+        <li><a href="/posts/"> Blog </a></li><li><a href="/categories/"> Categories </a></li><li><a href="/about"> About </a></li>
       </ul>
     </nav>
 
@@ -99,7 +99,7 @@ context.getInitParameter获取Tomcat的server.xml中设置Context的初始化参
 <p>context.getAttribute()是获取对象容器中的数据值；
 context. getRequestDispatcher是请求转发。</p>
 
-<p>热部署：<a href="http://www.cnblogs.com/xuange306/p/7070938.html">Intellij IDEA配置tomcat热部署</a></p>
+<p>热部署：<a href="http://www.cnblogs.com/xuange306/p/7070938.html" rel="nofollow noreferrer" target="_blank">Intellij IDEA配置tomcat热部署</a></p>
 
 <hr />
 
@@ -111,9 +111,9 @@ context. getRequestDispatcher是请求转发。</p>
 
 <p>本来图示上的第二个加号点击应该会出现选择Artifact，选项有 war 或者 war exploded 。（此图为之前的正常情况下的图示）</p>
 
-<p>按照网上的方法：<a href="http://blog.csdn.net/zsy3313422/article/details/52583091">IntelliJ IDEA部署tomcat时Edit Configuration无artifact选项</a></p>
+<p>按照网上的方法：<a href="http://blog.csdn.net/zsy3313422/article/details/52583091" rel="nofollow noreferrer" target="_blank">IntelliJ IDEA部署tomcat时Edit Configuration无artifact选项</a></p>
 
-<p><a href="http://blog.csdn.net/Small_Mouse0/article/details/77506060">【错误解决】Intellj（IDEA） warning no artifacts configured</a></p>
+<p><a href="http://blog.csdn.net/Small_Mouse0/article/details/77506060" rel="nofollow noreferrer" target="_blank">【错误解决】Intellj（IDEA） warning no artifacts configured</a></p>
 
 <p>第一个方法我和评论里面一样，Web Application ：Exploded没有选项。</p>
 
@@ -129,7 +129,27 @@ context. getRequestDispatcher是请求转发。</p>
 </div>
 
 
-
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </main>
 
     

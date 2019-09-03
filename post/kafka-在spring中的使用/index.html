@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -49,7 +49,7 @@
         <li><a href="https://maoyanting.github.io/">Home</a> </li>
         <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
         <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
-        
+        <li><a href="/posts/"> Blog </a></li><li><a href="/categories/"> Categories </a></li><li><a href="/about"> About </a></li>
       </ul>
     </nav>
 
@@ -104,11 +104,11 @@
   <time datetime=2018-01-10T09:26:50Z class="post-date">Wed, Jan 10, 2018</time>
   <h2 id="写在前面">写在前面</h2>
 
-<p>Kafka的简单介绍可以看<a href="http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability">这个博客</a></p>
+<p>Kafka的简单介绍可以看<a href="http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability" rel="nofollow noreferrer" target="_blank">这个博客</a></p>
 
-<p>Kafka的简单使用可参看之前的<a href="https://maoyanting.github.io/2018/01/08/kafka%E5%AE%89%E8%A3%85%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/">KafKa安装（翻译）</a></p>
+<p>Kafka的简单使用可参看之前的<a href="https://maoyanting.github.io/2018/01/08/kafka%E5%AE%89%E8%A3%85%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/" rel="nofollow noreferrer" target="_blank">KafKa安装（翻译）</a></p>
 
-<p>Spring for Kafka 的简单使用可参看<a href="https://my.oschina.net/zhengweishan/blog/736213">这个博客</a></p>
+<p>Spring for Kafka 的简单使用可参看<a href="https://my.oschina.net/zhengweishan/blog/736213" rel="nofollow noreferrer" target="_blank">这个博客</a></p>
 
 <p>这里放一张我自己弄的简单的图</p>
 
@@ -138,7 +138,7 @@
 
 <p>简单概括就是：虽然这个用户操作在后端实际上有很多事要做，但是用户当下需要的只有部分事情的结果，那就可以把多出来的事情放入消息队列中慢慢实现。</p>
 
-<p>当然消息队列也不局限于此，比如消息队列一般都内置了高效的通信机制，因此也可以用在纯的消息通讯，具体可以看<a href="https://www.jianshu.com/p/689ce4205021">这个博客</a>。</p>
+<p>当然消息队列也不局限于此，比如消息队列一般都内置了高效的通信机制，因此也可以用在纯的消息通讯，具体可以看<a href="https://www.jianshu.com/p/689ce4205021" rel="nofollow noreferrer" target="_blank">这个博客</a>。</p>
 
 <p>//我是用消息队列来实现离线消息，消息到后端的时候，如果发现对应用户不在线，就把消息放入消息队列（生产者），等对应用户登录了（用户相当于一个消费者），会去获取订阅的消息，其实很扯淡……请不要效仿（离线消息搞个数据库不就行了嘛我就是吃饱了撑着用这个复杂地要死的来实现ಥ_ಥ），后来放弃了，觉得这个想法很傻逼(~￣△￣)~</p>
 
@@ -626,23 +626,43 @@ public class KafkaController {
 
 <p>除了特殊说明，其余图片均来自各大网站。</p>
 
-<p>Spring Integration Overview：<a href="https://docs.spring.io/spring-integration/docs/4.0.0.M3/reference/html/overview.html">https://docs.spring.io/spring-integration/docs/4.0.0.M3/reference/html/overview.html</a></p>
+<p>Spring Integration Overview：<a href="https://docs.spring.io/spring-integration/docs/4.0.0.M3/reference/html/overview.html" rel="nofollow noreferrer" target="_blank">https://docs.spring.io/spring-integration/docs/4.0.0.M3/reference/html/overview.html</a></p>
 
-<p>ZooKeeper深入浅出： <a href="https://holynull.gitbooks.io/zookeeper/content/%E5%AE%89%E8%A3%85%E5%92%8C%E8%BF%90%E8%A1%8Czookeeper.html">https://holynull.gitbooks.io/zookeeper/content/%E5%AE%89%E8%A3%85%E5%92%8C%E8%BF%90%E8%A1%8Czookeeper.html</a></p>
+<p>ZooKeeper深入浅出： <a href="https://holynull.gitbooks.io/zookeeper/content/%E5%AE%89%E8%A3%85%E5%92%8C%E8%BF%90%E8%A1%8Czookeeper.html" rel="nofollow noreferrer" target="_blank">https://holynull.gitbooks.io/zookeeper/content/%E5%AE%89%E8%A3%85%E5%92%8C%E8%BF%90%E8%A1%8Czookeeper.html</a></p>
 
-<p>Kafka 中Zookpeer 的作用-原理与实战： <a href="https://www.jianshu.com/p/f6261b8f8314">https://www.jianshu.com/p/f6261b8f8314</a></p>
+<p>Kafka 中Zookpeer 的作用-原理与实战： <a href="https://www.jianshu.com/p/f6261b8f8314" rel="nofollow noreferrer" target="_blank">https://www.jianshu.com/p/f6261b8f8314</a></p>
 
-<p>Apache Kafka：下一代分布式消息系统：<a href="http://www.infoq.com/cn/articles/apache-kafka（建议看原文）">http://www.infoq.com/cn/articles/apache-kafka（建议看原文）</a></p>
+<p>Apache Kafka：下一代分布式消息系统：<a href="http://www.infoq.com/cn/articles/apache-kafka（建议看原文）" rel="nofollow noreferrer" target="_blank">http://www.infoq.com/cn/articles/apache-kafka（建议看原文）</a></p>
 
-<p>apache kafka系列之在zookeeper中存储结构： <a href="http://blog.csdn.net/lizhitao/article/details/23744675">http://blog.csdn.net/lizhitao/article/details/23744675</a></p>
+<p>apache kafka系列之在zookeeper中存储结构： <a href="http://blog.csdn.net/lizhitao/article/details/23744675" rel="nofollow noreferrer" target="_blank">http://blog.csdn.net/lizhitao/article/details/23744675</a></p>
 
-<p>Kafka数据可靠性深度解读：<a href="http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability">http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability</a></p>
+<p>Kafka数据可靠性深度解读：<a href="http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability" rel="nofollow noreferrer" target="_blank">http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability</a></p>
 
-<p>spring-integration-kafka 2.0 使用：<a href="http://kylozw.github.io/2016/05/21/spring-integration-kafka-2.0/">http://kylozw.github.io/2016/05/21/spring-integration-kafka-2.0/</a></p>
+<p>spring-integration-kafka 2.0 使用：<a href="http://kylozw.github.io/2016/05/21/spring-integration-kafka-2.0/" rel="nofollow noreferrer" target="_blank">http://kylozw.github.io/2016/05/21/spring-integration-kafka-2.0/</a></p>
 </div>
 
 
-
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </main>
 
     

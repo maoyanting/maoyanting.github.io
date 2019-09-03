@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -49,7 +49,7 @@
         <li><a href="https://maoyanting.github.io/">Home</a> </li>
         <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
         <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
-        
+        <li><a href="/posts/"> Blog </a></li><li><a href="/categories/"> Categories </a></li><li><a href="/about"> About </a></li>
       </ul>
     </nav>
 
@@ -150,7 +150,7 @@
 <blockquote>
 <p>关注点：组合</p>
 
-<p><a href="http://www.cnblogs.com/java-my-life/archive/2012/05/10/2491891.html">《JAVA与模式》之策略模式</a></p>
+<p><a href="http://www.cnblogs.com/java-my-life/archive/2012/05/10/2491891.html" rel="nofollow noreferrer" target="_blank">《JAVA与模式》之策略模式</a></p>
 </blockquote>
 
 <hr />
@@ -238,10 +238,10 @@ public static PerfectLazyManSingleton getInstance() {
 
 <p>我们只需要将 instance 变量声明成 volatile 就可以了。</p>
 
-<p>————来自<a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/">如何正确地写出单例模式</a></p>
+<p>————来自<a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/" rel="nofollow noreferrer" target="_blank">如何正确地写出单例模式</a></p>
 </blockquote>
 
-<p>volatile更多详见<a href="https://maoyanting.github.io/2018/01/17/JavaWeb%E9%9D%A2%E8%AF%95-Java/">JavaWeb面试-Java</a></p>
+<p>volatile更多详见<a href="https://maoyanting.github.io/2018/01/17/JavaWeb%E9%9D%A2%E8%AF%95-Java/" rel="nofollow noreferrer" target="_blank">JavaWeb面试-Java</a></p>
 
 <h4 id="静态内部类">静态内部类</h4>
 
@@ -331,7 +331,7 @@ public enum Singleton implements MySingleton {
 
 <p>实现Serializable接口需要重写<code>readResolve</code>，才能保证其反序列化依旧是单例</p>
 
-<p>延伸阅读：<a href="https://mp.weixin.qq.com/s/iXC47w4tMfpZzTNxS_JQOw">深度解析单例与序列化之间的爱恨情仇~</a></p>
+<p>延伸阅读：<a href="https://mp.weixin.qq.com/s/iXC47w4tMfpZzTNxS_JQOw" rel="nofollow noreferrer" target="_blank">深度解析单例与序列化之间的爱恨情仇~</a></p>
 
 <hr />
 
@@ -354,7 +354,7 @@ public enum Singleton implements MySingleton {
 
 <p><strong>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;待补&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</strong></p>
 
-<p>资料：<a href="http://blog.csdn.net/u013256816/article/details/50525335"> 如何防止单例模式被JAVA反射攻击 </a></p>
+<p>资料：<a href="http://blog.csdn.net/u013256816/article/details/50525335" rel="nofollow noreferrer" target="_blank"> 如何防止单例模式被JAVA反射攻击 </a></p>
 
 <hr />
 
@@ -432,7 +432,27 @@ public enum Singleton implements MySingleton {
 </div>
 
 
-
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </main>
 
     

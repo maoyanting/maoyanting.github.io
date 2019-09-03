@@ -5,7 +5,7 @@
     <link>https://maoyanting.github.io/categories/java/</link>
     <description>Recent content in Java on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Mon, 08 Oct 2018 21:47:46 +0000</lastBuildDate>
     
 	<atom:link href="https://maoyanting.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
@@ -94,7 +94,7 @@ try {
       <pubDate>Wed, 07 Feb 2018 13:09:29 +0000</pubDate>
       
       <guid>https://maoyanting.github.io/post/java-base64/</guid>
-      <description>&lt;p&gt;某钱包分享链接泄漏手机号码了，&lt;a href=&#34;https://www.v2ex.com/t/429099#reply48&#34;&gt;链接&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;某钱包分享链接泄漏手机号码了，&lt;a href=&#34;https://www.v2ex.com/t/429099#reply48&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;链接&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;安全问题很重要啊&lt;/p&gt;</description>
     </item>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -49,7 +49,7 @@
         <li><a href="https://maoyanting.github.io/">Home</a> </li>
         <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
         <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
-        
+        <li><a href="/posts/"> Blog </a></li><li><a href="/categories/"> Categories </a></li><li><a href="/about"> About </a></li>
       </ul>
     </nav>
 
@@ -73,6 +73,7 @@
 <ul>
 <li><a href="#1-valid在list失效">1、@Valid在list失效</a></li>
 <li><a href="#2-参数绑定的error">2、参数绑定的error</a></li>
+<li><a href="#3-关于-非实体的基本类型参数校验">3、关于 非实体的基本类型参数校验</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -84,7 +85,7 @@
 <h2 id="零-使用">零、使用</h2>
 
 <blockquote>
-<p>参考资料：<a href="https://blog.csdn.net/eson_15/article/details/51725470">【SpringMVC学习06】SpringMVC中的数据校验 </a></p>
+<p>参考资料：<a href="https://blog.csdn.net/eson_15/article/details/51725470" rel="nofollow noreferrer" target="_blank">【SpringMVC学习06】SpringMVC中的数据校验 </a></p>
 </blockquote>
 
 <p>spring boot默认使用 hibernate validator</p>
@@ -121,6 +122,36 @@
         }
 	}
 </code></pre>
+
+<p>四、非实体的基本类型参数校验</p>
+
+<p>有时候我们只是对几个基本类型的参数做校验</p>
+
+<pre><code class="language-java">@RestController()
+@Validated
+public class UserController {
+    @GetMapping(&quot;/testValidParam&quot;)
+    @ApiOperation(&quot;校验基本类型&quot;)
+    public String testValidParam(@NotNull(message = &quot;name not null&quot;) String name,@NotNull(message = &quot;age not null&quot;) Integer age){
+        return &quot;hello word!&quot;;
+    }
+}
+</code></pre>
+
+<p>注意这个时候需要在类上加 <code>@Validated</code> 注解。</p>
+
+<p>此时如果校验出错，返回值为</p>
+
+<pre><code class="language-json">{
+    &quot;timestamp&quot;: &quot;2019-08-23T09:15:24.405+0000&quot;,
+    &quot;status&quot;: 500,
+    &quot;error&quot;: &quot;Internal Server Error&quot;,
+    &quot;message&quot;: &quot;testValidParam.name: name not null&quot;,
+    &quot;path&quot;: &quot;/testValidParam&quot;
+}
+</code></pre>
+
+<p>至此，基本的使用讲解已经结束。</p>
 
 <h2 id="一-规则">一、规则</h2>
 
@@ -245,18 +276,20 @@
 </table>
 
 <blockquote>
-<p>参考资料：<a href="http://jinnianshilongnian.iteye.com/blog/1733708">SpringMVC数据验证——第七章 注解式控制器的数据验证、类型转换及格式化——跟着开涛学SpringMVC</a></p>
+<p>参考资料：<a href="http://jinnianshilongnian.iteye.com/blog/1733708" rel="nofollow noreferrer" target="_blank">SpringMVC数据验证——第七章 注解式控制器的数据验证、类型转换及格式化——跟着开涛学SpringMVC</a></p>
 </blockquote>
 
 <h2 id="二-validator">二、Validator</h2>
 
 <blockquote>
-<p>参考资料：<a href="https://blog.csdn.net/devefx/article/details/51567533">使用Validator做SpringMVC的验证框架 - 使用Validator</a></p>
+<p>参考资料：<a href="https://blog.csdn.net/devefx/article/details/51567533" rel="nofollow noreferrer" target="_blank">使用Validator做SpringMVC的验证框架 - 使用Validator</a></p>
 </blockquote>
 
 <h2 id="三-validated-和-valid的区别">三、<strong>@Validated</strong> 和@Valid的区别</h2>
 
-<p>原文链接：<a href="https://stackoverflow.com/a/52092984/8147625">https://stackoverflow.com/a/52092984/8147625</a></p>
+<p><code>@Validated</code> 是 <code>@Valid</code> 的变体，用于支持分组校验。简单来说，原本一个实体类只能实现一种校验逻辑，<code>@Validated</code> 可以实现多种参数校验逻辑。</p>
+
+<p>原文链接：<a href="https://stackoverflow.com/a/52092984/8147625" rel="nofollow noreferrer" target="_blank">https://stackoverflow.com/a/52092984/8147625</a></p>
 
 <p><strong>@Valid的使用</strong></p>
 
@@ -283,7 +316,7 @@ public String stepOne(@Valid Account account) {...}
 <hr />
 
 <p><strong>@Validated的使用</strong>
-Source: <a href="http://blog.codeleak.pl/2014/08/validation-groups-in-spring-mvc.html">http://blog.codeleak.pl/2014/08/validation-groups-in-spring-mvc.html</a></p>
+Source: <a href="http://blog.codeleak.pl/2014/08/validation-groups-in-spring-mvc.html" rel="nofollow noreferrer" target="_blank">http://blog.codeleak.pl/2014/08/validation-groups-in-spring-mvc.html</a></p>
 
 <p>Controller:</p>
 
@@ -411,12 +444,48 @@ public Result&lt;Long&gt; insertBase(@RequestBody @Valid Person person, BindingR
 <p>此时接口返回的就是400了，毕竟你啥也没做</p>
 
 <blockquote>
-<p>参考链接：<a href="https://www.cnblogs.com/woshimrf/p/spring-web-400.html">https://www.cnblogs.com/woshimrf/p/spring-web-400.html</a></p>
+<p>参考链接：<a href="https://www.cnblogs.com/woshimrf/p/spring-web-400.html" rel="nofollow noreferrer" target="_blank">https://www.cnblogs.com/woshimrf/p/spring-web-400.html</a></p>
 </blockquote>
+
+<h3 id="3-关于-非实体的基本类型参数校验">3、关于 非实体的基本类型参数校验</h3>
+
+<p>首先，必须使用 <code>@Validated</code> 注解，<code>@Valid</code> 是无效的。</p>
+
+<p>因为 <code>@Validated</code>   的处理类 <code>org.springframework.validation.beanvalidation.MethodValidationPostProcessor</code>  中，在判断分组的时候，如果方法没有 <code>@Validated</code> 注解，会去类上找是否有注解。</p>
+
+<pre><code class="language-java">protected Class&lt;?&gt;[] determineValidationGroups(MethodInvocation invocation) {
+		Validated validatedAnn = AnnotationUtils.findAnnotation(invocation.getMethod(), Validated.class);
+		if (validatedAnn == null) {
+      //此处会去找类上面的Validated注解
+			validatedAnn = AnnotationUtils.findAnnotation(invocation.getThis().getClass(), Validated.class);
+		}
+		return (validatedAnn != null ? validatedAnn.value() : new Class&lt;?&gt;[0]);
+	}
+</code></pre>
 </div>
 
 
-
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </main>
 
     

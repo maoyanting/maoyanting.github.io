@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -49,7 +49,7 @@
         <li><a href="https://maoyanting.github.io/">Home</a> </li>
         <li><a href="https://maoyanting.github.io//categories/index.html">Categories</a> </li>
         <li><a href="https://maoyanting.github.io//about/index.html">About Me</a> </li>
-        
+        <li><a href="/posts/"> Blog </a></li><li><a href="/categories/"> Categories </a></li><li><a href="/about"> About </a></li>
       </ul>
     </nav>
 
@@ -70,6 +70,13 @@
 <li><a href="#merge">merge</a></li>
 <li><a href="#reset">reset</a></li>
 <li><a href="#cherry-pick">cherry pick</a></li>
+</ul></li>
+<li><a href="#问题">问题</a>
+<ul>
+<li>
+<ul>
+<li><a href="#一-git仓库过大clone不下来">一、git仓库过大clone不下来</a></li>
+</ul></li>
 <li><a href="#参考资料">参考资料</a></li>
 </ul></li>
 </ul></li>
@@ -185,16 +192,42 @@ $ git reset --hard commit_id     退到/进到 指定commit的sha码
 <p>这篇讲的很清晰，就不摘抄过来了。</p>
 
 <blockquote>
-<p>使用链接：<a href="https://yq.aliyun.com/articles/640890">使用IDEA进行git cherry-pick操作</a></p>
+<p>使用链接：<a href="https://yq.aliyun.com/articles/640890" rel="nofollow noreferrer" target="_blank">使用IDEA进行git cherry-pick操作</a></p>
 </blockquote>
+
+<h2 id="问题">问题</h2>
+
+<h4 id="一-git仓库过大clone不下来">一、git仓库过大clone不下来</h4>
+
+<p>只需要在命令行后面加&ndash;depth=1，就会只clone最后一次commit的内容</p>
 
 <h3 id="参考资料">参考资料</h3>
 
-<p><a href="https://blog.csdn.net/lovesummerforever/article/details/50032937">Intellij IDEA 中的git操作 </a></p>
+<p><a href="https://blog.csdn.net/lovesummerforever/article/details/50032937" rel="nofollow noreferrer" target="_blank">Intellij IDEA 中的git操作 </a></p>
 </div>
 
 
-
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </main>
 
     
