@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>关于我 &middot; 修仙下属委员会</title>
+  <title>记一次OOM排查 &middot; 修仙下属委员会</title>
 
   
   <link type="text/css" rel="stylesheet" href="https://maoyanting.github.io/css/print.css" media="print">
@@ -59,84 +59,35 @@
 
     <main class="content container">
     <div class="post">
-  <h1>关于我</h1>
+  <h1>记一次OOM排查</h1>
   <div id="toc" class="well col-md-4 col-sm-6">
-    <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#工作历程">工作历程</a></li>
-<li><a href="#我的特长">我的特长</a></li>
-<li><a href="#个人评价">个人评价</a></li>
-<li><a href="#关于blog">关于Blog</a></li>
-</ul></li>
-</ul>
-</nav>
+    
     </div>
-  <time datetime=2018-01-23T13:44:28Z class="post-date">Tue, Jan 23, 2018</time>
-  
+  <time datetime=2020-03-02T17:14:39&#43;0800 class="post-date">Mon, Mar 2, 2020</time>
+  <p>项目测试环境正常，预发OOM，这究竟是道德的沦丧还是……</p>
 
-<hr />
+<p>​        新建的项目上预发没多久以后，接口就报了Handler dispatch failed; nested exception is java.lang.OutOfMemoryError: Metaspace，然后疯狂GC；</p>
 
-<blockquote>
-<p><strong>NAME</strong>：5q+b5b2m5am3</p>
+<p>很奇怪，预发环境分配的是1G内存，metaspace是128M，测试环境会更小，但是测试环境跑了那么久也没出现过问题，预发一上就出了个OOM。</p>
 
-<p><strong>ADDRESS</strong>：杭州-三墩</p>
+<p>​立马让运维dump，但是看了dump文件，没发现异常，没有大对象，也没有异常的加载。
+​        心下一沉，想到了第一次遇到线上CPU打满的那次，也是dump文件下来没发现任何问题，顶多就是不断在打日志，日志内容也没啥问题，最后实在是查不出来，只能无脑加机器。<img src="https://pic1.zhimg.com/80/v2-21e950036596757c2fcbadee1ffcff7f_1440w.jpg" alt="img" /></p>
 
-<p><strong>SCHOOL&amp;MAJOR</strong>：浙江工业大学 57uZ5rC05o6S5rC05bel56iLMjAxNuWxiiDmnKznp5E=</p>
+<p>​这回赶紧让运维加了机器的配置，然后就没出什么问题了，当然也有可能是预发的流量本就不大。</p>
 
-<p><strong>Email</strong>：ZmhtYW95YW50aW5nQDE2My5jb20=</p>
+<p>​那么问题就来了，为什么测试环境更小的配置，但是没出现OOM的问题呢？
+​询问运维得知，我们测试环境是用k8s部署的，JVM使用的是默认的配置，一个项目大概分配500～900M，排查陷入了僵局。</p>
 
-<p><strong>GitHub</strong>：<a href="https://github.com/maoyanting" rel="nofollow noreferrer" target="_blank">https://github.com/maoyanting</a></p>
-</blockquote>
+<p>​后经同事提醒，查询发现<strong>JDK1.8对于Metaspace的max的默认值就是无穷大</strong><img src="https://pic2.zhimg.com/80/v2-0613c92c5833214380f23d82fc6a8f83_1440w.jpg" alt="img" />
+​再找了大佬帮忙查了测试环境现在 Metaspace 的使用量，发现基本在128M徘徊，至此，原因终于找到了。</p>
 
-<hr />
+<p><strong>总的来说。</strong></p>
 
-<h2 id="工作历程">工作历程</h2>
+<p>测试环境 用的k8s，走的默认配置，JDK1.8对于Metaspace的max的默认值就是无穷大，所以不会出现 Metaspace OOM的情况。</p>
 
-<p>2016年7月毕业后就职于杭州某市政设计院，2017年5月初辞职自学。</p>
+<p>预发环境 在请求不是很多的情况下，Metaspace能达到100M以上，所以预发配置的128M很快就满了。</p>
 
-<p>2018年3月正式从事java后端开发工作</p>
-
-<hr />
-
-<h2 id="我的特长">我的特长</h2>
-
-<p>熟悉Spring、Spring MVC、Mybatis、Tomcat等JAVA框架。</p>
-
-<ol>
-<li>JAVA基础较好，理解I/O，多线程，集合等基础框架，对JVM的原理有一定的了解；</li>
-<li>基本掌握MySQL的使用和开发；</li>
-<li>对React等前端相关技术有一定了解和使用；</li>
-<li>对技术有热情，勤奋，具有快速学习的能力；</li>
-</ol>
-
-<hr />
-
-<h2 id="个人评价">个人评价</h2>
-
-<p>写代码有种自我满足感，喜欢接触新的技术，对数据处理和代码格式都有一定的强迫症。</p>
-
-<hr />
-
-<h2 id="关于blog">关于Blog</h2>
-
-<p>本blog里面的基本都是学习笔记而不是文章</p>
-
-<p>自我认为，blog里面的分两种：</p>
-
-<p><strong>学习笔记</strong>：写给自己的，对获取的知识进行格式转换，转换为自己能吸收的格式；不做笔记纯靠脑子转化的效率对吾等凡人来说还是太低，再加上如果没使用的话，没多久就忘记了。</p>
-
-<p><strong>文章</strong>：写给读者的，这种需要循序渐进，对于读者也要照顾到读者的知识层面，写的好的不多。</p>
-
-<p>之前学习笔记都是用印象笔记的，偶尔有文章会发到CSDN上去，虽然都很好用但是总觉得差了点什么</p>
-
-<p>看大家都自建blog就想着搞一个啦</p>
-
-<p>markdown简直是最爱（当然表格什么的展示还是很心塞）</p>
-
-<p>最后吐槽下写java的小伙伴们，你们的排版能不能好看点啊啊啊啊！看看前端的文章，那排版总体素质甩了写java的好几条街啊！</p>
-
+<p><img src="https://pic4.zhimg.com/80/v2-404780019d883e3688d8c8c7a5f6395a_1440w.jpg" alt="img" /></p>
 </div>
 
 
