@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MySQL on 修仙下属委员会</title>
-    <link>https://maoyanting.github.io/categories/mysql/</link>
+    <link>https://maoyanting.com/categories/mysql/</link>
     <description>Recent content in MySQL on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 30 May 2018 21:24:41 +0000</lastBuildDate>
     
-	<atom:link href="https://maoyanting.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://maoyanting.com/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MySQL-索引</title>
-      <link>https://maoyanting.github.io/post/mysql-%E7%B4%A2%E5%BC%95/</link>
+      <link>https://maoyanting.com/post/mysql-%E7%B4%A2%E5%BC%95/</link>
       <pubDate>Wed, 30 May 2018 21:24:41 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/mysql-%E7%B4%A2%E5%BC%95/</guid>
+      <guid>https://maoyanting.com/post/mysql-%E7%B4%A2%E5%BC%95/</guid>
       <description>&lt;h3 id=&#34;什么是索引&#34;&gt;什么是索引&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;索引用于快速找出在某个列中有一特定值的行&lt;/strong&gt;&lt;/p&gt;</description>
@@ -24,10 +24,10 @@
     
     <item>
       <title>MySQL-开发</title>
-      <link>https://maoyanting.github.io/post/mysql-%E5%BC%80%E5%8F%91/</link>
+      <link>https://maoyanting.com/post/mysql-%E5%BC%80%E5%8F%91/</link>
       <pubDate>Tue, 06 Feb 2018 16:02:53 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/mysql-%E5%BC%80%E5%8F%91/</guid>
+      <guid>https://maoyanting.com/post/mysql-%E5%BC%80%E5%8F%91/</guid>
       <description>&lt;p&gt;本文整理自《深入浅出MySQL数据库开发、优化与管理维护（第2版）》&lt;/p&gt;
 
 &lt;p&gt;第二部分 开发篇&lt;/p&gt;</description>
@@ -35,10 +35,10 @@
     
     <item>
       <title>MySQL-基本操作</title>
-      <link>https://maoyanting.github.io/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
+      <link>https://maoyanting.com/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Wed, 10 Jan 2018 21:48:43 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
+      <guid>https://maoyanting.com/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
       <description>&lt;p&gt;本文整理自《深入浅出MySQL数据库开发、优化与管理维护（第2版）》&lt;/p&gt;
 
 &lt;p&gt;第一部分 基础篇&lt;/p&gt;</description>

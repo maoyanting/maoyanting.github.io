@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>修仙下属委员会</title>
-    <link>https://maoyanting.github.io/</link>
+    <link>https://maoyanting.com/</link>
     <description>Recent content on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 02 Mar 2020 17:14:39 +0800</lastBuildDate>
     
-	<atom:link href="https://maoyanting.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://maoyanting.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>记一次OOM排查</title>
-      <link>https://maoyanting.github.io/post/oom/</link>
+      <link>https://maoyanting.com/post/oom/</link>
       <pubDate>Mon, 02 Mar 2020 17:14:39 +0800</pubDate>
       
-      <guid>https://maoyanting.github.io/post/oom/</guid>
+      <guid>https://maoyanting.com/post/oom/</guid>
       <description>&lt;p&gt;项目测试环境正常，预发OOM，这究竟是道德的沦丧还是……&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Swagger</title>
-      <link>https://maoyanting.github.io/post/swagger/</link>
+      <link>https://maoyanting.com/post/swagger/</link>
       <pubDate>Wed, 21 Aug 2019 17:43:35 +0800</pubDate>
       
-      <guid>https://maoyanting.github.io/post/swagger/</guid>
+      <guid>https://maoyanting.com/post/swagger/</guid>
       <description>&lt;p&gt;Swagger的简单使用&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>homebrew下载缓慢问题</title>
-      <link>https://maoyanting.github.io/post/homebrew%E4%B8%8B%E8%BD%BD%E7%BC%93%E6%85%A2%E9%97%AE%E9%A2%98/</link>
+      <link>https://maoyanting.com/post/homebrew%E4%B8%8B%E8%BD%BD%E7%BC%93%E6%85%A2%E9%97%AE%E9%A2%98/</link>
       <pubDate>Tue, 20 Aug 2019 23:56:20 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/homebrew%E4%B8%8B%E8%BD%BD%E7%BC%93%E6%85%A2%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://maoyanting.com/post/homebrew%E4%B8%8B%E8%BD%BD%E7%BC%93%E6%85%A2%E9%97%AE%E9%A2%98/</guid>
       <description>&lt;p&gt;homebrew下载缓慢问题&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>记一次jar包冲突导致的NoSuchMethodError</title>
-      <link>https://maoyanting.github.io/post/%E8%AE%B0%E4%B8%80%E6%AC%A1jar%E5%8C%85%E5%86%B2%E7%AA%81%E5%AF%BC%E8%87%B4%E7%9A%84nosuchmethoderror/</link>
+      <link>https://maoyanting.com/post/%E8%AE%B0%E4%B8%80%E6%AC%A1jar%E5%8C%85%E5%86%B2%E7%AA%81%E5%AF%BC%E8%87%B4%E7%9A%84nosuchmethoderror/</link>
       <pubDate>Wed, 10 Apr 2019 08:40:46 +0800</pubDate>
       
-      <guid>https://maoyanting.github.io/post/%E8%AE%B0%E4%B8%80%E6%AC%A1jar%E5%8C%85%E5%86%B2%E7%AA%81%E5%AF%BC%E8%87%B4%E7%9A%84nosuchmethoderror/</guid>
+      <guid>https://maoyanting.com/post/%E8%AE%B0%E4%B8%80%E6%AC%A1jar%E5%8C%85%E5%86%B2%E7%AA%81%E5%AF%BC%E8%87%B4%E7%9A%84nosuchmethoderror/</guid>
       <description>&lt;p&gt;记一次jar包冲突导致的 &lt;code&gt;NoSuchMethodError&lt;/code&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>LittleTips-一些小技巧集合</title>
-      <link>https://maoyanting.github.io/post/littletips/</link>
+      <link>https://maoyanting.com/post/littletips/</link>
       <pubDate>Mon, 25 Mar 2019 22:07:05 +0800</pubDate>
       
-      <guid>https://maoyanting.github.io/post/littletips/</guid>
+      <guid>https://maoyanting.com/post/littletips/</guid>
       <description>&lt;p&gt;一些很小的技巧合集&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>从Hexo到Hugo</title>
-      <link>https://maoyanting.github.io/post/%E4%BB%8Ehexo%E5%88%B0hugo/</link>
+      <link>https://maoyanting.com/post/%E4%BB%8Ehexo%E5%88%B0hugo/</link>
       <pubDate>Tue, 05 Mar 2019 21:12:57 +0800</pubDate>
       
-      <guid>https://maoyanting.github.io/post/%E4%BB%8Ehexo%E5%88%B0hugo/</guid>
+      <guid>https://maoyanting.com/post/%E4%BB%8Ehexo%E5%88%B0hugo/</guid>
       <description>&lt;p&gt;从Hexo成功迁移到Hugo了呢&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Spring Boot(未完)</title>
-      <link>https://maoyanting.github.io/post/springboot/</link>
+      <link>https://maoyanting.com/post/springboot/</link>
       <pubDate>Mon, 25 Feb 2019 22:12:50 +0800</pubDate>
       
-      <guid>https://maoyanting.github.io/post/springboot/</guid>
+      <guid>https://maoyanting.com/post/springboot/</guid>
       <description>&lt;p&gt;这年头新项目不用 &lt;code&gt;Spring Boot&lt;/code&gt; 的大概想法比较异于常人😅&lt;/p&gt;
 
 &lt;p&gt;代码基于 &lt;code&gt;Spring Boot 2.0&lt;/code&gt;&lt;/p&gt;</description>
@@ -78,10 +78,10 @@
     
     <item>
       <title>Spring-sleuth</title>
-      <link>https://maoyanting.github.io/post/spring-sleuth/</link>
+      <link>https://maoyanting.com/post/spring-sleuth/</link>
       <pubDate>Mon, 22 Oct 2018 22:49:08 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/spring-sleuth/</guid>
+      <guid>https://maoyanting.com/post/spring-sleuth/</guid>
       <description>&lt;p&gt;有时候，定位bug真的是个很麻烦的事情呢&lt;/p&gt;
 
 &lt;p&gt;我们可以简单借用一下Spring Cloud Sleuth&lt;/p&gt;</description>
@@ -89,19 +89,19 @@
     
     <item>
       <title>Spring-全局异常拦截</title>
-      <link>https://maoyanting.github.io/post/spring-%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA/</link>
+      <link>https://maoyanting.com/post/spring-%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA/</link>
       <pubDate>Tue, 16 Oct 2018 15:49:06 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/spring-%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA/</guid>
+      <guid>https://maoyanting.com/post/spring-%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA/</guid>
       <description>&lt;p&gt;Spring MVC那一篇里提到了异常拦截来做参数校验返回，那里是对特定的 &lt;code&gt;controller&lt;/code&gt; 做异常捕捉，但是我们也可以选择全局拦截处理&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java-Java基础</title>
-      <link>https://maoyanting.github.io/post/java-java%E5%9F%BA%E7%A1%80/</link>
+      <link>https://maoyanting.com/post/java-java%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Mon, 08 Oct 2018 21:47:46 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-java%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://maoyanting.com/post/java-java%E5%9F%BA%E7%A1%80/</guid>
       <description>&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
 
 &lt;p&gt;本文是对一些java基础知识的整理，把之前印象笔记里面的全部慢慢搬到这个blog来&lt;/p&gt;
@@ -119,10 +119,10 @@
     
     <item>
       <title>cookie</title>
-      <link>https://maoyanting.github.io/post/cookie/</link>
+      <link>https://maoyanting.com/post/cookie/</link>
       <pubDate>Tue, 18 Sep 2018 22:30:50 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/cookie/</guid>
+      <guid>https://maoyanting.com/post/cookie/</guid>
       <description>&lt;p&gt;今天被我们的前端同学气的半死，但是他问我为什么没有cookie的时候我是没有看见cookie……&lt;/p&gt;
 
 &lt;p&gt;恶补一下cookie的知识，为了下次能不要再懵逼&lt;/p&gt;</description>
@@ -130,37 +130,37 @@
     
     <item>
       <title>Spring（未完）</title>
-      <link>https://maoyanting.github.io/post/spring/</link>
+      <link>https://maoyanting.com/post/spring/</link>
       <pubDate>Mon, 17 Sep 2018 11:56:06 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/spring/</guid>
+      <guid>https://maoyanting.com/post/spring/</guid>
       <description>&lt;p&gt;spring 是一个 &lt;strong&gt;轻量级&lt;/strong&gt;的 实现&lt;strong&gt;IOC&lt;/strong&gt; 和 &lt;strong&gt;AOP&lt;/strong&gt;的框架。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Spring MVC 参数验证</title>
-      <link>https://maoyanting.github.io/post/spring-mvc-%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81/</link>
+      <link>https://maoyanting.com/post/spring-mvc-%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81/</link>
       <pubDate>Mon, 10 Sep 2018 23:46:11 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/spring-mvc-%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81/</guid>
+      <guid>https://maoyanting.com/post/spring-mvc-%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81/</guid>
       <description>&lt;p&gt;参数校验也可以很简单啊&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>IDEA-小技巧</title>
-      <link>https://maoyanting.github.io/post/idea-%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <link>https://maoyanting.com/post/idea-%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Mon, 10 Sep 2018 23:31:05 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/idea-%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      <guid>https://maoyanting.com/post/idea-%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
       <description>&lt;p&gt;我们的目标是，准时下班！&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mybatis-小问题</title>
-      <link>https://maoyanting.github.io/post/mybatis-%E5%B0%8F%E9%97%AE%E9%A2%98/</link>
+      <link>https://maoyanting.com/post/mybatis-%E5%B0%8F%E9%97%AE%E9%A2%98/</link>
       <pubDate>Mon, 10 Sep 2018 23:03:31 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/mybatis-%E5%B0%8F%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://maoyanting.com/post/mybatis-%E5%B0%8F%E9%97%AE%E9%A2%98/</guid>
       <description>一、Parameter &amp;lsquo;id&amp;rsquo; not found. Available parameters are [arg2, arg1, arg0, param3, param1, param2] 原因：多入参的情况下没有在参数前加@Param
 特殊原因：加了@Param还是报错，查看你是import的依赖是不是org.apache.ibatis.annotations.Param
 可能会不小心导入org.springframework.data.repository.query.Param</description>
@@ -168,19 +168,19 @@
     
     <item>
       <title>Docker基础</title>
-      <link>https://maoyanting.github.io/post/docker/</link>
+      <link>https://maoyanting.com/post/docker/</link>
       <pubDate>Thu, 06 Sep 2018 22:37:38 +0800</pubDate>
       
-      <guid>https://maoyanting.github.io/post/docker/</guid>
+      <guid>https://maoyanting.com/post/docker/</guid>
       <description>&lt;p&gt;Docker是个好东西&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MySQL-索引</title>
-      <link>https://maoyanting.github.io/post/mysql-%E7%B4%A2%E5%BC%95/</link>
+      <link>https://maoyanting.com/post/mysql-%E7%B4%A2%E5%BC%95/</link>
       <pubDate>Wed, 30 May 2018 21:24:41 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/mysql-%E7%B4%A2%E5%BC%95/</guid>
+      <guid>https://maoyanting.com/post/mysql-%E7%B4%A2%E5%BC%95/</guid>
       <description>&lt;h3 id=&#34;什么是索引&#34;&gt;什么是索引&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;索引用于快速找出在某个列中有一特定值的行&lt;/strong&gt;&lt;/p&gt;</description>
@@ -188,10 +188,10 @@
     
     <item>
       <title>Java-HttpClient</title>
-      <link>https://maoyanting.github.io/post/java-httpclient%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
+      <link>https://maoyanting.com/post/java-httpclient%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Tue, 15 May 2018 23:30:39 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-httpclient%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>https://maoyanting.com/post/java-httpclient%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
       <description>&lt;h2 id=&#34;httpclient的介绍&#34;&gt;HttpClient的介绍&lt;/h2&gt;
 
 &lt;h3 id=&#34;一般步骤&#34;&gt;一般步骤&lt;/h3&gt;
@@ -226,10 +226,10 @@ try {
     
     <item>
       <title>工作流</title>
-      <link>https://maoyanting.github.io/post/%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
+      <link>https://maoyanting.com/post/%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
       <pubDate>Thu, 10 May 2018 21:52:05 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid>
+      <guid>https://maoyanting.com/post/%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid>
       <description>&lt;h2 id=&#34;零-工作流相关概念&#34;&gt;零、工作流相关概念&lt;/h2&gt;
 
 &lt;h3 id=&#34;1-工作流-workflow&#34;&gt;1、工作流（Workflow）&lt;/h3&gt;
@@ -259,10 +259,10 @@ try {
     
     <item>
       <title>Tomcat-日志</title>
-      <link>https://maoyanting.github.io/post/tomcat-%E6%97%A5%E5%BF%97/</link>
+      <link>https://maoyanting.com/post/tomcat-%E6%97%A5%E5%BF%97/</link>
       <pubDate>Wed, 28 Mar 2018 15:49:06 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/tomcat-%E6%97%A5%E5%BF%97/</guid>
+      <guid>https://maoyanting.com/post/tomcat-%E6%97%A5%E5%BF%97/</guid>
       <description>&lt;p&gt;昨天装了SSH，连接到了linux的远程服务器，然后和我说可以查看Tomcat的日志&lt;/p&gt;
 
 &lt;p&gt;我：喵喵？&lt;/p&gt;
@@ -272,10 +272,10 @@ try {
     
     <item>
       <title>新手村-Java新人拿到一台新的电脑需要装配什么</title>
-      <link>https://maoyanting.github.io/post/%E6%96%B0%E6%89%8B%E6%9D%91-java%E6%96%B0%E4%BA%BA%E6%8B%BF%E5%88%B0%E4%B8%80%E5%8F%B0%E6%96%B0%E7%9A%84%E7%94%B5%E8%84%91%E9%9C%80%E8%A6%81%E8%A3%85%E9%85%8D%E4%BB%80%E4%B9%88/</link>
+      <link>https://maoyanting.com/post/%E6%96%B0%E6%89%8B%E6%9D%91-java%E6%96%B0%E4%BA%BA%E6%8B%BF%E5%88%B0%E4%B8%80%E5%8F%B0%E6%96%B0%E7%9A%84%E7%94%B5%E8%84%91%E9%9C%80%E8%A6%81%E8%A3%85%E9%85%8D%E4%BB%80%E4%B9%88/</link>
       <pubDate>Mon, 26 Mar 2018 23:56:20 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/%E6%96%B0%E6%89%8B%E6%9D%91-java%E6%96%B0%E4%BA%BA%E6%8B%BF%E5%88%B0%E4%B8%80%E5%8F%B0%E6%96%B0%E7%9A%84%E7%94%B5%E8%84%91%E9%9C%80%E8%A6%81%E8%A3%85%E9%85%8D%E4%BB%80%E4%B9%88/</guid>
+      <guid>https://maoyanting.com/post/%E6%96%B0%E6%89%8B%E6%9D%91-java%E6%96%B0%E4%BA%BA%E6%8B%BF%E5%88%B0%E4%B8%80%E5%8F%B0%E6%96%B0%E7%9A%84%E7%94%B5%E8%84%91%E9%9C%80%E8%A6%81%E8%A3%85%E9%85%8D%E4%BB%80%E4%B9%88/</guid>
       <description>&lt;p&gt;适用对象：新手&lt;/p&gt;
 
 &lt;p&gt;装备：win10&lt;/p&gt;</description>
@@ -283,10 +283,10 @@ try {
     
     <item>
       <title>Git-基本操作</title>
-      <link>https://maoyanting.github.io/post/git-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
+      <link>https://maoyanting.com/post/git-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Mon, 19 Mar 2018 23:14:11 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/git-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
+      <guid>https://maoyanting.com/post/git-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
       <description>&lt;p&gt;继装Git就遇到很大的问题后，我发现我对Git并不是很了解……因为之前都是直接用sourcetree的&lt;/p&gt;
 
 &lt;p&gt;整理学习一下吧&lt;/p&gt;
@@ -296,10 +296,10 @@ try {
     
     <item>
       <title>Git-win10下Git闪退</title>
-      <link>https://maoyanting.github.io/post/git-win10%E4%B8%8Bgit%E9%97%AA%E9%80%80/</link>
+      <link>https://maoyanting.com/post/git-win10%E4%B8%8Bgit%E9%97%AA%E9%80%80/</link>
       <pubDate>Mon, 19 Mar 2018 20:09:16 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/git-win10%E4%B8%8Bgit%E9%97%AA%E9%80%80/</guid>
+      <guid>https://maoyanting.com/post/git-win10%E4%B8%8Bgit%E9%97%AA%E9%80%80/</guid>
       <description>&lt;p&gt;win10下Git闪退&lt;/p&gt;
 
 &lt;p&gt;今天第一天上班，装Git就遇到了很大的问题……忧伤&lt;/p&gt;</description>
@@ -307,10 +307,10 @@ try {
     
     <item>
       <title>Linux-常用命令大全</title>
-      <link>https://maoyanting.github.io/post/linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</link>
+      <link>https://maoyanting.com/post/linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</link>
       <pubDate>Sun, 04 Mar 2018 15:54:56 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</guid>
+      <guid>https://maoyanting.com/post/linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</guid>
       <description>&lt;p&gt;Linux命令大全&lt;/p&gt;
 
 &lt;p&gt;原文链接：&lt;a href=&#34;http://blog.csdn.net/Evankaka/article/details/49227669&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Linux命令大全&amp;mdash;-常用文件操作命令&lt;/a&gt;&lt;/p&gt;</description>
@@ -318,28 +318,28 @@ try {
     
     <item>
       <title>Java-通用代码</title>
-      <link>https://maoyanting.github.io/post/java-%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81/</link>
+      <link>https://maoyanting.com/post/java-%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81/</link>
       <pubDate>Fri, 02 Mar 2018 17:27:43 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81/</guid>
+      <guid>https://maoyanting.com/post/java-%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81/</guid>
       <description>&lt;p&gt;一些通用的Java代码：从网上下载图片，&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java-I/O</title>
-      <link>https://maoyanting.github.io/post/java-i_o/</link>
+      <link>https://maoyanting.com/post/java-i_o/</link>
       <pubDate>Fri, 02 Mar 2018 15:29:20 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-i_o/</guid>
+      <guid>https://maoyanting.com/post/java-i_o/</guid>
       <description>&lt;p&gt;I/O资料整理&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>杭州二手房</title>
-      <link>https://maoyanting.github.io/post/%E5%B0%8F%E9%BB%91%E5%B1%8B-%E6%9D%AD%E5%B7%9E%E4%BA%8C%E6%89%8B%E6%88%BF/</link>
+      <link>https://maoyanting.com/post/%E5%B0%8F%E9%BB%91%E5%B1%8B-%E6%9D%AD%E5%B7%9E%E4%BA%8C%E6%89%8B%E6%88%BF/</link>
       <pubDate>Tue, 27 Feb 2018 15:43:51 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/%E5%B0%8F%E9%BB%91%E5%B1%8B-%E6%9D%AD%E5%B7%9E%E4%BA%8C%E6%89%8B%E6%88%BF/</guid>
+      <guid>https://maoyanting.com/post/%E5%B0%8F%E9%BB%91%E5%B1%8B-%E6%9D%AD%E5%B7%9E%E4%BA%8C%E6%89%8B%E6%88%BF/</guid>
       <description>零、写在前面 家里有在杭州买房的需求，自己还在忙着找工作，只能说结合着来了XD。
 这几天恰好围观了下GitHub上的这个repository
 star数蹭蹭蹭往上涨啊
@@ -368,46 +368,46 @@ UPDATE lianjia_xiaoqu AS r, ( SELECT a.housecode, a.distance, b.metro, b.metro_l
     
     <item>
       <title>翻译-Building a RESTful Web Service</title>
-      <link>https://maoyanting.github.io/post/%E7%BF%BB%E8%AF%91-building-a-restful-web-service/</link>
+      <link>https://maoyanting.com/post/%E7%BF%BB%E8%AF%91-building-a-restful-web-service/</link>
       <pubDate>Wed, 14 Feb 2018 21:00:27 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/%E7%BF%BB%E8%AF%91-building-a-restful-web-service/</guid>
+      <guid>https://maoyanting.com/post/%E7%BF%BB%E8%AF%91-building-a-restful-web-service/</guid>
       <description>&lt;p&gt;翻译——使用Spring创建一个RESTful Web Service&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JavaWeb-Mybatis</title>
-      <link>https://maoyanting.github.io/post/javaweb-mybatis/</link>
+      <link>https://maoyanting.com/post/javaweb-mybatis/</link>
       <pubDate>Fri, 09 Feb 2018 14:11:13 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb-mybatis/</guid>
+      <guid>https://maoyanting.com/post/javaweb-mybatis/</guid>
       <description>&lt;p&gt;spring-mybatis与原生mybatis使用对比、使用mybatis-generator&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JavaWeb-Maven</title>
-      <link>https://maoyanting.github.io/post/javaweb-maven/</link>
+      <link>https://maoyanting.com/post/javaweb-maven/</link>
       <pubDate>Thu, 08 Feb 2018 20:09:53 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb-maven/</guid>
+      <guid>https://maoyanting.com/post/javaweb-maven/</guid>
       <description>&lt;p&gt;依赖寻找和设置，POM，SSM必要依赖等&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JavaWeb-Tomcat</title>
-      <link>https://maoyanting.github.io/post/javaweb-tomcat/</link>
+      <link>https://maoyanting.com/post/javaweb-tomcat/</link>
       <pubDate>Thu, 08 Feb 2018 19:37:20 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb-tomcat/</guid>
+      <guid>https://maoyanting.com/post/javaweb-tomcat/</guid>
       <description>&lt;p&gt;基础&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java-Base64</title>
-      <link>https://maoyanting.github.io/post/java-base64/</link>
+      <link>https://maoyanting.com/post/java-base64/</link>
       <pubDate>Wed, 07 Feb 2018 13:09:29 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-base64/</guid>
+      <guid>https://maoyanting.com/post/java-base64/</guid>
       <description>&lt;p&gt;某钱包分享链接泄漏手机号码了，&lt;a href=&#34;https://www.v2ex.com/t/429099#reply48&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;链接&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;安全问题很重要啊&lt;/p&gt;</description>
@@ -415,28 +415,28 @@ UPDATE lianjia_xiaoqu AS r, ( SELECT a.housecode, a.distance, b.metro, b.metro_l
     
     <item>
       <title>hexo-NexT的优化</title>
-      <link>https://maoyanting.github.io/post/hexo-next%E7%9A%84%E4%BC%98%E5%8C%96/</link>
+      <link>https://maoyanting.com/post/hexo-next%E7%9A%84%E4%BC%98%E5%8C%96/</link>
       <pubDate>Wed, 07 Feb 2018 10:59:24 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/hexo-next%E7%9A%84%E4%BC%98%E5%8C%96/</guid>
+      <guid>https://maoyanting.com/post/hexo-next%E7%9A%84%E4%BC%98%E5%8C%96/</guid>
       <description>&lt;p&gt;一些基于NexT的优化&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>小黑屋-Java-JavaSE组件</title>
-      <link>https://maoyanting.github.io/post/java-javase%E7%BB%84%E4%BB%B6/</link>
+      <link>https://maoyanting.com/post/java-javase%E7%BB%84%E4%BB%B6/</link>
       <pubDate>Wed, 07 Feb 2018 10:05:21 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-javase%E7%BB%84%E4%BB%B6/</guid>
+      <guid>https://maoyanting.com/post/java-javase%E7%BB%84%E4%BB%B6/</guid>
       <description>Java Language Tools &amp;amp; Tool APIs    名称 功能     javac 把.java文件编译为.class文件（每个类一个.class文件）   javadoc 生成Java说明文档，api文档   jar 软件包文件格式，归档文件   javap JDK自带的反汇编器，可以查看java编译器为我们生成的字节码。   JPDA(Java Platform Debugger Architecture) Java平台调试器架构   JConsole 内置 Java 性能分析器?   Java VisualVM 集成了多个JDK 命令行工具的可视化工具   Java DB 开放源码数据库管理系统   Security    Int&amp;rsquo;l    RMI    IDL    Deploy    Monitoring    Troubleshoot    Scripting    JVM TI Java 虚拟机所提供的 native 编程接口   Web Services    java java.</description>
     </item>
     
     <item>
       <title>MySQL-开发</title>
-      <link>https://maoyanting.github.io/post/mysql-%E5%BC%80%E5%8F%91/</link>
+      <link>https://maoyanting.com/post/mysql-%E5%BC%80%E5%8F%91/</link>
       <pubDate>Tue, 06 Feb 2018 16:02:53 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/mysql-%E5%BC%80%E5%8F%91/</guid>
+      <guid>https://maoyanting.com/post/mysql-%E5%BC%80%E5%8F%91/</guid>
       <description>&lt;p&gt;本文整理自《深入浅出MySQL数据库开发、优化与管理维护（第2版）》&lt;/p&gt;
 
 &lt;p&gt;第二部分 开发篇&lt;/p&gt;</description>
@@ -444,19 +444,19 @@ UPDATE lianjia_xiaoqu AS r, ( SELECT a.housecode, a.distance, b.metro, b.metro_l
     
     <item>
       <title>爬虫-pyspider</title>
-      <link>https://maoyanting.github.io/post/%E7%88%AC%E8%99%AB-pyspider/</link>
+      <link>https://maoyanting.com/post/%E7%88%AC%E8%99%AB-pyspider/</link>
       <pubDate>Mon, 05 Feb 2018 16:19:14 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/%E7%88%AC%E8%99%AB-pyspider/</guid>
+      <guid>https://maoyanting.com/post/%E7%88%AC%E8%99%AB-pyspider/</guid>
       <description>&lt;p&gt;爬虫&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java-HashMap</title>
-      <link>https://maoyanting.github.io/post/java-hashmap/</link>
+      <link>https://maoyanting.com/post/java-hashmap/</link>
       <pubDate>Mon, 29 Jan 2018 13:55:25 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-hashmap/</guid>
+      <guid>https://maoyanting.com/post/java-hashmap/</guid>
       <description>&lt;h2 id=&#34;摘要-未完&#34;&gt;摘要（未完）&lt;/h2&gt;
 
 &lt;p&gt;查看了一下HashMap源代码，一些基本知识点&lt;/p&gt;
@@ -466,10 +466,10 @@ UPDATE lianjia_xiaoqu AS r, ( SELECT a.housecode, a.distance, b.metro, b.metro_l
     
     <item>
       <title>数据结构和算法分析-数据结构</title>
-      <link>https://maoyanting.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <link>https://maoyanting.com/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
       <pubDate>Fri, 26 Jan 2018 23:20:22 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <guid>https://maoyanting.com/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
       <description>&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
 
 &lt;p&gt;表、栈、队列、树、Hash等数据结构&lt;/p&gt;</description>
@@ -477,10 +477,10 @@ UPDATE lianjia_xiaoqu AS r, ( SELECT a.housecode, a.distance, b.metro, b.metro_l
     
     <item>
       <title>JavaWeb面试-设计模式</title>
-      <link>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://maoyanting.com/post/javaweb%E9%9D%A2%E8%AF%95-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Fri, 26 Jan 2018 15:12:19 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://maoyanting.com/post/javaweb%E9%9D%A2%E8%AF%95-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;p&gt;设计模式简单整理&lt;/p&gt;
 
 &lt;p&gt;设计模式是种思路，概念什么的只是为了应付面试。&lt;/p&gt;</description>
@@ -488,21 +488,19 @@ UPDATE lianjia_xiaoqu AS r, ( SELECT a.housecode, a.distance, b.metro, b.metro_l
     
     <item>
       <title>关于我</title>
-      <link>https://maoyanting.github.io/about/</link>
+      <link>https://maoyanting.com/about/</link>
       <pubDate>Tue, 23 Jan 2018 13:44:28 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/about/</guid>
+      <guid>https://maoyanting.com/about/</guid>
       <description>NAME：5q+b5b2m5am3
-ADDRESS：杭州-三墩
 SCHOOL&amp;amp;MAJOR：浙江工业大学 57uZ5rC05o6S5rC05bel56iLMjAxNuWxiiDmnKznp5E=
 Email：ZmhtYW95YW50aW5nQDE2My5jb20=
 GitHub：https://github.com/maoyanting
  工作历程 2016年7月毕业后就职于杭州某市政设计院，2017年5月初辞职自学。
-2018年3月正式从事java后端开发工作
-我的特长 熟悉Spring、Spring MVC、Mybatis、Tomcat等JAVA框架。
- JAVA基础较好，理解I/O，多线程，集合等基础框架，对JVM的原理有一定的了解； 基本掌握MySQL的使用和开发； 对React等前端相关技术有一定了解和使用； 对技术有热情，勤奋，具有快速学习的能力；  个人评价 写代码有种自我满足感，喜欢接触新的技术，对数据处理和代码格式都有一定的强迫症。
-关于Blog 本blog里面的基本都是学习笔记而不是文章
-自我认为，blog里面的分两种：
+2018年3月正式在一家互联网医疗企业就职，从事java后端开发工作
+2019年7月跳槽到大搜车
+个人评价  JAVA基础较好，掌握I/O，多线程，集合等基础框架，JVM有排查经验 熟悉MySQL，Redis，MQ，Dubbo等 代码格式强迫症，简洁代码爱好者，领域驱动半吊子，leetCode间歇访问人员 对技术有热情，具有快速学习的能力，工作协调能力极强；  关于Blog 本blog里面的基本都是学习笔记而不是文章，只是在整理收集知识，还没有到达产出的级别
+自认为，blog里面的分两种：
 学习笔记：写给自己的，对获取的知识进行格式转换，转换为自己能吸收的格式；不做笔记纯靠脑子转化的效率对吾等凡人来说还是太低，再加上如果没使用的话，没多久就忘记了。
 文章：写给读者的，这种需要循序渐进，对于读者也要照顾到读者的知识层面，写的好的不多。
 之前学习笔记都是用印象笔记的，偶尔有文章会发到CSDN上去，虽然都很好用但是总觉得差了点什么
@@ -513,10 +511,10 @@ markdown简直是最爱（当然表格什么的展示还是很心塞）
     
     <item>
       <title>Java-深入理解JVM虚拟机学习笔记</title>
-      <link>https://maoyanting.github.io/post/java-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <link>https://maoyanting.com/post/java-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Tue, 16 Jan 2018 18:03:50 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://maoyanting.com/post/java-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
       <description>&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
 
 &lt;p&gt;《深入理解JVM虚拟机》学习笔记&lt;/p&gt;</description>
@@ -524,19 +522,19 @@ markdown简直是最爱（当然表格什么的展示还是很心塞）
     
     <item>
       <title>JavaWeb面试-概览</title>
-      <link>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E6%A6%82%E8%A7%88/</link>
+      <link>https://maoyanting.com/post/javaweb%E9%9D%A2%E8%AF%95-%E6%A6%82%E8%A7%88/</link>
       <pubDate>Tue, 16 Jan 2018 18:03:50 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E6%A6%82%E8%A7%88/</guid>
+      <guid>https://maoyanting.com/post/javaweb%E9%9D%A2%E8%AF%95-%E6%A6%82%E8%A7%88/</guid>
       <description>&lt;p&gt;Java Web 面试知识点大致整理&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>数据结构和算法分析-排序总结（含图解）</title>
-      <link>https://maoyanting.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-%E6%8E%92%E5%BA%8F%E6%80%BB%E7%BB%93%E5%90%AB%E5%9B%BE%E8%A7%A3/</link>
+      <link>https://maoyanting.com/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-%E6%8E%92%E5%BA%8F%E6%80%BB%E7%BB%93%E5%90%AB%E5%9B%BE%E8%A7%A3/</link>
       <pubDate>Tue, 16 Jan 2018 18:02:50 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-%E6%8E%92%E5%BA%8F%E6%80%BB%E7%BB%93%E5%90%AB%E5%9B%BE%E8%A7%A3/</guid>
+      <guid>https://maoyanting.com/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-%E6%8E%92%E5%BA%8F%E6%80%BB%E7%BB%93%E5%90%AB%E5%9B%BE%E8%A7%A3/</guid>
       <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://github.com/maoyanting/readme_pic/blob/master/blog_sorting.png?raw=true&#34; alt=&#34;ddd&#34; /&gt;&lt;/p&gt;</description>
@@ -544,10 +542,10 @@ markdown简直是最爱（当然表格什么的展示还是很心塞）
     
     <item>
       <title>Spring-注释</title>
-      <link>https://maoyanting.github.io/post/spring-%E6%B3%A8%E9%87%8A/</link>
+      <link>https://maoyanting.com/post/spring-%E6%B3%A8%E9%87%8A/</link>
       <pubDate>Thu, 11 Jan 2018 15:49:06 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/spring-%E6%B3%A8%E9%87%8A/</guid>
+      <guid>https://maoyanting.com/post/spring-%E6%B3%A8%E9%87%8A/</guid>
       <description>注释 @Component： 功能：表明该类会作为组件类，并告知Spring要为此创建bean
 下述这 3 个注释和 @Component 是等效的，但是从注释类的命名上，很容易看出这 3 个注释分别和持久层、业务层和控制层（Web 层）相对应。
 @Service 用于标注业务层组件
@@ -573,10 +571,10 @@ Spring 允许我们通过 @Qualifier 注释指定注入 Bean 的名称，这样�
     
     <item>
       <title>MySQL-基本操作</title>
-      <link>https://maoyanting.github.io/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
+      <link>https://maoyanting.com/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Wed, 10 Jan 2018 21:48:43 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
+      <guid>https://maoyanting.com/post/mysql-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
       <description>&lt;p&gt;本文整理自《深入浅出MySQL数据库开发、优化与管理维护（第2版）》&lt;/p&gt;
 
 &lt;p&gt;第一部分 基础篇&lt;/p&gt;</description>
@@ -584,10 +582,10 @@ Spring 允许我们通过 @Qualifier 注释指定注入 Bean 的名称，这样�
     
     <item>
       <title>KafKa-在Spring中的使用</title>
-      <link>https://maoyanting.github.io/post/kafka-%E5%9C%A8spring%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <link>https://maoyanting.com/post/kafka-%E5%9C%A8spring%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Wed, 10 Jan 2018 09:26:50 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/kafka-%E5%9C%A8spring%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://maoyanting.com/post/kafka-%E5%9C%A8spring%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
       <description>&lt;h2 id=&#34;写在前面&#34;&gt;写在前面&lt;/h2&gt;
 
 &lt;p&gt;Kafka的简单介绍可以看&lt;a href=&#34;http://www.infoq.com/cn/articles/depth-interpretation-of-kafka-data-reliability&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;这个博客&lt;/a&gt;&lt;/p&gt;
@@ -603,19 +601,19 @@ Spring 允许我们通过 @Qualifier 注释指定注入 Bean 的名称，这样�
     
     <item>
       <title>翻译-Spring for Apache Kafka</title>
-      <link>https://maoyanting.github.io/post/%E7%BF%BB%E8%AF%91-spring-for-apache-kafka/</link>
+      <link>https://maoyanting.com/post/%E7%BF%BB%E8%AF%91-spring-for-apache-kafka/</link>
       <pubDate>Mon, 08 Jan 2018 12:27:46 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/%E7%BF%BB%E8%AF%91-spring-for-apache-kafka/</guid>
+      <guid>https://maoyanting.com/post/%E7%BF%BB%E8%AF%91-spring-for-apache-kafka/</guid>
       <description>&lt;p&gt;翻译——Spring for Apache Kafka官方文档&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Kafka-基本使用</title>
-      <link>https://maoyanting.github.io/post/kafka-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
+      <link>https://maoyanting.com/post/kafka-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Mon, 08 Jan 2018 11:27:46 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/kafka-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://maoyanting.com/post/kafka-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</guid>
       <description>&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
 
 &lt;p&gt;Kafka最简单的使用&lt;/p&gt;</description>
@@ -623,10 +621,10 @@ Spring 允许我们通过 @Qualifier 注释指定注入 Bean 的名称，这样�
     
     <item>
       <title>JavaWeb-WebSocket在Spring&#43;React的实现</title>
-      <link>https://maoyanting.github.io/post/javaweb-websocket%E5%9C%A8spring&#43;react%E7%9A%84%E5%AE%9E%E7%8E%B0/</link>
+      <link>https://maoyanting.com/post/javaweb-websocket%E5%9C%A8spring&#43;react%E7%9A%84%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 05 Jan 2018 11:27:46 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb-websocket%E5%9C%A8spring&#43;react%E7%9A%84%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>https://maoyanting.com/post/javaweb-websocket%E5%9C%A8spring&#43;react%E7%9A%84%E5%AE%9E%E7%8E%B0/</guid>
       <description>背景 先说一下别的轮询方式： ajax轮询：让浏览器隔个几秒就发送一次请求，询问服务器是否有新信息。 long poll：浏览器发起连接后，如果没消息，就一直不返回Response给浏览器。直到有消息才返回，返回完之后，浏览器再次建立连接，周而复始。
 ajax轮询 需要服务器有很快的处理速度和资源。 long poll 需要有很高的并发。
 再说webSocket，先必须记住，webSocket是一个协议 我们使用的应该说是webSocket API
@@ -640,10 +638,10 @@ const ws = new WebSocket(&amp;quot;ws://echo.websocket.org/ws&amp;quot;); ws.ono
     
     <item>
       <title>Kafka-内部分析</title>
-      <link>https://maoyanting.github.io/post/kafka-%E5%86%85%E9%83%A8%E5%88%86%E6%9E%90/</link>
+      <link>https://maoyanting.com/post/kafka-%E5%86%85%E9%83%A8%E5%88%86%E6%9E%90/</link>
       <pubDate>Fri, 05 Jan 2018 11:27:46 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/kafka-%E5%86%85%E9%83%A8%E5%88%86%E6%9E%90/</guid>
+      <guid>https://maoyanting.com/post/kafka-%E5%86%85%E9%83%A8%E5%88%86%E6%9E%90/</guid>
       <description>简介 设计目标 1、以时间复杂度为O(1)的方式提供消息持久化能力，即使对TB级以上数据也能保证常数时间复杂度的访问性能。
 2、高吞吐率。即使在非常廉价的商用机器上也能做到单机支持每秒100K条以上消息的传输。
 3、支持Kafka Server间的消息分区，及分布式消费，同时保证每个Partition内的消息顺序传输。
@@ -674,20 +672,20 @@ Producer消息路由 Producer发送消息到broker时，会根据Paritition机�
     
     <item>
       <title>JavaWeb-Servlet</title>
-      <link>https://maoyanting.github.io/post/javaweb-servlet/</link>
+      <link>https://maoyanting.com/post/javaweb-servlet/</link>
       <pubDate>Fri, 15 Dec 2017 18:05:24 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb-servlet/</guid>
+      <guid>https://maoyanting.com/post/javaweb-servlet/</guid>
       <description>&lt;p&gt;这个只是学习笔记，我是个刚学半年编程的半吊子，里面的内容可能会出错，所以也不建议转载
 我会尽力保证里面的正确性，如果有错请指出，万分感谢&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SSM &#43; dva 之前端踩的坑</title>
-      <link>https://maoyanting.github.io/post/ssm-&#43;-dva-%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B8%A9%E7%9A%84%E5%9D%91/</link>
+      <link>https://maoyanting.com/post/ssm-&#43;-dva-%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B8%A9%E7%9A%84%E5%9D%91/</link>
       <pubDate>Wed, 13 Dec 2017 18:02:50 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/ssm-&#43;-dva-%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B8%A9%E7%9A%84%E5%9D%91/</guid>
+      <guid>https://maoyanting.com/post/ssm-&#43;-dva-%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%B8%A9%E7%9A%84%E5%9D%91/</guid>
       <description>技术栈 后端：SSM + Tomcat 前端：dva + roadhog + antd + React
 提示：dva的坑很多，react的体系很大（学习成本很高）不过github上Q&amp;amp;A很多也比较全面 然后其实这个适合做后台页面，所以才封装得那么像java吧
 前后端衔接部分： 网上找了很多都没有我能用的，我自己最后弄了个比较蠢的方法

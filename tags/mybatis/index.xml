@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mybatis on 修仙下属委员会</title>
-    <link>https://maoyanting.github.io/tags/mybatis/</link>
+    <link>https://maoyanting.com/tags/mybatis/</link>
     <description>Recent content in Mybatis on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 09 Feb 2018 14:11:13 +0000</lastBuildDate>
     
-	<atom:link href="https://maoyanting.github.io/tags/mybatis/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://maoyanting.com/tags/mybatis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaWeb-Mybatis</title>
-      <link>https://maoyanting.github.io/post/javaweb-mybatis/</link>
+      <link>https://maoyanting.com/post/javaweb-mybatis/</link>
       <pubDate>Fri, 09 Feb 2018 14:11:13 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb-mybatis/</guid>
+      <guid>https://maoyanting.com/post/javaweb-mybatis/</guid>
       <description>&lt;p&gt;spring-mybatis与原生mybatis使用对比、使用mybatis-generator&lt;/p&gt;</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on 修仙下属委员会</title>
-    <link>https://maoyanting.github.io/tags/java/</link>
+    <link>https://maoyanting.com/tags/java/</link>
     <description>Recent content in Java on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 08 Oct 2018 21:47:46 +0000</lastBuildDate>
     
-	<atom:link href="https://maoyanting.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://maoyanting.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java-Java基础</title>
-      <link>https://maoyanting.github.io/post/java-java%E5%9F%BA%E7%A1%80/</link>
+      <link>https://maoyanting.com/post/java-java%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Mon, 08 Oct 2018 21:47:46 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-java%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://maoyanting.com/post/java-java%E5%9F%BA%E7%A1%80/</guid>
       <description>&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
 
 &lt;p&gt;本文是对一些java基础知识的整理，把之前印象笔记里面的全部慢慢搬到这个blog来&lt;/p&gt;
@@ -34,10 +34,10 @@
     
     <item>
       <title>Java-HttpClient</title>
-      <link>https://maoyanting.github.io/post/java-httpclient%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
+      <link>https://maoyanting.com/post/java-httpclient%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Tue, 15 May 2018 23:30:39 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-httpclient%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>https://maoyanting.com/post/java-httpclient%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
       <description>&lt;h2 id=&#34;httpclient的介绍&#34;&gt;HttpClient的介绍&lt;/h2&gt;
 
 &lt;h3 id=&#34;一般步骤&#34;&gt;一般步骤&lt;/h3&gt;
@@ -72,28 +72,28 @@ try {
     
     <item>
       <title>Java-通用代码</title>
-      <link>https://maoyanting.github.io/post/java-%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81/</link>
+      <link>https://maoyanting.com/post/java-%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81/</link>
       <pubDate>Fri, 02 Mar 2018 17:27:43 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81/</guid>
+      <guid>https://maoyanting.com/post/java-%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81/</guid>
       <description>&lt;p&gt;一些通用的Java代码：从网上下载图片，&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java-I/O</title>
-      <link>https://maoyanting.github.io/post/java-i_o/</link>
+      <link>https://maoyanting.com/post/java-i_o/</link>
       <pubDate>Fri, 02 Mar 2018 15:29:20 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-i_o/</guid>
+      <guid>https://maoyanting.com/post/java-i_o/</guid>
       <description>&lt;p&gt;I/O资料整理&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java-Base64</title>
-      <link>https://maoyanting.github.io/post/java-base64/</link>
+      <link>https://maoyanting.com/post/java-base64/</link>
       <pubDate>Wed, 07 Feb 2018 13:09:29 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-base64/</guid>
+      <guid>https://maoyanting.com/post/java-base64/</guid>
       <description>&lt;p&gt;某钱包分享链接泄漏手机号码了，&lt;a href=&#34;https://www.v2ex.com/t/429099#reply48&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;链接&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;安全问题很重要啊&lt;/p&gt;</description>
@@ -101,10 +101,10 @@ try {
     
     <item>
       <title>Java-HashMap</title>
-      <link>https://maoyanting.github.io/post/java-hashmap/</link>
+      <link>https://maoyanting.com/post/java-hashmap/</link>
       <pubDate>Mon, 29 Jan 2018 13:55:25 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-hashmap/</guid>
+      <guid>https://maoyanting.com/post/java-hashmap/</guid>
       <description>&lt;h2 id=&#34;摘要-未完&#34;&gt;摘要（未完）&lt;/h2&gt;
 
 &lt;p&gt;查看了一下HashMap源代码，一些基本知识点&lt;/p&gt;
@@ -114,10 +114,10 @@ try {
     
     <item>
       <title>JavaWeb面试-设计模式</title>
-      <link>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://maoyanting.com/post/javaweb%E9%9D%A2%E8%AF%95-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Fri, 26 Jan 2018 15:12:19 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://maoyanting.com/post/javaweb%E9%9D%A2%E8%AF%95-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;p&gt;设计模式简单整理&lt;/p&gt;
 
 &lt;p&gt;设计模式是种思路，概念什么的只是为了应付面试。&lt;/p&gt;</description>
@@ -125,10 +125,10 @@ try {
     
     <item>
       <title>Java-深入理解JVM虚拟机学习笔记</title>
-      <link>https://maoyanting.github.io/post/java-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <link>https://maoyanting.com/post/java-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Tue, 16 Jan 2018 18:03:50 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/java-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://maoyanting.com/post/java-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
       <description>&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
 
 &lt;p&gt;《深入理解JVM虚拟机》学习笔记&lt;/p&gt;</description>
@@ -136,10 +136,10 @@ try {
     
     <item>
       <title>JavaWeb面试-概览</title>
-      <link>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E6%A6%82%E8%A7%88/</link>
+      <link>https://maoyanting.com/post/javaweb%E9%9D%A2%E8%AF%95-%E6%A6%82%E8%A7%88/</link>
       <pubDate>Tue, 16 Jan 2018 18:03:50 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb%E9%9D%A2%E8%AF%95-%E6%A6%82%E8%A7%88/</guid>
+      <guid>https://maoyanting.com/post/javaweb%E9%9D%A2%E8%AF%95-%E6%A6%82%E8%A7%88/</guid>
       <description>&lt;p&gt;Java Web 面试知识点大致整理&lt;/p&gt;</description>
     </item>
     

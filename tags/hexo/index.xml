@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hexo on 修仙下属委员会</title>
-    <link>https://maoyanting.github.io/tags/hexo/</link>
+    <link>https://maoyanting.com/tags/hexo/</link>
     <description>Recent content in hexo on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 07 Feb 2018 10:59:24 +0000</lastBuildDate>
     
-	<atom:link href="https://maoyanting.github.io/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://maoyanting.com/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>hexo-NexT的优化</title>
-      <link>https://maoyanting.github.io/post/hexo-next%E7%9A%84%E4%BC%98%E5%8C%96/</link>
+      <link>https://maoyanting.com/post/hexo-next%E7%9A%84%E4%BC%98%E5%8C%96/</link>
       <pubDate>Wed, 07 Feb 2018 10:59:24 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/hexo-next%E7%9A%84%E4%BC%98%E5%8C%96/</guid>
+      <guid>https://maoyanting.com/post/hexo-next%E7%9A%84%E4%BC%98%E5%8C%96/</guid>
       <description>&lt;p&gt;一些基于NexT的优化&lt;/p&gt;</description>
     </item>
     

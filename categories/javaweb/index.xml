@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JavaWeb on 修仙下属委员会</title>
-    <link>https://maoyanting.github.io/categories/javaweb/</link>
+    <link>https://maoyanting.com/categories/javaweb/</link>
     <description>Recent content in JavaWeb on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 09 Feb 2018 14:11:13 +0000</lastBuildDate>
     
-	<atom:link href="https://maoyanting.github.io/categories/javaweb/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://maoyanting.com/categories/javaweb/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaWeb-Mybatis</title>
-      <link>https://maoyanting.github.io/post/javaweb-mybatis/</link>
+      <link>https://maoyanting.com/post/javaweb-mybatis/</link>
       <pubDate>Fri, 09 Feb 2018 14:11:13 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb-mybatis/</guid>
+      <guid>https://maoyanting.com/post/javaweb-mybatis/</guid>
       <description>&lt;p&gt;spring-mybatis与原生mybatis使用对比、使用mybatis-generator&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JavaWeb-Maven</title>
-      <link>https://maoyanting.github.io/post/javaweb-maven/</link>
+      <link>https://maoyanting.com/post/javaweb-maven/</link>
       <pubDate>Thu, 08 Feb 2018 20:09:53 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb-maven/</guid>
+      <guid>https://maoyanting.com/post/javaweb-maven/</guid>
       <description>&lt;p&gt;依赖寻找和设置，POM，SSM必要依赖等&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JavaWeb-Tomcat</title>
-      <link>https://maoyanting.github.io/post/javaweb-tomcat/</link>
+      <link>https://maoyanting.com/post/javaweb-tomcat/</link>
       <pubDate>Thu, 08 Feb 2018 19:37:20 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb-tomcat/</guid>
+      <guid>https://maoyanting.com/post/javaweb-tomcat/</guid>
       <description>&lt;p&gt;基础&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JavaWeb-WebSocket在Spring&#43;React的实现</title>
-      <link>https://maoyanting.github.io/post/javaweb-websocket%E5%9C%A8spring&#43;react%E7%9A%84%E5%AE%9E%E7%8E%B0/</link>
+      <link>https://maoyanting.com/post/javaweb-websocket%E5%9C%A8spring&#43;react%E7%9A%84%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 05 Jan 2018 11:27:46 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb-websocket%E5%9C%A8spring&#43;react%E7%9A%84%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>https://maoyanting.com/post/javaweb-websocket%E5%9C%A8spring&#43;react%E7%9A%84%E5%AE%9E%E7%8E%B0/</guid>
       <description>背景 先说一下别的轮询方式： ajax轮询：让浏览器隔个几秒就发送一次请求，询问服务器是否有新信息。 long poll：浏览器发起连接后，如果没消息，就一直不返回Response给浏览器。直到有消息才返回，返回完之后，浏览器再次建立连接，周而复始。
 ajax轮询 需要服务器有很快的处理速度和资源。 long poll 需要有很高的并发。
 再说webSocket，先必须记住，webSocket是一个协议 我们使用的应该说是webSocket API
@@ -57,10 +57,10 @@ const ws = new WebSocket(&amp;quot;ws://echo.websocket.org/ws&amp;quot;); ws.ono
     
     <item>
       <title>JavaWeb-Servlet</title>
-      <link>https://maoyanting.github.io/post/javaweb-servlet/</link>
+      <link>https://maoyanting.com/post/javaweb-servlet/</link>
       <pubDate>Fri, 15 Dec 2017 18:05:24 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/javaweb-servlet/</guid>
+      <guid>https://maoyanting.com/post/javaweb-servlet/</guid>
       <description>&lt;p&gt;这个只是学习笔记，我是个刚学半年编程的半吊子，里面的内容可能会出错，所以也不建议转载
 我会尽力保证里面的正确性，如果有错请指出，万分感谢&lt;/p&gt;</description>
     </item>

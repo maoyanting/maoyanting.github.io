@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on 修仙下属委员会</title>
-    <link>https://maoyanting.github.io/tags/git/</link>
+    <link>https://maoyanting.com/tags/git/</link>
     <description>Recent content in Git on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 19 Mar 2018 23:14:11 +0000</lastBuildDate>
     
-	<atom:link href="https://maoyanting.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://maoyanting.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Git-基本操作</title>
-      <link>https://maoyanting.github.io/post/git-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
+      <link>https://maoyanting.com/post/git-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Mon, 19 Mar 2018 23:14:11 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/git-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
+      <guid>https://maoyanting.com/post/git-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid>
       <description>&lt;p&gt;继装Git就遇到很大的问题后，我发现我对Git并不是很了解……因为之前都是直接用sourcetree的&lt;/p&gt;
 
 &lt;p&gt;整理学习一下吧&lt;/p&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>Git-win10下Git闪退</title>
-      <link>https://maoyanting.github.io/post/git-win10%E4%B8%8Bgit%E9%97%AA%E9%80%80/</link>
+      <link>https://maoyanting.com/post/git-win10%E4%B8%8Bgit%E9%97%AA%E9%80%80/</link>
       <pubDate>Mon, 19 Mar 2018 20:09:16 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/git-win10%E4%B8%8Bgit%E9%97%AA%E9%80%80/</guid>
+      <guid>https://maoyanting.com/post/git-win10%E4%B8%8Bgit%E9%97%AA%E9%80%80/</guid>
       <description>&lt;p&gt;win10下Git闪退&lt;/p&gt;
 
 &lt;p&gt;今天第一天上班，装Git就遇到了很大的问题……忧伤&lt;/p&gt;</description>

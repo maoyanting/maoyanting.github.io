@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring on 修仙下属委员会</title>
-    <link>https://maoyanting.github.io/categories/spring/</link>
+    <link>https://maoyanting.com/categories/spring/</link>
     <description>Recent content in Spring on 修仙下属委员会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 22 Oct 2018 22:49:08 +0000</lastBuildDate>
     
-	<atom:link href="https://maoyanting.github.io/categories/spring/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://maoyanting.com/categories/spring/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Spring-sleuth</title>
-      <link>https://maoyanting.github.io/post/spring-sleuth/</link>
+      <link>https://maoyanting.com/post/spring-sleuth/</link>
       <pubDate>Mon, 22 Oct 2018 22:49:08 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/spring-sleuth/</guid>
+      <guid>https://maoyanting.com/post/spring-sleuth/</guid>
       <description>&lt;p&gt;有时候，定位bug真的是个很麻烦的事情呢&lt;/p&gt;
 
 &lt;p&gt;我们可以简单借用一下Spring Cloud Sleuth&lt;/p&gt;</description>
@@ -24,28 +24,28 @@
     
     <item>
       <title>Spring-全局异常拦截</title>
-      <link>https://maoyanting.github.io/post/spring-%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA/</link>
+      <link>https://maoyanting.com/post/spring-%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA/</link>
       <pubDate>Tue, 16 Oct 2018 15:49:06 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/spring-%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA/</guid>
+      <guid>https://maoyanting.com/post/spring-%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA/</guid>
       <description>&lt;p&gt;Spring MVC那一篇里提到了异常拦截来做参数校验返回，那里是对特定的 &lt;code&gt;controller&lt;/code&gt; 做异常捕捉，但是我们也可以选择全局拦截处理&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Spring（未完）</title>
-      <link>https://maoyanting.github.io/post/spring/</link>
+      <link>https://maoyanting.com/post/spring/</link>
       <pubDate>Mon, 17 Sep 2018 11:56:06 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/spring/</guid>
+      <guid>https://maoyanting.com/post/spring/</guid>
       <description>&lt;p&gt;spring 是一个 &lt;strong&gt;轻量级&lt;/strong&gt;的 实现&lt;strong&gt;IOC&lt;/strong&gt; 和 &lt;strong&gt;AOP&lt;/strong&gt;的框架。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Spring-注释</title>
-      <link>https://maoyanting.github.io/post/spring-%E6%B3%A8%E9%87%8A/</link>
+      <link>https://maoyanting.com/post/spring-%E6%B3%A8%E9%87%8A/</link>
       <pubDate>Thu, 11 Jan 2018 15:49:06 +0000</pubDate>
       
-      <guid>https://maoyanting.github.io/post/spring-%E6%B3%A8%E9%87%8A/</guid>
+      <guid>https://maoyanting.com/post/spring-%E6%B3%A8%E9%87%8A/</guid>
       <description>注释 @Component： 功能：表明该类会作为组件类，并告知Spring要为此创建bean
 下述这 3 个注释和 @Component 是等效的，但是从注释类的命名上，很容易看出这 3 个注释分别和持久层、业务层和控制层（Web 层）相对应。
 @Service 用于标注业务层组件
